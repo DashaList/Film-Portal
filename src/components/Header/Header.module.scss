@@ -1,0 +1,57 @@
+.Header {
+    position: fixed;
+    z-index: 11;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 28px 56px;
+    transition: padding .2s linear;
+
+    .left {
+        display: flex;
+        gap: 40px;
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        .link {
+            opacity: .8;
+            transition: opacity .2s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+
+
+    .right {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+        }
+        .icon {
+            width: 32px;
+            height: 32px;
+            opacity: .6;
+            transition: all .3s ease;
+
+            &:hover {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+        }
+    }
+}

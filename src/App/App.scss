@@ -1,0 +1,44 @@
+$color-red: #e00a1e;
+$color-light-red: #ff142a;
+$color-dark-grey: #1d1f23;
+$color-white: #f2f2f2;
+
+
+@font-face {
+  font-display: swap;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 300;
+  src: url('../assets/fonts/ProximaNova-Light.woff') format('woff')
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/ProximaNova-Regular.woff') format('woff')
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../assets/fonts/ProximaNova-Semibold.woff') format('woff')
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Proxima Nova';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../assets/fonts/ProximaNova-Bold.woff') format('woff'),
+  url(../)
+}
+
+body {
+  font-family: 'Proxima Nova', Arial;
+  background: $color-dark-grey;
+  color: $color-white;
+}

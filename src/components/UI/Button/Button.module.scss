@@ -1,0 +1,25 @@
+@import '../../../App/App.scss';
+
+.Button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 231px;
+    height: 40px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.contained {
+    background: $color-red;
+
+    &:hover {
+        background-color: $color-light-red;
+    }
+}
+
+.outlined {
+    border: 1px solid #757d8a;
+}
