@@ -1,0 +1,153 @@
+[
+  {
+    "id": 1,
+    "name": "Поехавшая",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(16.png,15,-0,0,15,15)/bec70d626b4c438d9b03f1823e4a18ce/vertical_15x?size=318x454&w=256&q=75",
+    "rating": 9.3,
+    "genre": [
+      {
+        "name": "Мелодрама",
+        "link": "Melodrama"
+      },
+      {
+        "name": "Комедия",
+        "link": "Comedia"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Бывшие. Happy end",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(18.png,15,-0,0,15,15)/c1cc5ed99c864f93a1e306134ce3d59b/vertical_15x?size=318x454&w=256&q=75",
+    "rating": 8.2,
+    "genre": [
+      {
+        "name": "Мелодрама",
+        "link": "Melodrama"
+      },
+      {
+        "name": "Драма",
+        "link": "Drama"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Молоко",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(16.png,15,-0,0,15,15)/40265fc2798f4518b87457ab609e7654/images-image_vertical_15x?size=318x454&w=256&q=75",
+    "rating": 7.0,
+    "genre": [
+      {
+        "name": "Драма",
+        "link": "Drama"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Приключения Паддингтона",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(6.png,15,-0,0,15,15)/7dacd38977e24964bb13a12883c1fb31/images-image_vertical_15x?size=318x454&w=256&q=75",
+    "rating": 9.2,
+    "genre": [
+      {
+        "name": "Комедия",
+        "link": "Comedia"
+      },
+      {
+        "name": "Приключение",
+        "link": "Pricluchenie"
+      },
+      {
+        "name": "Семейное",
+        "link": "Semeinoe"
+      },
+      {
+        "name": "Для детей",
+        "link": "DlayDetey"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Молочная девочка",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(18.png,15,-0,0,15,15)/fbae00991f7d482894ae4fcc7c3f0667/vertical_15x?size=318x454&w=256&q=75",
+    "rating": 6.5,
+    "genre": [
+      {
+        "name": "Мелодрама",
+        "link": "Melodrama"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Королевский корги",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(6.png,15,-0,0,15,15)/54e155ed61a64e39ad02e4b2b09f3482/images-image_vertical_15x?size=318x454&w=256&q=75",
+    "rating": 8.8,
+    "genre": [{
+        "name": "Комедия",
+        "link": "Comedia"
+      },
+      {
+        "name": "Мультфильм",
+        "link": "Multfilm"
+      },
+      {
+        "name": "Семейное",
+        "link": "Semeinoe"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Многоэтажка",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(18.png,15,-0,0,15,15)/4c9aa079b04d441d85478e6d8c3d9df4/vertical_15x?size=318x454&w=256&q=75",
+    "rating": 8.6,
+    "genre": [
+      {
+        "name": "Драма",
+        "link": "Drama"
+      },
+      {
+        "name": "Триллер",
+        "link": "Triller"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Рассказы",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(18.png,15,-0,0,15,15)/44bf805c243943b1b093716ac2ce69d2/images-image_vertical_15x?size=318x454&w=256&q=75",
+    "rating": 6.0,
+    "genre": [
+        {
+            "name": "Драма",
+            "link": "Drama"
+          },
+          {
+            "name": "Комедия",
+            "link": "Comedia"
+          }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Большой кошачий побег",
+    "img": "https://api.start.ru/images/unsafe/630x900/filters:format(webp):watermark(6.png,15,-0,0,15,15)/5eb784e211c6409699bb3713430b4142/images-image_vertical_15x?size=318x454&w=256&q=75",
+    "rating": 8.5,
+    "genre": [
+      {
+        "name": "Мультфильм",
+        "link": "Multfilm"
+      },
+      {
+        "name": "Развлечение",
+        "link": "Razvlechenie"
+      },
+      {
+        "name": "Приключение",
+        "link": "Pricluchenie"
+      }
+    ]
+  }
+]

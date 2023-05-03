@@ -1,0 +1,10 @@
+.page{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: space-around;
+    gap: 20px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 100px;
+}
