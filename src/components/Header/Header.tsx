@@ -3,15 +3,21 @@ import styles from './Header.module.scss'
 import logo from '../../assets/img/svg/logo_white.svg'
 import search from '../../assets/img/svg/search.svg'
 import avatar from '../../assets/img/svg/avatar.svg'
+import burger from '../../assets/img/svg/burger.svg'
+import { useWindowWidth } from '../../hooks/hooks'
+import cn from 'classnames';
+import classNames from 'classnames'
 
 const Header = () => {
+    const windowWidth = useWindowWidth()
+
   return (
     <header className={styles.Header}>
         <div className={styles.left}>
             <a href="!#">
-                <img src={logo} alt="START" />
+                <img className={styles.logo} src={logo} alt="START" />
             </a>
-            <nav>
+            {windowWidth > 1024 && <nav>
                 <div className={styles.link}>
                     <a href="!#">Кино&nbsp;на&nbsp;ТВ</a>
                 </div>
@@ -33,17 +39,20 @@ const Header = () => {
                 <div className={styles.link}>
                     <a href="!#">ТВ</a>
                 </div>                
-            </nav>
+            </nav>}
         </div>
         <div className={styles.right}>
-            <Button>Попробовать бесплатно</Button>
+            {windowWidth > 1024 && <Button>Попробовать бесплатно</Button>}
             <div className={styles.icons}>
                 <a href="!#">
-                    <img className={styles.icon} src={search} alt="" />
+                    <img className={styles.icon} src={search} alt="search" />
                 </a>
-                <a href="!#">
-                    <img className={styles.icon} src={avatar} alt="" />
-                </a>
+                {windowWidth > 1024 && <a href="!#">
+                    <img className={styles.icon} src={avatar} alt="avatar" />
+                </a>}
+                {windowWidth <= 1024 && <a href="!#">
+                    <img className={cn(styles.icon, styles.burger)} src={burger} alt="burger" />
+                </a>}
             </div>
         </div>
     </header>

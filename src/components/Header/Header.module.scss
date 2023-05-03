@@ -12,6 +12,17 @@
         display: flex;
         gap: 40px;
 
+        .logo {
+            display: block;
+            height: 40px;
+            width: 82px;
+
+            @media (max-width: 1240px) {
+                height: 32px;
+                width: 66px;
+            }
+        }
+
         nav {
             display: flex;
             align-items: center;
@@ -52,6 +63,10 @@
                 opacity: 1;
                 transform: scale(1.05);
             }
+        }
+        .burger {
+            height: 15px;
+            width: 18px;
         }
     }
 }
