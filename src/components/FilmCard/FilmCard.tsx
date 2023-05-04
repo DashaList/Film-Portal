@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IFilmItem } from '../../types/interface';
+import { IFilmItem } from '../../types/types';
 import styles from './FilmCard.module.scss'
 import { Link } from 'react-router-dom';
 

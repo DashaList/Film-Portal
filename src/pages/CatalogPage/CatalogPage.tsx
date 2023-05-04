@@ -1,12 +1,12 @@
 import FilmData from '../../FilmData.json'
-import styles from './Catalog.module.scss'
-import FilmCard from '../FilmCard/FilmCard';
-import Button from '../UI/Button/Button';
+import styles from './CatalogPage.module.scss'
+import FilmCard from '../../components/FilmCard/FilmCard';
+import Button from '../../components/UI/Button/Button';
 import { Link } from 'react-router-dom';
-import Path from '../UI/Path/Path';
+import Path from '../../components/UI/Path/Path';
 
 
-const Catalog = () => {
+const CatalogPage = () => {
     return (
 
         <div className={styles.page}>
@@ -45,4 +45,4 @@ const Catalog = () => {
     );
 };
 
-export default Catalog;
+export default CatalogPage;
