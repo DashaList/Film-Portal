@@ -6,7 +6,6 @@ import avatar from '../../assets/img/svg/avatar.svg'
 import burger from '../../assets/img/svg/burger.svg'
 import { useWindowWidth } from '../../hooks/hooks'
 import cn from 'classnames';
-import classNames from 'classnames'
 
 const Header = () => {
     const windowWidth = useWindowWidth()
