@@ -1,13 +1,19 @@
 import './reset.scss'
 import './App.scss'
 import Header from '../components/Header/Header';
-import Footer from '../components/Footer/Footer';
+import Catalog from '../components/Catalog/Catalog';
+import { Route, Routes } from 'react-router-dom';
+import FilmPage from '../components/FilmPage/FilmPage';
 
 function App() {
   return (
     <>
-      <Header></Header>
-      <Footer></Footer>
+      <Header />
+      <Routes>
+        <Route path='/movies' element={<Catalog />} />
+        <Route path='/movies/:id' element={<FilmPage />} />
+      </Routes>
+
     </>
   );
 }

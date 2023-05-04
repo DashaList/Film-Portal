@@ -3,7 +3,7 @@ import { FC, ReactNode } from 'react'
 import styles  from './Button.module.scss'
 
 interface ButtonProps {
-    variant?: 'contained';
+    variant?: string;
     children: ReactNode;
     onClick?: () => void
 }
