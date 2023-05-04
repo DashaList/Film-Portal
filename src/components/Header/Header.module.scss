@@ -1,3 +1,5 @@
+@import "../../App/App.scss";
+
 .Header {
     position: fixed;
     z-index: 11;
@@ -6,7 +8,8 @@
     align-items: center;
     width: 100%;
     padding: 28px 56px;
-    transition: padding .2s linear;
+    transition: padding 0.2s linear;
+    background: $color-dark-grey;
 
     .left {
         display: flex;
@@ -21,15 +24,14 @@
         }
 
         .link {
-            opacity: .8;
-            transition: opacity .2s ease;
+            opacity: 0.8;
+            transition: opacity 0.2s ease;
 
             &:hover {
                 opacity: 1;
             }
         }
     }
-
 
     .right {
         display: flex;
@@ -45,8 +47,8 @@
         .icon {
             width: 32px;
             height: 32px;
-            opacity: .6;
-            transition: all .3s ease;
+            opacity: 0.6;
+            transition: all 0.3s ease;
 
             &:hover {
                 opacity: 1;

@@ -24,11 +24,12 @@
     border: 1px solid #757d8a;
 }
 .catalogBtn {
-    height: 36px;
-    margin: 28px auto;
+    min-width: 162px;
+    height: 44px;
+    margin: auto;
     padding: 6px 16px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     border-radius: 4px;
     border: 1px solid #757d8a;
