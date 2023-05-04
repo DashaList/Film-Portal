@@ -36,7 +36,7 @@ const Header = () => {
             </nav>
         </div>
         <div className={styles.right}>
-            <Button>Попробовать бесплатно</Button>
+            <Button variant={'contained'}>Попробовать бесплатно</Button>
             <div className={styles.icons}>
                 <a href="!#">
                     <img className={styles.icon} src={search} alt="" />
