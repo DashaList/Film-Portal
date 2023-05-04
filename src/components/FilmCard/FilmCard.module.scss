@@ -1,22 +1,18 @@
 $ratingGrad: linear-gradient(66.47deg, #bfe33d -15.94%, #00e4bb 62.41%);
 $hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
     radial-gradient(circle at 50% 50%, rgba(40, 44, 51, 0.2), rgba(40, 44, 51, 0.5));
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+
 .filmcard {
     cursor: pointer;
-    width: 240px;
-    height: 410px;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin: 10px;
 }
 .baner {
     width: 100%;
-    height: 340px;
     position: relative;
     border-radius: 4px;
     border: 1px solid transparent;
@@ -24,7 +20,7 @@ $hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
 
 .imgBaner {
     width: 100%;
-    height: auto;
+    min-height: 100%;
     border-radius: 4px;
 }
 
@@ -50,12 +46,13 @@ $hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
     height: auto;
     opacity: 0.5;
     transition: all 0.3s ease-in;
+    &:hover {
+        width: 25%;
+        opacity: 1;
+        transition: all 0.3s ease-in;
+    }
 }
-.playIcon:hover {
-    width: 25%;
-    opacity: 1;
-    transition: all 0.3s ease-in;
-}
+
 .rating,
 .ratingTop {
     position: absolute;
@@ -85,7 +82,7 @@ $hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-width: 100%;
+    width: 100%;
     height: 40px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -94,7 +91,6 @@ $hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
 }
 .name {
     border-bottom: 1px solid rgba(242, 242, 242, 0.2);
-    font-family: ProximaNova-Regular, Arial;
     font-size: 16px;
     line-height: 1.25;
     overflow: hidden;
@@ -103,7 +99,7 @@ $hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
     border-bottom: none;
     margin-top: -2px;
     max-width: 100%;
-    transition: all 0.3s ease-in-out;
+    transition: all .3s ease-in-out;
 }
 .genre {
     margin-top: 2px;
