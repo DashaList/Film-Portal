@@ -1,8 +1,7 @@
 $ratingGrad: linear-gradient(66.47deg, #bfe33d -15.94%, #00e4bb 62.41%);
-$hoverGrtad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
+$hoverGrad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3)),
     radial-gradient(circle at 50% 50%, rgba(40, 44, 51, 0.2), rgba(40, 44, 51, 0.5));
-*{
-    
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -21,31 +20,30 @@ $hoverGrtad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3))
     position: relative;
     border-radius: 4px;
     border: 1px solid transparent;
-
-    transition: all 0.3s ease-in;
 }
+
 .imgBaner {
     width: 100%;
     height: auto;
     border-radius: 4px;
 }
+
 .hoverBaner {
-    display: none;
-    transition: all 0.3s ease-in;
-}
-.baner:hover .hoverBaner {
+    opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: $hoverGrtad;
-    width: 100%;
-    height: 100%;
+    background: $hoverGrad;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease-in;
+    transition: opacity 0.3s ease-in;
+}
+
+.baner:hover .hoverBaner {
+    opacity: 1;
 }
 .playIcon {
     width: 20%;
@@ -58,7 +56,8 @@ $hoverGrtad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3))
     opacity: 1;
     transition: all 0.3s ease-in;
 }
-.rating {
+.rating,
+.ratingTop {
     position: absolute;
     top: 6px;
     right: 6px;
@@ -74,8 +73,14 @@ $hoverGrtad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3))
     font-size: 12px;
     line-height: 1;
     color: #101319;
+}
+.rating {
+    background: #f2f2f2;
+}
+.ratingTop {
     background: $ratingGrad;
 }
+
 .text {
     display: flex;
     flex-direction: column;
@@ -109,4 +114,7 @@ $hoverGrtad: linear-gradient(180deg, rgba(40, 44, 51, 0), rgba(40, 44, 51, 0.3))
     white-space: nowrap;
     text-overflow: ellipsis;
     max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
 }
