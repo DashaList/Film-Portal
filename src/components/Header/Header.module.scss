@@ -12,6 +12,11 @@
     transition: padding 0.2s linear;
     background: $color-dark-grey;
 
+    @media (max-width: 1024px) {
+        height: 60px;
+        padding: 0 24px;
+    }
+
     .left {
         display: flex;
         gap: 40px;
@@ -21,7 +26,7 @@
             height: 40px;
             width: 82px;
 
-            @media (max-width: 1240px) {
+            @media (max-width: 1024px) {
                 height: 32px;
                 width: 66px;
             }

@@ -54,6 +54,12 @@
             line-height: 16px;
         }
 
+        .payment_images {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
         .social {
             display: flex;
             gap: 8px;

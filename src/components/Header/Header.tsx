@@ -18,9 +18,9 @@ const Header = () => {
                 <img className={styles.logo} src={logo} alt="START" />
             </a>
             {windowWidth > 1024 && <nav>
-                <div className={styles.link}>
+                {windowWidth >= 1120 && <div className={styles.link}>
                     <a href="!#">Кино&nbsp;на&nbsp;ТВ</a>
-                </div>
+                </div>}
                 <div className={styles.link}>
                     <Link to="/movies">Фильмы</Link>
                 </div>
@@ -33,9 +33,9 @@ const Header = () => {
                 <div className={styles.link}>
                     <a href="!#">Новинки</a>
                 </div>
-                <div className={styles.link}>
+                {windowWidth >= 1200 && <div className={styles.link}>
                     <a href="!#">Журнал</a>
-                </div>
+                </div>}
                 <div className={styles.link}>
                     <a href="!#">ТВ</a>
                 </div>                
