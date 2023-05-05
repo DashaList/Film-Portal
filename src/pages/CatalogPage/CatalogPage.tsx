@@ -16,15 +16,15 @@ const CatalogPage = () => {
             </Path>
             <h1 className={styles.header} > Фильмы смотреть онлайн </h1>
             <div className={styles.filtersBox}>
-                <Button variant={'catalogBtn'}>
+                <Button variant={'outlined'}>
                     Жанр
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </Button>
-                <Button variant={'catalogBtn'}>
+                <Button variant={'outlined'}>
                     Год
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </Button>
-                <Button variant={'catalogBtn'}>
+                <Button variant={'outlined'}>
                     Сортировка
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </Button>
@@ -32,7 +32,7 @@ const CatalogPage = () => {
 
             <FilmsList films={FilmData} ></FilmsList>
 
-            <Button variant={'catalogBtn'}>
+            <Button variant='outlined'>
                 Показать ещё
                 <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
             </Button>

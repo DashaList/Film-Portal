@@ -1,4 +1,4 @@
-.page{
+.page {
     width: 100vw;
     display: flex;
     flex-direction: column;
@@ -17,8 +17,16 @@ h1.header {
     padding: 0;
     margin: 0;
 }
-.filtersBox{
+.filtersBox {
     width: 100%;
     display: flex;
     gap: 15px;
+}
+.catalog {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    position: relative;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
 }
