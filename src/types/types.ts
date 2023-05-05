@@ -12,3 +12,15 @@ export interface genre {
 export interface IFilmItem {
     film: IFilm
 }
+export interface IPeople{
+    id: number,
+    name: string,
+    img: string,
+    birthday: string,
+    city: string,
+    films: film[]
+}
+export interface film{
+    id: number,
+    name: string,
+}
