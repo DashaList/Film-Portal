@@ -22,11 +22,3 @@ h1.header {
     display: flex;
     gap: 15px;
 }
-.catalog{
-    width: 100%;
-    display: grid;
-    gap: 20px;
-    position: relative;
-    grid-template-columns: repeat(5,1fr);
-    grid-template-rows: 1fr;
-}

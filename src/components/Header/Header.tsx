@@ -5,14 +5,15 @@ import search from '../../assets/img/svg/search.svg'
 import avatar from '../../assets/img/svg/avatar.svg'
 import { Link } from 'react-router-dom'
 import burger from '../../assets/img/svg/burger.svg'
-import { useWindowWidth } from '../../hooks/hooks'
+import { useWindowScrollY, useWindowWidth } from '../../hooks/hooks'
 import cn from 'classnames';
 
 const Header = () => {
     const windowWidth = useWindowWidth()
+    const scrollY = useWindowScrollY()
 
   return (
-    <header className={styles.Header}>
+    <header className={cn( styles.Header, scrollY > 10 && styles.Header_small )}>
         <div className={styles.left}>
             <a href="!#">
                 <img className={styles.logo} src={logo} alt="START" />

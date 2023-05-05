@@ -10,12 +10,14 @@
     width: 100%;
     padding: 28px 56px;
     transition: padding 0.2s linear;
-    background: $color-dark-grey;
+    //background: $color-dark-grey;
 
     @media (max-width: 1024px) {
         height: 60px;
         padding: 0 24px;
     }
+
+}
 
     .left {
         display: flex;
@@ -78,4 +80,8 @@
             width: 18px;
         }
     }
+
+.Header_small {
+    padding: 12px 56px;
+    background: $color-black;
 }

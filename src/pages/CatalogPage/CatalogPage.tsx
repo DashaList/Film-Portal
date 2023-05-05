@@ -1,9 +1,9 @@
 import FilmData from '../../FilmData.json'
 import styles from './CatalogPage.module.scss'
-import FilmCard from '../../components/FilmCard/FilmCard';
 import Button from '../../components/UI/Button/Button';
 import { Link } from 'react-router-dom';
 import Path from '../../components/UI/Path/Path';
+import FilmsList from '../../components/FilmsList/FilmsList';
 
 
 const CatalogPage = () => {
@@ -30,11 +30,8 @@ const CatalogPage = () => {
                 </Button>
             </div>
 
-            <div className={styles.catalog}>
-                {FilmData.map(film => (
-                    <FilmCard key={film.id} film={film} />
-                ))}
-            </div>
+            <FilmsList films={FilmData} ></FilmsList>
+
             <Button variant={'catalogBtn'}>
                 Показать ещё
                 <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
