@@ -1,0 +1,44 @@
+.PersonColumn {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.columnHeader {
+    font-size: 16px;
+    line-height: 22px;
+    margin-bottom: 4px;
+}
+.personRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+.avatar {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    scale: 1;
+    transition: all 0.1s linear;
+
+    &:hover {
+        scale: 1.1;
+        transition: all 0.1s linear;
+    }
+}
+.personName {
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+    overflow: visible;
+    padding-bottom: 2px;
+    border-bottom: 1px solid hsla(0, 0%, 95%, 0.2);
+    transition: all 0.1s linear;
+    &:hover {
+        border-bottom: 1px solid #f2f2f2;
+        transition: all 0.1s linear;
+    }
+}
