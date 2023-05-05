@@ -65,8 +65,8 @@ const Footer = () => {
                     <a href="!#" className={styles.link}>Журнал</a>
                 </div>
                 <div className={styles.payment}>
-                    <span className={styles.bottom_title}>Система оплаты</span>
-                    <div>
+                    <span className={styles.bottom_title}>Система&nbsp;оплаты</span>
+                    <div className={styles.payment_images}>
                         <img src={cloudPayment} alt="cloud payment" />
                         <img src={payonline} alt="payonline" />
                     </div>

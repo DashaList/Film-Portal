@@ -18,7 +18,7 @@ const FilmCard: FC<IFilmItem> = ({ film }) => {
                 <div className={styles.name}> {film.name} </div>
                 <div className={styles.genre}>
                     {film.genre.map((genre, index) => (
-                        <span>
+                        <span key={index}>
                             {genre.name}
                             {index !== film.genre.length - 1 && ", "}
                         </span>
