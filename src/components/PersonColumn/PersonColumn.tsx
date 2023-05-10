@@ -1,14 +1,18 @@
 import styles from './PersonColumn.module.scss'
+import PeopleData from '../../PeopleData.json'
+import { PersonColumnProps } from '../../types/types';
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 
-const PersonColumn = () => {
+const PersonColumn: FC<PersonColumnProps> = ({person}) => {
+    const currentPerson = PeopleData.find((obj) => obj.id === person.id)
     return (
         <div className={styles.PersonColumn}>
-            <h3 className={styles.columnHeader}> В главных ролях </h3>
-            <div className={styles.personRow}>
-                <img src="https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/2b59aa9c-9d6f-4b09-92fa-c758624b68fd/280x420" alt="" className={styles.avatar} />
-                <span className={styles.personName}>Бен Уишоу</span>
-            </div>
+            <Link to={`/persons/${currentPerson?.id}`} className={styles.personRow}>
+                <img src={currentPerson?.img} alt="" className={styles.avatar} />
+                <span className={styles.personName}>{currentPerson?.name}</span>
+            </Link>
         </div>
     );
 };

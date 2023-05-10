@@ -3,12 +3,9 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin-bottom: 20px;
 }
-.columnHeader {
-    font-size: 16px;
-    line-height: 22px;
-    margin-bottom: 4px;
-}
+
 .personRow {
     width: 100%;
     display: flex;

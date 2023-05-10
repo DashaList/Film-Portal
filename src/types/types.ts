@@ -1,9 +1,16 @@
 export interface IFilm {
     id: number,
-    name: string,
+    name_ru: string,
+    name_en: string,
     img: string,
     rating: number,
-    genre: genre[]
+    genre: genre[],
+    year: number,
+    age: string,
+    time: string,
+    description: string,
+    actros: crossPoint[]
+    country: string[]
 }
 export interface genre {
     name: string,
@@ -18,9 +25,15 @@ export interface IPeople{
     img: string,
     birthday: string,
     city: string,
-    films: film[]
+    films: crossPoint[]
 }
-export interface film{
+export interface PersonColumnProps{
+    person:crossPoint
+}
+export interface crossPoint{
     id: number,
     name: string,
+}
+export interface FilmsListProps {
+    films: IFilm[]
 }
