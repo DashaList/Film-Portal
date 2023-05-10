@@ -15,7 +15,7 @@ const FilmCard: FC<IFilmItem> = ({ film }) => {
                 <HoverBaner/>
             </div>
             <div className={styles.text}>
-                <div className={styles.name}> {film.name} </div>
+                <div className={styles.name}> {film.name_ru} </div>
                 <div className={styles.genre}>
                     {film.genre.map((genre, index) => (
                         <span key={index}>
