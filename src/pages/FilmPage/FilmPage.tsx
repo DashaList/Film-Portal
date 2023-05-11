@@ -5,6 +5,7 @@ import FilmData from '../../FilmData.json'
 import Button from '../../components/UI/Button/Button';
 import PersonColumn from '../../components/PersonColumn/PersonColumn';
 import { useState } from 'react';
+import CommentBox from '../../components/CommentBox/CommentBox';
 
 
 const FilmPage = () => {
@@ -98,6 +99,7 @@ const FilmPage = () => {
 
                 </div>
             </div>
+            <CommentBox/>
         </div>
     );
 };
