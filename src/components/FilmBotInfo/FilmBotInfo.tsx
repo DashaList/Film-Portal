@@ -33,7 +33,7 @@ const FilmBotInfo = () => {
                 </div>
             </div>
             <h2 className={styles.subheader}>Актеры и съемочная группа</h2>
-            <div className={styles.persons}>
+            <div>
                 <PersonColumn/>
             </div>
         </div>
