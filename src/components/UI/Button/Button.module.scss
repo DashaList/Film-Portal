@@ -32,3 +32,11 @@
         transition: all 0.3s ease-in-out;
     }
 }
+
+.translucent {
+    background-color: hsla(0,0%,95%,.2);
+
+    &:hover {
+        background-color: hsla(0,0%,95%,.34);
+    }
+}

@@ -1,0 +1,89 @@
+.SliderIndicators {
+    position: absolute;
+    bottom: 140px;
+    right: 56px;
+    padding: 0 32px;
+    //width:max-content ;
+
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: auto;
+    // height: 48px;
+    // cursor: pointer;
+    // z-index: 10;
+
+    @media (min-width: 1441px) {
+        //height: 3.33vw;
+        bottom: 9.72vw;
+        right: 3.89vw;
+        padding: 0 2.22VW;
+    }
+
+    .SliderIndicatorsWrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: 48px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .indicatorsWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        .indicatorBox {
+            position: relative;
+            display: flex;
+            align-items: center;
+            height: 48px;
+        }
+
+        .indicator {
+            width: 4px;
+            height: 4px;
+            background-color: hsla(0,0%,95%,.34);
+            border-radius: 50px 50px;
+        }
+
+        @media (min-width: 1441px) {
+            gap:  0.28vw;
+        }
+    }
+
+    .arrow {
+        position: absolute;
+        top: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 48px;
+        opacity: .34;
+        transition: all .3s linear;
+        cursor: pointer;
+        z-index: 11;
+        //visibility: hidden;
+    }
+
+    @media (min-width: 1441px) {
+        width: 2.22vw;
+        height: 3.33vw;
+    }
+
+    .leftArrow {
+        left: -62px;
+    }
+    .rightArrow {
+        right: -62px;
+        transform: rotate(180deg);
+    }
+}

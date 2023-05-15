@@ -3,12 +3,14 @@ import FilmData from '../../FilmData.json'
 import FilmsList from '../../components/FilmsList/FilmsList'
 import styles from './PersonPage.module.scss'
 import Path from '../../components/UI/Path/Path'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const PersonPage = () => {
-    const person = PersonData[2]
 
-    const films = FilmData.filter(film => person.films.find(personFilm => personFilm.id == film.id))
+    const { id } = useParams()
+    const person = PersonData.find((person) => person.id === Number(id))
+
+    const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
 
   return (
     <div className={styles.PersonPage}>
@@ -21,18 +23,18 @@ const PersonPage = () => {
                     <p> Главная </p>
                     <Link to="/persons">Персоны</Link>
                 </Path>
-                    <h3>{person.name}</h3>
+                    <h3>{person?.name}</h3>
                     <p className={styles.description}>Эдди Мёрфи (Eddie Murphy) — популярный американский актер, режиссер, сценарист, продюсер и музыкант. Обладатель премии «Золотой глобус» и номинант на премию «Оскар» за роль второго плана (фильм «Девушка мечты»).</p>
                 </div>
             </div>
             <div className={styles.right}>
                 <div className={styles.personPhoto}>
-                    <img src={person.img} alt="" />
+                    <img src={person?.img} alt="" />
                 </div>
             </div>
         </div>
         <div className={styles.bottom}>
-            <h1>{person.name}: фильмография</h1>
+            <h1>{person?.name}: фильмография</h1>
             <FilmsList films={films}></FilmsList>
         </div>
     </div>

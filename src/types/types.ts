@@ -34,6 +34,3 @@ export interface crossPoint{
     id: number,
     name: string,
 }
-export interface FilmsListProps {
-    films: IFilm[]
-}

@@ -23,7 +23,6 @@ const FilmPage = () => {
                     <img className={styles.imgBaner} src={film?.img} alt="" />
                 </div>
                 <div className={styles.topBlock}>
-                    <Breadcrumbs></Breadcrumbs>
                     <Path>
                         <p> Главная </p>
                         <Link to="/movies">Фильмы</Link>

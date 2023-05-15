@@ -8,24 +8,24 @@ import HoverBaner from '../HoverBaner/HoverBaner';
 const FilmCard: FC<IFilmItem> = ({ film }) => {
     return (
         <Link to ={`/movies/${film.id}`}>
-        <div className={styles.filmcard}>
-            <div className={styles.baner}>
-                <img className={styles.imgBaner} src={film.img} alt="" />
-                <div className={film.rating >= 7 ? styles.ratingTop : styles.rating}> {film.rating.toFixed(1)}</div>
-                <HoverBaner/>
-            </div>
-            <div className={styles.text}>
-                <div className={styles.name}> {film.name_ru} </div>
-                <div className={styles.genre}>
-                    {film.genre.map((genre, index) => (
-                        <span key={index}>
-                            {genre.name}
-                            {index !== film.genre.length - 1 && ", "}
-                        </span>
-                    ))}
+            <div className={styles.filmcard}>
+                <div className={styles.baner}>
+                    <img className={styles.imgBaner} src={film.img} alt="" />
+                    <div className={film.rating >= 7 ? styles.ratingTop : styles.rating}> {film.rating.toFixed(1)}</div>
+                    <HoverBaner/>
+                </div>
+                <div className={styles.text}>
+                    <div className={styles.name}> {film.name_ru} </div>
+                    <div className={styles.genre}>
+                        {film.genre.map((genre, index) => (
+                            <span key={index}>
+                                {genre.name}
+                                {index !== film.genre.length - 1 && ", "}
+                            </span>
+                        ))}
+                    </div>
                 </div>
             </div>
-        </div>
         </Link>
     );
 };

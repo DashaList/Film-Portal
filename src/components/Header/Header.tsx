@@ -15,9 +15,9 @@ const Header = () => {
   return (
     <header className={cn( styles.Header, scrollY > 10 && styles.Header_small )}>
         <div className={styles.left}>
-            <a href="!#">
+            <Link to='/'>
                 <img className={styles.logo} src={logo} alt="START" />
-            </a>
+            </Link>
             {windowWidth > 1024 && <nav>
                 {windowWidth >= 1120 && <div className={styles.link}>
                     <a href="!#">Кино&nbsp;на&nbsp;ТВ</a>
