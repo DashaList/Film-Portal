@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface IFilm {
     id: number,
     name_ru: string,
@@ -13,13 +15,14 @@ export interface IFilm {
     country: string[]
 }
 export interface genre {
-    name: string,
-    link: string
+    id: number,
+    name_ru: string,
+    name_en: string
 }
 export interface IFilmItem {
     film: IFilm
 }
-export interface IPeople{
+export interface IPeople {
     id: number,
     name: string,
     img: string,
@@ -27,10 +30,24 @@ export interface IPeople{
     city: string,
     films: crossPoint[]
 }
-export interface PersonColumnProps{
-    person:crossPoint
+export interface PersonColumnProps {
+    person: crossPoint
 }
-export interface crossPoint{
+export interface crossPoint {
     id: number,
     name: string,
+}
+export interface FilmsListProps {
+    films: IFilm[]
+}
+export interface ButtonProps {
+    variant?: 'contained' | 'outlined';
+    children: ReactNode;
+    onClick?: () => void
+}
+export interface SelectorProps {
+    name: string,
+    array: any[],
+    filter: 'none' | 'genre' | 'year',
+    setSort?:  any
 }

@@ -1,12 +1,9 @@
 import cn from 'classnames';
-import { FC, ReactNode } from 'react'
+import { FC } from 'react'
 import styles  from './Button.module.scss'
+import { ButtonProps } from '../../../types/types';
 
-interface ButtonProps {
-    variant?: 'contained' | 'outlined' | 'translucent';
-    children: ReactNode;
-    onClick?: () => void
-}
+
 
 const Button: FC<ButtonProps> = ({variant = 'contained', children}) => {
     const mainCn = cn(
