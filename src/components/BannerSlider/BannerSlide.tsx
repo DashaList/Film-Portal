@@ -20,7 +20,7 @@ const BannerSlide: FC<BannerSlideProps> = ({film}) => {
         <div className={styles.descriptionShort}>
           <span className={styles.descItem}>{film?.year}</span>
             {film?.genre.map((genre, index) => (
-              <span key={index} className={styles.descItem}>{genre.name}</span>
+              <span key={index} className={styles.descItem}>{genre.name_ru}</span>
             ))}
           <span className={styles.descItem}>
             <div className={styles.age}>{film?.age}</div>

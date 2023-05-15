@@ -41,7 +41,7 @@ export interface FilmsListProps {
     films: IFilm[]
 }
 export interface ButtonProps {
-    variant?: 'contained' | 'outlined';
+    variant?: 'contained' | 'outlined' | "translucent";
     children: ReactNode;
     onClick?: () => void
 }
