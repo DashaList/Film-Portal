@@ -7,12 +7,14 @@
     "rating": 9.3,
     "genre": [
       {
-        "name": "Мелодрама",
-        "link": "Melodrama"
+        "id": 1,
+        "name_ru": "Мелодрама",
+        "name_en": "romance"
       },
       {
-        "name": "Комедия",
-        "link": "Comedia"
+        "id": 1,
+        "name_ru": "Комедия",
+        "name_en": "comedy"
       }
     ],
     "year": 2023,
@@ -43,12 +45,14 @@
     "rating": 8.2,
     "genre": [
       {
-        "name": "Мелодрама",
-        "link": "Melodrama"
+        "id": 1,
+        "name_ru": "Мелодрама",
+        "name_en": "romance"
       },
       {
-        "name": "Драма",
-        "link": "Drama"
+        "id": 1,
+        "name_ru": "Драма",
+        "name_en": "drama"
       }
     ],
     "year": 2022,
@@ -123,8 +127,9 @@
     "rating": 7.0,
     "genre": [
       {
-        "name": "Драма",
-        "link": "Drama"
+        "id": 1,
+        "name_ru": "Драма",
+        "name_en": "drama"
       }
     ],
     "year": 2021,
@@ -151,20 +156,24 @@
     "rating": 9.2,
     "genre": [
       {
-        "name": "Комедия",
-        "link": "Comedia"
+        "id": 1,
+        "name_ru": "Комедия",
+        "name_en": "comedy"
       },
       {
-        "name": "Приключение",
-        "link": "Pricluchenie"
+        "id": 1,
+        "name_ru": "Приключения",
+        "name_en": "adventure"
       },
       {
-        "name": "Семейное",
-        "link": "Semeinoe"
+        "id": 1,
+        "name_ru": "Семейные",
+        "name_en": "family"
       },
       {
-        "name": "Для детей",
-        "link": "DlayDetey"
+        "id": 1,
+        "name_ru": "Детские",
+        "name_en": "children"
       }
     ],
     "year": 2015,
@@ -191,8 +200,9 @@
     "rating": 6.5,
     "genre": [
       {
-        "name": "Мелодрама",
-        "link": "Melodrama"
+        "id": 1,
+        "name_ru": "Мелодрама",
+        "name_en": "romance"
       }
     ],
     "year": 2021,
@@ -219,16 +229,19 @@
     "rating": 8.8,
     "genre": [
       {
-        "name": "Комедия",
-        "link": "Comedia"
+        "id": 1,
+        "name_ru": "Комедия",
+        "name_en": "comedy"
       },
       {
-        "name": "Мультфильм",
-        "link": "Multfilm"
+        "id": 1,
+        "name_ru": "Мультфильмы",
+        "name_en": "animation"
       },
       {
-        "name": "Семейное",
-        "link": "Semeinoe"
+        "id": 1,
+        "name_ru": "Семейные",
+        "name_en": "family"
       }
     ],
     "year": 2021,
@@ -255,12 +268,14 @@
     "rating": 8.6,
     "genre": [
       {
-        "name": "Драма",
-        "link": "Drama"
+        "id": 1,
+        "name_ru": "Драма",
+        "name_en": "drama"
       },
       {
-        "name": "Триллер",
-        "link": "Triller"
+        "id": 1,
+        "name_ru": "Триллеры",
+        "name_en": "thriller"
       }
     ],
     "year": 2021,
@@ -287,12 +302,14 @@
     "rating": 6.0,
     "genre": [
       {
-        "name": "Драма",
-        "link": "Drama"
+        "id": 1,
+        "name_ru": "Драма",
+        "name_en": "drama"
       },
       {
-        "name": "Комедия",
-        "link": "Comedia"
+        "id": 1,
+        "name_ru": "Комедия",
+        "name_en": "comedy"
       }
     ],
     "year": 2021,
@@ -319,16 +336,19 @@
     "rating": 8.5,
     "genre": [
       {
-        "name": "Мультфильм",
-        "link": "Multfilm"
+        "id": 1,
+        "name_ru": "Мультфильмы",
+        "name_en": "animation"
       },
       {
-        "name": "Развлечение",
-        "link": "Razvlechenie"
+        "id": 1,
+        "name_ru": "Детские",
+        "name_en": "children"
       },
       {
-        "name": "Приключение",
-        "link": "Pricluchenie"
+        "id": 1,
+        "name_ru": "Приключения",
+        "name_en": "adventure"
       }
     ],
     "year": 2021,

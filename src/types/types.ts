@@ -15,13 +15,14 @@ export interface IFilm {
     country: string[]
 }
 export interface genre {
-    name: string,
-    link: string
+    id: number,
+    name_ru: string,
+    name_en: string
 }
 export interface IFilmItem {
     film: IFilm
 }
-export interface IPeople{
+export interface IPeople {
     id: number,
     name: string,
     img: string,
@@ -29,10 +30,10 @@ export interface IPeople{
     city: string,
     films: crossPoint[]
 }
-export interface PersonColumnProps{
-    person:crossPoint
+export interface PersonColumnProps {
+    person: crossPoint
 }
-export interface crossPoint{
+export interface crossPoint {
     id: number,
     name: string,
 }
@@ -44,9 +45,9 @@ export interface ButtonProps {
     children: ReactNode;
     onClick?: () => void
 }
-export interface SelectorProps{
+export interface SelectorProps {
     name: string,
-    array: string[],
-    filter: boolean,
-    setSort?: any
+    array: any[],
+    filter: 'none' | 'genre' | 'year',
+    setSort?:  any
 }

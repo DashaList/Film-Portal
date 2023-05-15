@@ -7,7 +7,7 @@ import HoverBaner from '../HoverBaner/HoverBaner';
 
 const FilmCard: FC<IFilmItem> = ({ film }) => {
     return (
-        <Link to ={`/movies/${film.id}`}>
+        <Link to ={`/movie/${film.id}`}>
         <div className={styles.filmcard}>
             <div className={styles.baner}>
                 <img className={styles.imgBaner} src={film.img} alt="" />

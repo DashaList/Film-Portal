@@ -8,7 +8,8 @@ const AppRouter = () => {
   return (
     <Routes>
         <Route path='/movies' element={<CatalogPage />} />
-        <Route path='/movies/:id' element={<FilmPage />} />
+        <Route path='/movies/:genre' element={<CatalogPage/>} />
+        <Route path='/movie/:id' element={<FilmPage />} />
         <Route path='/persons/:id' element={<PersonPage />} />
     </Routes>
   )

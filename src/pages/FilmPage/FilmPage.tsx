@@ -26,8 +26,8 @@ const FilmPage = () => {
                     <Path>
                         <p> Главная </p>
                         <Link to="/movies">Фильмы</Link>
-                        <p>{film?.genre[0].name}</p>
-                        <Link to="/movies/:id">{film?.name_ru}</Link>
+                        <p>{film?.genre[0].name_ru}</p>
+                        <Link to="/movie/:id">{film?.name_ru}</Link>
                     </Path>
                     <div className={styles.filmInfo}>
                         <h1 className={styles.filmName}>{film?.name_ru}</h1>
@@ -35,7 +35,7 @@ const FilmPage = () => {
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
                             <span className={styles.link}>{film?.year},</span>
                             {film?.genre.map(genre => (
-                                <span className={styles.link}>{genre.name},</span>
+                                <span className={styles.link}>{genre.name_ru},</span>
                             ))}
                             <span className={styles.link}>{film?.age}, {film?.time} </span>
                         </div>
