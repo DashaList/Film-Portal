@@ -1,0 +1,32 @@
+@import "../../../App/App.scss";
+
+.selector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+    border-radius: 4px;
+    gap: 15px;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #757d8a;
+    text-align: right;
+    &:hover {
+        cursor: pointer;
+        border: 1px solid #fff;
+    }
+}
+.option{
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #757d8a;
+    background:$color-dark-grey;
+    &:hover {
+        cursor: pointer;
+        border: 1px solid #fff;
+    }
+
+}

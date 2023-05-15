@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface IFilm {
     id: number,
     name_ru: string,
@@ -36,4 +38,15 @@ export interface crossPoint{
 }
 export interface FilmsListProps {
     films: IFilm[]
+}
+export interface ButtonProps {
+    variant?: 'contained' | 'outlined';
+    children: ReactNode;
+    onClick?: () => void
+}
+export interface SelectorProps{
+    name: string,
+    array: string[],
+    filter: boolean,
+    setSort?: any
 }
