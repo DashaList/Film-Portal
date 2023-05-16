@@ -5,35 +5,47 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort }) => {
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort, setYearFilter }) => {
+
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
 
-    const [filterArray, setFilterArray] = useState<string[]>([]);
+    const [genreFilterArray, setFilterArray] = useState<string[]>([]);
     const addFilterPosition = (filter: genre, isChecked: boolean) => {
-        const updatedFilter = isChecked ? [...filterArray, filter.name_en] : filterArray.filter((item) => item !== filter.name_en);
+        const updatedFilter = isChecked ? [...genreFilterArray, filter.name_en] : genreFilterArray.filter((item) => item !== filter.name_en);
         setFilterArray(updatedFilter);
     }
 
+
     const navigate = useNavigate()
-    const createURL = (array: string[]) => {
-        let url = ""
-        array.forEach(function (elem: string, idx: number, array: string[]) {
-            if (idx === array.length - 1) {
-                url = url + elem;
+    const createURL = (genre: string[] = []) => {
+        let url = ''
+        genre.forEach(function (elem: string, idx: number) {
+            if (idx === genre.length - 1) {
+                url = url + elem
+            } else {
+                url = url + elem + '+'
             }
-            else {
-                url = url + elem + "+"
-            }
-        });
+        })
         return url
     }
-    const goFilterUrl = (URL: string) => navigate(`/movies/${URL}`, { replace: true })
-    useEffect(() => {
-        goFilterUrl(createURL(filterArray))
-    }, [filterArray])
+    const goFilterUrl = (URL: string) => {
+        let link = '/movies/'
+        link += URL
+        navigate(link, { replace: true })
+    }
 
-    const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    useEffect(() => {
+        goFilterUrl(createURL(genreFilterArray))
+    }, [genreFilterArray])
+
+
+    const handleYearSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setYearFilter(e.target.value)
+    }
+
+
+    const handleSortSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         setSort(e.target.value)
     }
     switch (filter) {
@@ -45,7 +57,7 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort }) 
                 <div className={styles.filterBox} style={genreBoxState ? { display: 'grid' } : { display: 'none' }}>
                     {array.map(filter => (
                         <label className={styles.filterPoint} key={filter.name_en}>
-                            <input type="checkbox" className={styles.genreCheckbox} onChange={(e) => addFilterPosition(filter, (e.target as HTMLInputElement).checked)} value={filter.name_en} name="genre" />
+                            <input type="checkbox" defaultChecked={false} className={styles.genreCheckbox} onChange={(e) => addFilterPosition(filter, (e.target as HTMLInputElement).checked)} value={filter.name_en} name="genre" />
                             {filter.name_ru}
                         </label>
                     ))
@@ -53,9 +65,16 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort }) 
                 </div >
             </div>
         );
-        case 'year': return (<></>);
+        case 'year': return (
+            <select className={styles.selector} id={name} onChange={handleYearSelectChange}>
+                <option className={styles.option} value="none" disabled selected>{name} <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" /> </option>
+                {array.map(option => (
+                    <option className={styles.option} value={option} key={option}>{option}</option>
+                ))}
+            </select>
+        )
         default: return (
-            <select className={styles.selector} id={name} onChange={handleSelectChange}>
+            <select className={styles.selector} id={name} onChange={handleSortSelectChange}>
                 <option className={styles.option} value="none" disabled selected>{name} <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" /> </option>
                 {array.map(option => (
                     <option className={styles.option} value={option} key={option}>{option}</option>
