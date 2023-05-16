@@ -1,11 +1,13 @@
 import styles from './PersonColumn.module.scss'
 import PeopleData from '../../PeopleData.json'
-import { PersonColumnProps } from '../../types/types';
+import { crossPoint } from '../../types/types';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+interface PersonColumnProps {
+    person: crossPoint
+}
 
-
-const PersonColumn: FC<PersonColumnProps> = ({person}) => {
+const PersonColumn: FC<PersonColumnProps> = ({ person }) => {
     const currentPerson = PeopleData.find((obj) => obj.id === person.id)
     return (
         <div className={styles.PersonColumn}>

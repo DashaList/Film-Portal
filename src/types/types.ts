@@ -30,25 +30,8 @@ export interface IPeople {
     city: string,
     films: crossPoint[]
 }
-export interface PersonColumnProps {
-    person: crossPoint
-}
+
 export interface crossPoint {
     id: number,
     name: string,
-}
-export interface FilmsListProps {
-    films: IFilm[]
-}
-export interface ButtonProps {
-    variant?: 'contained' | 'outlined' | "translucent";
-    children: ReactNode;
-    onClick?: () => void
-}
-export interface SelectorProps {
-    name: string,
-    array: any[],
-    filter: 'none' | 'genre' | 'year',
-    setSort?:  any,
-    setYearFilter?: any
 }

@@ -1,9 +1,15 @@
 import { FC, useEffect, useState } from 'react'
 import styles from './Selector.module.scss'
-import { SelectorProps, genre } from '../../../types/types';
+import { genre } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
 
-
+interface SelectorProps {
+    name: string,
+    array: any[],
+    filter: 'none' | 'genre' | 'year',
+    setSort?: any,
+    setYearFilter?: any
+}
 
 const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort, setYearFilter }) => {
 

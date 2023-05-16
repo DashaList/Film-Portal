@@ -3,11 +3,11 @@ import styles from './FilmsList.module.scss'
 import { IFilm } from '../../types/types'
 import FilmCard from '../FilmCard/FilmCard'
 
- interface FilmsListProps {
+interface FilmsListProps {
   films: IFilm[]
 }
 
-const FilmsList: FC<FilmsListProps> = ({ films}) => {
+const FilmsList: FC<FilmsListProps> = ({ films }) => {
   return (
     <div className={styles.FilmsList}>
       {films.map(film => (
