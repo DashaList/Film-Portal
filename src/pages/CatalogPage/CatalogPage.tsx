@@ -8,6 +8,7 @@ import Selector from '../../components/UI/Selector/Selector';
 import { useEffect, useState } from 'react';
 import GenresData from '../../GenresData.json'
 import YearData from '../../YearData.json'
+import Slider from '../../components/UI/Slider/Slider';
 
 
 
@@ -67,6 +68,9 @@ const CatalogPage = () => {
             <div className={styles.filtersBox}>
                 <Selector name={'Жанр'} array={GenresData} filter={'genre'} />
                 <Selector name={'Год'} array={YearData} filter={'year'} setYearFilter={setYearFilter} />
+                <Selector name={'Страны'} array={["США", "Россия"]} setYearFilter={setYearFilter} filter={'none'} />
+                <Slider max={10} name={'Рейтинг от'}></Slider>
+                <Slider max={1000000} name={'Кол-во комментариев от'}></Slider>
                 <Button variant='outlined'>Сбросить</Button>
                 <Selector name={"Сортировка"} filter='none' setSort={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} />
             </div >
