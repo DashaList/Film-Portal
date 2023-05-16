@@ -49,5 +49,6 @@ export interface SelectorProps {
     name: string,
     array: any[],
     filter: 'none' | 'genre' | 'year',
-    setSort?:  any
+    setSort?:  any,
+    setYearFilter?: any
 }
