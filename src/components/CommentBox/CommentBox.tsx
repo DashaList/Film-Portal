@@ -53,7 +53,7 @@ const CommentBox = () => {
             setComments([...comments, newComment])
         }
         else {
-            const newId = comments[targetId-1].subcomments.length + 1
+            const newId = comments[targetId - 1].subcomments.length + 1
             const newSubcomment = {
                 id: newId,
                 avatar: 'https://i.redd.it/romry9zym79z.png',
@@ -61,7 +61,7 @@ const CommentBox = () => {
                 theme: addTheme,
                 text: addText
             }
-            comments[targetId-1].subcomments.push(newSubcomment)
+            comments[targetId - 1].subcomments.push(newSubcomment)
             setComments(comments)
         }
 
@@ -87,6 +87,10 @@ const CommentBox = () => {
                     </div>
                     <h2 className={styles.theme}>{comment.theme} </h2>
                     <p className={styles.text}>{comment.text}</p>
+                    <div className={styles.like}>
+                        <img src="https://start.ru/static/images/product/like.svg" alt="" />
+                        42
+                    </div>
 
                     {comment.subcomments.map((subcomment) => (
                         <div className={styles.subcomment} key={`${comment.id} ${subcomment.id}`}>
@@ -98,6 +102,10 @@ const CommentBox = () => {
                             </div>
                             <h2 className={styles.theme}>{subcomment.theme} </h2>
                             <p className={styles.text}>{subcomment.text}</p>
+                            <div className={styles.like}>
+                                <img src="https://start.ru/static/images/product/like.svg" alt="" />
+                                42
+                            </div>
                         </div>
                     ))}
                 </div>
