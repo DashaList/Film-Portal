@@ -3,6 +3,9 @@ import FilmData from '../../FilmData.json'
 import Button from '../../components/UI/Button/Button'
 import FilmsList from '../../components/FilmsList/FilmsList'
 import { BannerSlider } from '../../components/BannerSlider/BannerSlider'
+import Stories from '../../components/Stories/Stories'
+import RowSlider from '../../components/RowSlider/RowSlider'
+import FilmCard from '../../components/FilmCard/FilmCard'
 
 const MainPage = () => {
 
@@ -19,16 +22,20 @@ const MainPage = () => {
       </div> */}
 
       <BannerSlider slides={FilmData}></BannerSlider>
-      <div className="">Истории</div>
+      {/* <Stories></Stories> */}
       <div className="">Top-10</div>
       <div className="">Ad Banner</div>
       <div className="">Календарь премьер?</div>
       <div className="">Новый сезон премьер?</div>
       <div className={styles.filmsRow}>
-        <FilmsList films={FilmData}></FilmsList>
+        <RowSlider slides={
+          FilmData.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
+        }></RowSlider>
       </div>
       <div className={styles.filmsRow}>
-        <FilmsList films={FilmData}></FilmsList>
+        <RowSlider slides={
+          FilmData.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
+        }></RowSlider>
       </div>
 
     </div>

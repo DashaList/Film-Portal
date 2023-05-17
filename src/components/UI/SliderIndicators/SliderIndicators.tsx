@@ -13,25 +13,25 @@ const SliderIndicators: FC<SliderIndicatorsProps> = ({goToPrev, goToNext, indica
   return (
     <div className={styles.SliderIndicators}>
         <div className={styles.SliderIndicatorsWrapper}>
-        <div className={cn(
-            styles.arrow,
-            styles.leftArrow
-        )} onClick={goToPrev}>
-            <img src={arrow} alt="<" />
-        </div>
-        <div className={styles.indicatorsWrapper}>
-            { [...Array(indicatorsNumber)].map((item, index) => {
-                return(<div key={index} className={styles.indicatorBox}>
-                    <div className={styles.indicator}></div>
-                </div>)
-            }) }
-        </div>
-        <div className={cn(
-            styles.arrow,
-            styles.rightArrow
-        )} onClick={goToNext}>
-            <img src={arrow} alt=">" />
-        </div>
+            <div className={cn(
+                styles.arrow,
+                styles.leftArrow
+            )} onClick={goToPrev}>
+                <img src={arrow} alt="<" />
+            </div>
+            <div className={styles.indicatorsWrapper}>
+                { [...Array(indicatorsNumber)].map((item, index) => {
+                    return(<div key={index} className={styles.indicatorBox}>
+                        <div className={styles.indicator}></div>
+                    </div>)
+                }) }
+            </div>
+            <div className={cn(
+                styles.arrow,
+                styles.rightArrow
+            )} onClick={goToNext}>
+                <img src={arrow} alt=">" />
+            </div>
         </div>
     </div>
   )
