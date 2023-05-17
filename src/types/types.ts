@@ -9,7 +9,7 @@ export interface IFilm {
     age: string,
     time: string,
     description: string,
-    actros: crossPoint[]
+    actor: crossPoint[]
     country: string[]
 }
 export interface genre {
