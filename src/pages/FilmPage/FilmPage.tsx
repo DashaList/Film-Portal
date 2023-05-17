@@ -59,6 +59,9 @@ const FilmPage = () => {
                 <div> Описание Подборки Трейлеры Актеры и съемочная группа Сюжет Статьи о фильме Добавить в избранное
                 </div>
                 <h1 className={styles.header}> Фильм {film?.name_ru} смотреть онлайн </h1>
+                <div className={styles.trailersBox}>
+                    <video src="https://youtu.be/otmeAaifX04"></video>
+                </div>
                 <div className={styles.descriptionWrapper}>
                     <div className={DescriptionState ? styles.descriptionFull : styles.descriptionFullSlash}>
                         <p>{film?.description} <br></br></p>
@@ -99,7 +102,7 @@ const FilmPage = () => {
 
                 </div>
             </div>
-            <CommentBox/>
+            <CommentBox />
         </div>
     );
 };
