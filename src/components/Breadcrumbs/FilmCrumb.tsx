@@ -7,10 +7,10 @@ const FilmCrumb: BreadcrumbComponentType<"id"> = ({match}) => {
 
   return (
     <>
-    <NavLink to={film?.genre[0].link || '/'}>
-        {film?.genre[0].name}
+    <NavLink to={film?.genre[0].name_en || '/'}>
+        {film?.genre[0].name_ru}
     </NavLink>
-        {film?.name}
+        {film?.name_ru}
     </>
   )
 }

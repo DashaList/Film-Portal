@@ -9,7 +9,7 @@ export interface IFilm {
     age: string,
     time: string,
     description: string,
-    actros: crossPoint[]
+    actor: crossPoint[]
     country: string[]
 }
 export interface genre {
@@ -26,18 +26,8 @@ export interface IPeople {
     city: string,
     films: crossPoint[]
 }
-export interface PersonColumnProps {
-    person: crossPoint
-}
+
 export interface crossPoint {
     id: number,
     name: string,
-}
-
-
-export interface SelectorProps {
-    name: string,
-    array: any[],
-    filter: 'none' | 'genre' | 'year',
-    setSort?:  any
 }

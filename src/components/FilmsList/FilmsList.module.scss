@@ -5,4 +5,17 @@
     position: relative;
     grid-template-columns: repeat(6,1fr);
     grid-template-rows: 1fr;
+    &:has(.empty) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.empty {
+    font-size: 3vw;
+    outline: none;
+    font-weight: 300;
+    padding: 55px;
+    margin: 0;
 }

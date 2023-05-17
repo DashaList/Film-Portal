@@ -26,5 +26,10 @@ export const publicRoutes: BreadcrumbsRoute<string>[] = [
         path: '/persons/:id',
         Component: Person,
         breadcrumb: ''
+    },
+    {
+        path: '/movies/:genre',
+        Component: Catalog,
+        breadcrumb: 'Фильмы'
     }
 ]

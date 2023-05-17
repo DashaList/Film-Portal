@@ -1,0 +1,17 @@
+@import "../../App/App.scss";
+
+.searchBox{
+    height: 100%;
+}
+
+.search {
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid #757d8a;
+    padding: 10px;
+    font-size: inherit;
+    &:hover {
+        border: 1px solid #fff;
+        transition: all 0.3s ease-in-out;
+    }
+}

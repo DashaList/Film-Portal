@@ -7,12 +7,14 @@ interface FilmsListProps {
   films: IFilm[]
 }
 
-const FilmsList: FC<FilmsListProps> = ({ films}) => {
+const FilmsList: FC<FilmsListProps> = ({ films }) => {
   return (
     <div className={styles.FilmsList}>
-      {films.map(film => (
+      {films.length !== 0 ? films.map(film => (
         <FilmCard key={film.id} film={film} type={'forGrid'} />
-      ))}
+      )):
+      <div className={styles.empty}>К сожалению, мы ничего не нашли!</div>
+      }
     </div>
   )
 }
