@@ -1,5 +1,3 @@
-import { ReactNode } from "react"
-
 export interface IFilm {
     id: number,
     name_ru: string,
