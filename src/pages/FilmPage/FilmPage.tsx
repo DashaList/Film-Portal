@@ -93,7 +93,7 @@ const FilmPage = () => {
                 <h2 className={styles.subheader}>Актеры и съемочная группа</h2>
                 <div className={styles.persons}>
                     <h3 className={styles.columnHeader}> В главных ролях </h3>
-                    {film?.actros.map(person => (
+                    {film?.actor.map(person => (
                         <PersonColumn person={person} />
                     ))}
 

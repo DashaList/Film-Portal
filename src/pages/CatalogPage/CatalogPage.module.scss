@@ -20,6 +20,8 @@ h1.header {
 .filtersBox {
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 15px;
 }
 .catalog {

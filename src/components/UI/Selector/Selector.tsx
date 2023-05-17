@@ -7,11 +7,13 @@ interface SelectorProps {
     name: string,
     array: any[],
     filter: 'none' | 'genre' | 'year',
+    func?:any
     setSort?: any,
-    setYearFilter?: any
+    setYearFilter?: any,
+    setCountryFilter?: any
 }
 
-const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort, setYearFilter }) => {
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => {
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
@@ -45,14 +47,8 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort, se
         goFilterUrl(createURL(genreFilterArray))
     }, [genreFilterArray])
 
-
-    const handleYearSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setYearFilter(e.target.value)
-    }
-
-
-    const handleSortSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSort(e.target.value)
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        func(e.target.value)
     }
     switch (filter) {
         case 'genre': return (
@@ -72,7 +68,7 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort, se
             </div>
         );
         case 'year': return (
-            <select className={styles.selector} id={name} onChange={handleYearSelectChange}>
+            <select className={styles.selector} id={name} onChange={handleChange}>
                 <option className={styles.option} value="none" disabled selected>{name} <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" /> </option>
                 {array.map(option => (
                     <option className={styles.option} value={option} key={option}>{option}</option>
@@ -80,7 +76,7 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', setSort, se
             </select>
         )
         default: return (
-            <select className={styles.selector} id={name} onChange={handleSortSelectChange}>
+            <select className={styles.selector} id={name} onChange={handleChange}>
                 <option className={styles.option} value="none" disabled selected>{name} <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" /> </option>
                 {array.map(option => (
                     <option className={styles.option} value={option} key={option}>{option}</option>

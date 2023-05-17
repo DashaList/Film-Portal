@@ -1,5 +1,3 @@
-import { ReactNode } from "react"
-
 export interface IFilm {
     id: number,
     name_ru: string,
@@ -11,7 +9,7 @@ export interface IFilm {
     age: string,
     time: string,
     description: string,
-    actros: crossPoint[]
+    actor: crossPoint[]
     country: string[]
 }
 export interface genre {
