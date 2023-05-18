@@ -51,10 +51,20 @@ textarea {
     line-height: 22px;
     border-bottom: 1px solid rgba(122, 124, 129, 0.8);
 }
+.like{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+    justify-content: start;
+    align-items: center;
+}
 .subcomment {
+    display: flex;
+    flex-direction: column;
     margin-top: 15px;
     margin-left: 100px;
-    gap: 25px;
+    gap: 15px;
 }
 .addCommentBox {
     width: 100%;
