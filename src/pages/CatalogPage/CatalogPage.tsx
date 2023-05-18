@@ -103,17 +103,17 @@ const CatalogPage = () => {
             </Path>
             <h1 className={styles.header} > Фильмы смотреть онлайн </h1>
             <div className={styles.filtersBox}>
-                <Selector  name={'Жанр'} array={GenresData} filter={'genre'} />
-                <Selector  name={'Год'} array={YearData} filter={'year'} func={setYearFilter} />
-                <Selector  name={'Страны'} array={["США", "Росcия"]} func={setCountryFilter} filter='none' />
-                <Slider func={setRatingFilter} max={10} name={'Рейтинг от'}></Slider>
-                <Slider func={setratingValueFilter} max={1000000} name={'Кол-во оценок от'}></Slider>
+                <Selector name={'Жанр'} array={GenresData} filter={'genre'} />
+                <Selector func={setYearFilter} name={'Год'} array={YearData} filter={'year'} />
+                <Selector func={setCountryFilter} name={'Страны'} array={["США", "Росcия"]} filter='none' />
+                <Slider func={setRatingFilter} max={10} name={'Рейтинг от'} />
+                <Slider func={setratingValueFilter} max={1000000} name={'Кол-во оценок от'} />
                 <Search name='Поиск по актёрам' func={setActrosFilter} />
                 <Search name='Поиск по режиссёру' func={setDirectorFilter} />
-                <div>
+                <Link to='/movies/'>
                     <Button variant='outlined' >Сбросить</Button>
-                </div>
-                <Selector  name={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} />
+                </Link >
+                <Selector name={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <Button variant='outlined'>
