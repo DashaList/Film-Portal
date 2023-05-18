@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 import styles from './Selector.module.scss'
 import { genre } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
@@ -11,10 +11,24 @@ interface SelectorProps {
     func?: any
 }
 
-const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => {
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func,  }) => {
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
+    const blockRef = useRef<HTMLDivElement>(null);
+
+    const handleClick = (e: MouseEvent) => {
+        if (blockRef.current?.contains(e.target as Node)) {
+            return;
+        }
+        setGenreBox(false);
+    }
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClick);
+        return () => {
+            document.removeEventListener('mousedown', handleClick);
+        }
+    }, []);
 
     const [genreFilterArray, setFilterArray] = useState<string[]>([]);
     const addFilterPosition = (filter: genre, isChecked: boolean) => {
@@ -51,12 +65,13 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => 
             <div className={styles.filter}  >
                 <div className={styles.selector} onClick={toggleShowBox} id={name}> {name}
                 </div>
-                <div className={styles.filterBox} style={genreBoxState ? { display: 'grid' } : { display: 'none' }}>
-                    {array.map(filter => (
-                        <Checkbox position={filter} func={addFilterPosition} />
-                    ))
-                    }
-                </div >
+                {genreBoxState && (
+                    <div className={styles.filterBox} ref={blockRef}>
+                        {array.map(filter => (
+                            <Checkbox position={filter} func={addFilterPosition} key={filter} />
+                        ))
+                        }
+                    </div >)}
             </div>
         );
         case 'year': return (
