@@ -3,14 +3,18 @@ import { IFilm } from '../../types/types'
 import styles from './BannerSlide.module.scss'
 import Button from '../UI/Button/Button'
 import favorite from '../../assets/img/svg/favorite.svg'
+import { useWindowWidth } from '../../hooks/hooks'
 
 interface BannerSlideProps {
     film: IFilm
 }
 
 const BannerSlide: FC<BannerSlideProps> = ({film}) => {
+
+  const windowWidth = useWindowWidth()
+
   return (
-    <div className={styles.BannerSlide} >
+    <div className={styles.BannerSlide} style={{minWidth: windowWidth, maxWidth: windowWidth}}>
       <div className={styles.banner} style={{backgroundImage: `url("https://startimg.ru/unsafe/1920x1080/filters:format(webp)/cf3ab902e40b4139b599076a3778902a/background_15x")`}}>
         {/* <img src={film.img} alt="" /> */}
       </div>

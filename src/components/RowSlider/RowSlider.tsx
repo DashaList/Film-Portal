@@ -42,10 +42,10 @@ const RowSlider: FC<RowSliderProps> = ({slides, title}) => {
             <h2>{title}</h2>                
         </div>
 
-        <div className={styles.slide}>
+        <div className={styles.slide} style={{width: windowWidth}}>
 
             <div className={styles.sliderWrapper} ref={sliderWrapperRef} onScroll={handleScroll}>
-                {slides.concat(slides).concat(slides.slice(0, 3)).map((slide, index) => <div className={styles.slideItem} key={index}>{slide}</div>)}
+                {slides.map((slide, index) => <div className={styles.slideItem} key={index}>{slide}</div>)}
             </div>
 
             <Paginator sliderWidth={sliderWidth} scroll={scroll} ></Paginator>

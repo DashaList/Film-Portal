@@ -43,7 +43,7 @@ export const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
 
   return (
     <div className={styles.BannerSlider} >
-        <div className={styles.slide}>
+        <div className={styles.slide} style={{width: windowWidth}}>
             <div className={styles.slidesWrapper} style={{transform: `translateX(${-offset}px)`}}>
                 {slides.map((slide, index) => {
                     return(

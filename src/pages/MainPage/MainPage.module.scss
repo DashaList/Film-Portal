@@ -1,5 +1,7 @@
 .MainPage {
-    .filmsRow {
+    overflow: hidden;
+    
+    .contentRow {
         margin-bottom: 34px;
 
         @media (min-width: 1441px) {

@@ -6,6 +6,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 8px;
+        overflow: hidden;
 
         @media (min-width: 1441px) {
             margin-bottom: 0.555vw;
@@ -26,7 +27,7 @@
 
     .slide {
         position: relative;
-        width: 100vw;
+        //width: 100vw;
         height: auto;
         transition: height .3s linear;
         overflow-y: visible;

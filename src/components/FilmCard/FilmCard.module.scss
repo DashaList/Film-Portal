@@ -81,6 +81,13 @@
     margin-top: 8px;
     overflow: hidden;
 }
+.textForRow {
+    width: 146px;
+    
+    @media (min-width: 1441px) {
+        width: 10.132vw;
+    }
+}
 .name {
     border-bottom: 1px solid rgba(242, 242, 242, 0.2);
     font-size: 16px;

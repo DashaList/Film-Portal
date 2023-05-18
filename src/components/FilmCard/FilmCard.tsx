@@ -3,6 +3,7 @@ import { IFilm} from '../../types/types';
 import styles from './FilmCard.module.scss'
 import { Link } from 'react-router-dom';
 import HoverBaner from '../HoverBaner/HoverBaner';
+import cn from 'classnames'
 
 interface FilmCardProps {
     film: IFilm,
@@ -19,7 +20,7 @@ const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
                 <div className={film.rating >= 7 ? styles.ratingTop : styles.rating}> {film.rating.toFixed(1)}</div>
                 <HoverBaner/>
             </div>
-            <div className={styles.text}>
+            <div className={cn(styles.text, type == 'forRow' ? styles.textForRow : '')}>
                 <div className={styles.name}> {film.name_ru} </div>
                 <div className={styles.genre}>
                     {film.genre.map((genre, index) => (
