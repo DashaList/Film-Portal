@@ -7,7 +7,6 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    //margin: 10px;
 }
 .baner {
     width: 100%;
@@ -36,10 +35,10 @@
     font-weight: 700;
     font-size: 12px;
     line-height: 1;
-    color: #101319;
+    color: $color-black;
 }
 .rating {
-    background: #f2f2f2;
+    background: $color-white;
 }
 .ratingTop {
     background: $color-ratingGrad;
@@ -72,7 +71,7 @@
     margin-top: 2px;
     font-size: 12px;
     line-height: 16px;
-    color: #757d8a;
+    color: $color-light-grey;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
