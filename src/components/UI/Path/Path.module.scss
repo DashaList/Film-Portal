@@ -16,12 +16,12 @@
     }
     p:not(:last-child),
     a:not(:last-child) {
-        text-decoration: underline rgba(#ffffff, 0.8);
+        text-decoration: underline rgba($color-white, 0.8);
         cursor: pointer;
     }
     p:not(:last-child):hover,
     a:not(:last-child):hover {
-        text-decoration: underline rgba(#ffffff, 1);
+        text-decoration: underline rgba($color-white, 1);
     }
     &:last-child {
         border-bottom: none;

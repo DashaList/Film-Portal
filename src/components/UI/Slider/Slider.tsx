@@ -14,7 +14,7 @@ const Slider: FC<SliderProps> = ({ name, max, func }) => {
     return (
         <div className={styles.sliderBox}>
             <output className={styles.output} id="volume"> {name} {valueSlider}</output>
-            <input type="range" className={styles.slider} onChange={(e) => { setValueSlider(+e.target.value) }} min='0' max={String(max)} step={max / 100} />
+            <input type="range" className={styles.slider} defaultValue={valueSlider} onChange={(e) => { setValueSlider(+e.target.value) }} min='0' max={String(max)} step={max / 100} />
         </div>
     );
 };

@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import GenresData from '../../GenresData.json'
 import YearData from '../../YearData.json'
 import Slider from '../../components/UI/Slider/Slider';
-import Search from '../../components/Search/Search';
+import Search from '../../components/UI/Search/Search';
 
 
 
@@ -24,6 +24,11 @@ const CatalogPage = () => {
     const [actrosFilter, setActrosFilter] = useState<string>("")
     const [directorFilter, setDirectorFilter] = useState<string>("")
     const { genre } = useParams()
+    const genres = genre?.split('+')
+    const genreRus = genres?.map((genre) => {
+        const foundGenre = GenresData.find((data) => data.name_en === genre);
+        return foundGenre ? foundGenre.name_ru : '';
+    });
 
     useEffect(() => {
         let filterFilms = FilmData;
@@ -32,10 +37,10 @@ const CatalogPage = () => {
         }
 
         if (genre) {
-            const genres = genre.split('+')
+
             filterFilms = filterFilms.filter(film => {
                 return film.genre.some(genre => {
-                    return genres.includes(genre.name_en);
+                    return genres?.includes(genre.name_en);
                 });
             });
         }
@@ -91,18 +96,24 @@ const CatalogPage = () => {
             <Path>
                 <p> Главная </p>
                 <Link to="/movies">Фильмы</Link>
+
+                {genreRus?.map(genreRus => {
+                    return <Link to={`/movies/${genreRus}`}>{genreRus}</Link>
+                })}
             </Path>
             <h1 className={styles.header} > Фильмы смотреть онлайн </h1>
             <div className={styles.filtersBox}>
-                <Selector name={'Жанр'} array={GenresData} filter={'genre'} />
-                <Selector name={'Год'} array={YearData} filter={'year'} func={setYearFilter} />
-                <Selector name={'Страны'} array={["США", "Росcия"]} func={setCountryFilter} filter='none' />
+                <Selector  name={'Жанр'} array={GenresData} filter={'genre'} />
+                <Selector  name={'Год'} array={YearData} filter={'year'} func={setYearFilter} />
+                <Selector  name={'Страны'} array={["США", "Росcия"]} func={setCountryFilter} filter='none' />
                 <Slider func={setRatingFilter} max={10} name={'Рейтинг от'}></Slider>
-                <Slider func={setratingValueFilter} max={1000000} name={'Комментариев от'}></Slider>
+                <Slider func={setratingValueFilter} max={1000000} name={'Кол-во оценок от'}></Slider>
                 <Search name='Поиск по актёрам' func={setActrosFilter} />
                 <Search name='Поиск по режиссёру' func={setDirectorFilter} />
-                <Button variant='outlined'>Сбросить</Button>
-                <Selector name={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} />
+                <div>
+                    <Button variant='outlined' >Сбросить</Button>
+                </div>
+                <Selector  name={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <Button variant='outlined'>
