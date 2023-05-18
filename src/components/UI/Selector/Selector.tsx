@@ -2,15 +2,13 @@ import { FC, useEffect, useState } from 'react'
 import styles from './Selector.module.scss'
 import { genre } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
+import Checkbox from '../Checkbox/Checkbox';
 
 interface SelectorProps {
     name: string,
     array: any[],
     filter: 'none' | 'genre' | 'year',
-    func?:any
-    setSort?: any,
-    setYearFilter?: any,
-    setCountryFilter?: any
+    func?: any
 }
 
 const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => {
@@ -23,8 +21,6 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => 
         const updatedFilter = isChecked ? [...genreFilterArray, filter.name_en] : genreFilterArray.filter((item) => item !== filter.name_en);
         setFilterArray(updatedFilter);
     }
-
-
     const navigate = useNavigate()
     const createURL = (genre: string[] = []) => {
         let url = ''
@@ -54,14 +50,10 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => 
         case 'genre': return (
             <div className={styles.filter}  >
                 <div className={styles.selector} onClick={toggleShowBox} id={name}> {name}
-                    <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
                 <div className={styles.filterBox} style={genreBoxState ? { display: 'grid' } : { display: 'none' }}>
                     {array.map(filter => (
-                        <label className={styles.filterPoint} key={filter.name_en}>
-                            <input type="checkbox" defaultChecked={false} className={styles.genreCheckbox} onChange={(e) => addFilterPosition(filter, (e.target as HTMLInputElement).checked)} value={filter.name_en} name="genre" />
-                            {filter.name_ru}
-                        </label>
+                        <Checkbox position={filter} func={addFilterPosition} />
                     ))
                     }
                 </div >
