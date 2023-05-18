@@ -1,6 +1,10 @@
 .MainPage {
     .filmsRow {
-        //padding: 0 56px;
+        margin-bottom: 34px;
+
+        @media (min-width: 1441px) {
+            margin-bottom: 2.36vw;
+        }
     }
 
     h2 {

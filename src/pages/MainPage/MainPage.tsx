@@ -28,12 +28,12 @@ const MainPage = () => {
       <div className="">Календарь премьер?</div>
       <div className="">Новый сезон премьер?</div>
       <div className={styles.filmsRow}>
-        <RowSlider slides={
+        <RowSlider title='Драмы' slides={
           FilmData.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
       <div className={styles.filmsRow}>
-        <RowSlider slides={
+        <RowSlider title='Мелодрамы' slides={
           FilmData.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
