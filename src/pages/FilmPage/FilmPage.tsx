@@ -24,9 +24,9 @@ const FilmPage = () => {
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
-                        <p> Главная </p>
+                        <Link to="/"> Главная </Link>
                         <Link to="/movies">Фильмы</Link>
-                        <p>{film?.genre[0].name_ru}</p>
+                        <Link to={`/movies/:${film?.genre[0].name_en}`}>{film?.genre[0].name_ru}</Link>
                         <Link to="/movie/:id">{film?.name_ru}</Link>
                     </Path>
                     <div className={styles.filmInfo}>

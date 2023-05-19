@@ -7,7 +7,7 @@
     min-width: 115px;
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
     font-weight: 700;
     color: #fff;
     border-radius: 4px;
@@ -39,6 +39,9 @@
     }
 }
 .option {
+    text-align: center;
+    padding: 0;
+    margin: 0;
     border-radius: 4px;
     transition: all 0.3s ease-in-out;
     border: 1px solid #757d8a;

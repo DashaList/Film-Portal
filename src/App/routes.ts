@@ -4,6 +4,7 @@ import Film from '../pages/FilmPage/FilmPage'
 import Main from '../pages/MainPage/MainPage'
 import { BreadcrumbsRoute } from 'use-react-router-breadcrumbs';
 import FilmCrumb from '../components/Breadcrumbs/FilmCrumb';
+import Admin from '../pages/AdminPage/AdminPage';
 
 
 export const publicRoutes: BreadcrumbsRoute<string>[] = [
@@ -30,6 +31,16 @@ export const publicRoutes: BreadcrumbsRoute<string>[] = [
     {
         path: '/movies/:genre',
         Component: Catalog,
+        breadcrumb: 'Фильмы'
+    },
+    {
+        path: '/admin',
+        Component: Admin,
+        breadcrumb: 'Фильмы'
+    },
+    {
+        path: '/admin/:genre',
+        Component: Admin,
         breadcrumb: 'Фильмы'
     }
 ]

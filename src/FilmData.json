@@ -366,5 +366,30 @@
       }
     ],
     "country": ["США"]
+  },
+  {
+    "id": 0,
+    "name_ru": "",
+    "name_en": "",
+    "img": "",
+    "rating": 0,
+    "genre": [
+      {
+        "id": 0,
+        "name_ru": "",
+        "name_en": ""
+      }
+    ],
+    "year": 0,
+    "age": "",
+    "time": "",
+    "description": "",
+    "actor": [
+      {
+        "id": 0,
+        "name": ""
+      }
+    ],
+    "country": [""]
   }
 ]

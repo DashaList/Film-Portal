@@ -43,6 +43,9 @@ const Header = () => {
                     <div className={styles.link}>
                         <a href="https://start.ru/tvchannels">ТВ</a>
                     </div>
+                    <div className={styles.link}>
+                        <Link to="/admin/">Администрация</Link>
+                    </div>
                 </nav>}
             </div>
             <div className={styles.right}>

@@ -11,7 +11,7 @@ interface SelectorProps {
     func?: any
 }
 
-const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func,  }) => {
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func, }) => {
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
@@ -48,7 +48,13 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func,  }) =
         return url
     }
     const goFilterUrl = (URL: string) => {
-        let link = '/movies/'
+        let link = ''
+        if (window.location.pathname.includes('/movies')) {
+            link = '/movies/'
+        }
+        else {
+            link = '/admin/'
+        }
         link += URL
         navigate(link, { replace: true })
     }
