@@ -11,7 +11,7 @@ interface BannerSliderProps {
     slides: IFilm[]
 }
 
-export const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
+const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
 
     const autoplayDelay = 17500
     const [currentIndex, setCurrentIndex] = useState(0)
@@ -67,3 +67,5 @@ export const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
     </div>
   )
 }
+
+export default BannerSlider
