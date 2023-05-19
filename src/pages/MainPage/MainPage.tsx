@@ -1,7 +1,7 @@
 import styles from './MainPage.module.scss'
 import FilmData from '../../FilmData.json'
 import StoriesData from '../../StoriesData.json'
-import { BannerSlider } from '../../components/BannerSlider/BannerSlider'
+import BannerSlider from '../../components/BannerSlider/BannerSlider'
 import StoriesCard from '../../components/StoriesCard/StoriesCard'
 import RowSlider from '../../components/RowSlider/RowSlider'
 import FilmCard from '../../components/FilmCard/FilmCard'
