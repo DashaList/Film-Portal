@@ -17,9 +17,7 @@ export interface genre {
     name_ru: string,
     name_en: string
 }
-export interface IFilmItem {
-    film: IFilm
-}
+
 export interface IPeople {
     id: number,
     name: string,
