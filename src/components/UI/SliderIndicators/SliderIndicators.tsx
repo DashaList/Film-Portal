@@ -7,9 +7,10 @@ interface SliderIndicatorsProps {
     goToPrev: () => void;
     goToNext: () => void;
     indicatorsNumber: number;
+    activeIndicator: number
 }
 
-const SliderIndicators: FC<SliderIndicatorsProps> = ({goToPrev, goToNext, indicatorsNumber}) => {
+const SliderIndicators: FC<SliderIndicatorsProps> = ({goToPrev, goToNext, indicatorsNumber, activeIndicator}) => {
   return (
     <div className={styles.SliderIndicators}>
         <div className={styles.SliderIndicatorsWrapper}>
@@ -19,13 +20,19 @@ const SliderIndicators: FC<SliderIndicatorsProps> = ({goToPrev, goToNext, indica
             )} onClick={goToPrev}>
                 <img src={arrow} alt="<" />
             </div>
-            <div className={styles.indicatorsWrapper}>
+
+            <ul>
                 { [...Array(indicatorsNumber)].map((item, index) => {
-                    return(<div key={index} className={styles.indicatorBox}>
-                        <div className={styles.indicator}></div>
-                    </div>)
+                    return(<li key={index}>
+                        <div className={cn(
+                            styles.indicator,
+                            activeIndicator == index ? styles.indicatorActive : '')}>
+                            <div className={styles.indicatorProgress}></div>
+                        </div>
+                    </li>)
                 }) }
-            </div>
+            </ul>
+
             <div className={cn(
                 styles.arrow,
                 styles.rightArrow

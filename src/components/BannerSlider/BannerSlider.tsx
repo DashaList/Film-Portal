@@ -11,8 +11,9 @@ interface BannerSliderProps {
     slides: IFilm[]
 }
 
-export const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
+const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
 
+    const autoplayDelay = 17500
     const [currentIndex, setCurrentIndex] = useState(0)
     const [offset, setOffset] = useState(0)
 
@@ -41,6 +42,12 @@ export const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
         setOffset(newOffset)
     }, [windowWidth, currentIndex])
 
+    useEffect(() => {    
+        const interval = setInterval(() => goToNext(), autoplayDelay)
+
+        return () => clearInterval(interval)
+    }, [currentIndex])
+
   return (
     <div className={styles.BannerSlider} >
         <div className={styles.slide} style={{width: windowWidth}}>
@@ -53,7 +60,12 @@ export const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
             </div>
         </div>
 
-        <SliderIndicators goToPrev={goToPrev} goToNext={goToNext} indicatorsNumber={slides.length}></SliderIndicators>
+        <SliderIndicators goToPrev={goToPrev}
+            goToNext={goToNext}
+            indicatorsNumber={slides.length}
+            activeIndicator={currentIndex}></SliderIndicators>
     </div>
   )
 }
+
+export default BannerSlider
