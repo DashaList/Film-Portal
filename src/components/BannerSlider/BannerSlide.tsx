@@ -15,7 +15,7 @@ const BannerSlide: FC<BannerSlideProps> = ({film}) => {
 
   return (
     <div className={styles.BannerSlide} style={{minWidth: windowWidth, maxWidth: windowWidth}}>
-      <div className={styles.banner} style={{backgroundImage: `url("https://startimg.ru/unsafe/1920x1080/filters:format(webp)/cf3ab902e40b4139b599076a3778902a/background_15x")`}}>
+      <div className={styles.banner} style={{backgroundImage: `url("https://startimg.ru/unsafe/1920x1080/filters:format(webp)/ade6b3ae071a4ce7824f0803a89288af/background_15x")`}}>
         {/* <img src={film.img} alt="" /> */}
       </div>
 
