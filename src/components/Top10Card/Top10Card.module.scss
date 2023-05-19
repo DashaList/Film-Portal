@@ -1,0 +1,115 @@
+.Top10Card {
+    .link {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 381px;
+        height: 160px;
+        position: relative;
+
+        @media (min-width: 1441px) {
+            width: 26.46vw;
+            height: 11.11vw;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 25px;
+            height: 160px;
+            background-image: url(../../assets/img/svg/ellipse.svg);
+            background-position: 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+
+            @media (min-width: 1441px) {
+                width: 1.74vw;
+                height: 11.11vw;
+            }
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 25px;
+            height: 160px;
+            background-image: url(../../assets/img/svg/ellipse.svg);
+            background-position: 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+
+            @media (min-width: 1441px) {
+                width: 1.74vw;
+                height: 11.11vw;
+            }
+        }
+    }
+
+    .number {
+        margin-right: 20px;
+        height: 116px;
+
+        @media (min-width: 1441px) {
+            width: auto;
+            height: 8.06vw;
+            margin-right: 1.39vw;
+        }
+
+        img {
+            display: block;
+            height: 100%;
+            width: auto;
+
+            @media (min-width: 1441px) {
+                width: auto;
+                height: 8.06vw;
+            }
+        }
+    }
+
+    .content {
+        display: flex;
+        width: 242px;
+        height: 136px;
+        border-radius: 4px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
+        position: relative;
+
+        @media (min-width: 1441px) {
+            width: 16.794vw;
+            height: 9.438vw;
+            border-radius: 0.28vw;
+        }
+
+        &:hover::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background-image: linear-gradient(180deg,rgba(29,31,35,.52),rgba(29,31,35,.8));
+            border-radius: 4px;
+
+            @media (min-width: 1441px) {
+                border-radius: 0.28vw;
+            }
+        }
+
+        .playBtn {
+            visibility: hidden;
+        }
+        &:hover .playBtn{
+            visibility: visible;
+        }
+    }
+}
