@@ -5,10 +5,12 @@ import Path from '../../components/UI/Path/Path';
 import InputBox from '../../components/UI/InputBox/InputBox'
 import GenresData from '../../GenresData.json'
 import FilmData from '../../FilmData.json'
+import PeopleData from '../../PeopleData.json'
 import Checkbox from '../../components/UI/Checkbox/Checkbox';
 import ProfessionsData from '../../ProfessionsData.json'
 import Button from '../../components/UI/Button/Button';
 import { useEffect, useState } from 'react';
+import PersonColumn from '../../components/PersonColumn/PersonColumn';
 
 
 const AdminPage = () => {
@@ -26,15 +28,11 @@ const AdminPage = () => {
     const [newFilmName_en, setNewFilmName_en] = useState('')
     const [newFilmDescription, setNewFilmDescription] = useState('')
     const [newFilmGenres, setNewFilmGenres] = useState<string[]>([])
-    const [newFilmDirectore, setNewFilmDirectore] = useState([])
-    const [newFilmActor, setNewFilmActor] = useState([])
-    const [newFilmProducer, setNewFilmProducer] = useState([])
-    const [newFilmVoice, setNewnewFilmVoice] = useState([])
-    const [newFilmWriter, setNewnewFilmWriter] = useState([])
-    const [newFilmOperator, setNewnewFilmOperator] = useState([])
-    const [newFilmComposer, setNewnewFilmComposer] = useState([])
-    const [newFilmDesign, setNewFilmDesign] = useState([])
-    const [newFilmEditor, setNewFilmEditor] = useState([])
+    const [personName, setPersonName] = useState('')
+    const [personProf, setPersonProf] = useState<string[]>([])
+    const [personImg, setPersonImg] = useState('')
+
+
     const formatTime = (minutes: number) => {
         let hours = Math.floor(minutes / 60);
         let mins = minutes % 60;
@@ -44,10 +42,33 @@ const AdminPage = () => {
     const addGenrePosition = (genre: any, isChecked: boolean) => {
         const updatedGenres = isChecked ? [...newFilmGenres, genre.name_en] : newFilmGenres.filter((item) => item !== genre.name_en);
         setNewFilmGenres(updatedGenres);
-        
     }
-    let addedFilm = {}
+    const addPersonProf = (prof: any, isChecked: boolean) => {
+        const updatedProf = isChecked ? [...personProf, prof.name_en] : personProf.filter((item) => item !== prof.name_en);
+        setPersonProf(updatedProf);
+    }
 
+
+    const [personsArray, setPersonsArray] = useState<any[]>([]);
+    const addPerson = () => {
+        let person = PeopleData.find(person => person.name === personName)
+        const newPerson = {
+            id: PeopleData.length + personsArray.length + 1,
+            img: personImg || 'https://i.pinimg.com/736x/4e/cc/67/4ecc67781ecf9bd4b2fd69f7b8e16d02.jpg',
+            name: personName,
+            professions: personProf
+        }
+        if (person) {
+            setPersonsArray([...personsArray, person])
+        } else {
+            setPersonsArray([...personsArray, newPerson])
+        }
+    }
+    useEffect(() => {
+        console.log(personsArray)
+    }, [personsArray])
+
+    let addedFilm = {}
     useEffect(() => {
         addedFilm = {
             id: FilmData.length + 1,
@@ -63,17 +84,16 @@ const AdminPage = () => {
             name_en: newFilmName_en,
             description: newFilmDescription,
             genres: newFilmGenres,
-            director: newFilmDirectore,
-            actor: newFilmActor,
-            producer: newFilmProducer,
-            voice: newFilmVoice,
-            writer: newFilmWriter,
-            operator: newFilmOperator,
-            composer: newFilmComposer,
-            design: newFilmDesign,
-            editor: newFilmEditor
+            director: personsArray.filter(person => person.professions.includes('director')),
+            actor: personsArray.filter(person => person.professions.includes('actor')),
+            producer: personsArray.filter(person => person.professions.includes('producer')),
+            voice: personsArray.filter(person => person.professions.includes('voice')),
+            writer: personsArray.filter(person => person.professions.includes('writer')),
+            operator: personsArray.filter(person => person.professions.includes('operator')),
+            composer: personsArray.filter(person => person.professions.includes('composer')),
+            design: personsArray.filter(person => person.professions.includes('design')),
+            editor: personsArray.filter(person => person.professions.includes('editor'))
         }
-        console.log(addedFilm)
     }, [newFilmImg,
         newFilmYear,
         newFilmCountry,
@@ -86,15 +106,8 @@ const AdminPage = () => {
         newFilmName_en,
         newFilmDescription,
         newFilmGenres,
-        newFilmDirectore,
-        newFilmActor,
-        newFilmProducer,
-        newFilmVoice,
-        newFilmWriter,
-        newFilmOperator,
-        newFilmComposer,
-        newFilmDesign,
-        newFilmEditor])
+        personsArray
+    ])
 
     const [newFilm, setNewFilm] = useState(addedFilm)
 
@@ -103,6 +116,8 @@ const AdminPage = () => {
         setNewFilm(addedFilm)
         console.log(newFilm)
     }
+
+    
     return (
         <div className={styles.page}>
             <Path>
@@ -131,21 +146,29 @@ const AdminPage = () => {
                     ))}
                 </div >
                 <div className={styles.inputs}>
-                    <InputBox name={'Фамилия человека'} />
-                    <InputBox name={'Имя человека'} />
+                    <InputBox name={'Фамилия и Имя человека'} func={setPersonName} />
+                    <InputBox name={'Ссылка на фото'} func={setPersonImg} />
                     <div className={styles.genreBox}>
                         {ProfessionsData.map(profession => (
-                            <Checkbox position={profession} key={profession.name_en} />
+                            <Checkbox position={profession} key={profession.name_en} func={addPersonProf} />
                         ))}
                     </div >
-                    <Button variant='outlined'>+ Добавить человека</Button>
+                    <div onClick={addPerson}>
+                        <Button variant='outlined' >+ Добавить человека</Button>
+                    </div>
+
+                    {personsArray.map(person => (
+                        <PersonColumn person={person} key={person.name} />
+                    ))}
                 </div>
             </div>
             <div onClick={addNewFilm}>
                 <Button variant='outlined'>+ Добавить фильм</Button>
             </div>
-
-            <Catalog genres={genres} />
+            <div >
+                <Button variant='outlined'>- Удалить фильм</Button>
+            </div>
+            <Catalog  genres={genres} />
         </div>
     );
 };

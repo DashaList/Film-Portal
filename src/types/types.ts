@@ -29,5 +29,6 @@ export interface IPeople {
 
 export interface crossPoint {
     id: number,
+    img?: string,
     name: string,
 }

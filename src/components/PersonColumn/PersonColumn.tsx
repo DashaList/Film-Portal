@@ -8,7 +8,7 @@ interface PersonColumnProps {
 }
 
 const PersonColumn: FC<PersonColumnProps> = ({ person }) => {
-    const currentPerson = PeopleData.find((obj) => obj.id === person.id)
+    const currentPerson = PeopleData.find((obj) => obj.id === person.id) ? PeopleData.find((obj) => obj.id === person.id) : person
     return (
         <div className={styles.PersonColumn}>
             <Link to={`/persons/${currentPerson?.id}`} className={styles.personRow}>
