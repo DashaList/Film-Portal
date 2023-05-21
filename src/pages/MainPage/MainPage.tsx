@@ -7,13 +7,23 @@ import StoriesCard from '../../components/StoriesCard/StoriesCard'
 import RowSlider from '../../components/RowSlider/RowSlider'
 import FilmCard from '../../components/FilmCard/FilmCard'
 import Top10Card from '../../components/Top10Card/Top10Card'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useEffect } from 'react'
+import { fetchFilms } from '../../store/actions/filmActions'
 
 const MainPage = () => {
+
+  const {films, loading, error} = useAppSelector(state => state.filmReducer)
+  const dispatch = useAppDispatch()
+
+  useEffect( () => {
+    dispatch(fetchFilms())
+  }, [])
 
   return (
     <div className={styles.MainPage}>
 
-      <BannerSlider slides={FilmData}></BannerSlider>
+      <BannerSlider slides={films}></BannerSlider>
 
       <div className={styles.contentRow}>
         <RowSlider title={'Истории'} slides={
@@ -30,7 +40,7 @@ const MainPage = () => {
       <div className="">Новый сезон премьер?</div>
       <div className={styles.contentRow}>
         <RowSlider title='Драмы' slides={
-          FilmData.concat(FilmData).concat(FilmData).map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
+          films.concat(FilmData).concat(FilmData).map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
       <div className={styles.contentRow}>

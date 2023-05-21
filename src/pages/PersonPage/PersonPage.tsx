@@ -4,11 +4,21 @@ import FilmsList from '../../components/FilmsList/FilmsList'
 import styles from './PersonPage.module.scss'
 import Path from '../../components/UI/Path/Path'
 import { Link, useParams } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { useEffect } from 'react'
+import { fetchPersons } from '../../store/actions/personActions'
 
 const PersonPage = () => {
 
+    const {persons, loading, error} = useAppSelector(state => state.personReducer)
+    const dispatch = useAppDispatch()
+  
+    useEffect( () => {
+      dispatch(fetchPersons())
+    }, [])
+
     const { id } = useParams()
-    const person = PersonData.find((person) => person.id === Number(id))
+    const person = persons.find((person) => person.id === Number(id))
 
     const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
 
