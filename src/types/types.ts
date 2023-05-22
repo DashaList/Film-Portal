@@ -26,7 +26,9 @@ export interface IPeople {
     city: string,
     films: crossPoint[]
 }
-
+export interface TypeState {
+    deleteMode: boolean,
+}
 export interface crossPoint {
     id: number,
     img?: string,

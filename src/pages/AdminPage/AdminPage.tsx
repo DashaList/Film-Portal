@@ -11,6 +11,7 @@ import ProfessionsData from '../../ProfessionsData.json'
 import Button from '../../components/UI/Button/Button';
 import { useEffect, useState } from 'react';
 import PersonColumn from '../../components/PersonColumn/PersonColumn';
+import { useDispatch } from 'react-redux';
 
 
 const AdminPage = () => {
@@ -110,14 +111,13 @@ const AdminPage = () => {
     ])
 
     const [newFilm, setNewFilm] = useState(addedFilm)
-
-
     const addNewFilm = () => {
         setNewFilm(addedFilm)
         console.log(newFilm)
     }
 
-    
+   
+
     return (
         <div className={styles.page}>
             <Path>
@@ -168,7 +168,7 @@ const AdminPage = () => {
             <div >
                 <Button variant='outlined'>- Удалить фильм</Button>
             </div>
-            <Catalog  genres={genres} />
+            <Catalog genres={genres} />
         </div>
     );
 };
