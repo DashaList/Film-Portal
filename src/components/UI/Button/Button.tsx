@@ -8,14 +8,14 @@ interface ButtonProps {
     onClick?: () => void
 }
 
-const Button: FC<ButtonProps> = ({variant = 'contained', children}) => {
+const Button: FC<ButtonProps> = ({variant = 'contained', children, onClick = () => null}) => {
     const mainCn = cn(
         styles.Button,
         styles[variant]
     )
 
     return (
-        <button className={mainCn}>
+        <button className={mainCn} onClick={onClick}>
             {children}
         </button>
     )

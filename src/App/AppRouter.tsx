@@ -1,23 +1,18 @@
 import { Route, Routes } from 'react-router-dom';
-import { publicRoutes } from './routes';
+import { publicRoutes, privateRoutes } from './routes';
 
 const AppRouter = () => {
 
-  return (
+  const isAdmin = true
 
+  return (
     <Routes>
-      {/* <Route path='/movies' element={<CatalogPage />} />
-        <Route path='/movies/:id' element={<FilmPage />} />
-        <Route path='/persons/:id' element={<PersonPage />} /> */}
+      {isAdmin && privateRoutes.map(({ path, Component }) =>
+        <Route key={path} path={path} Component={Component} />
+      )}
       {publicRoutes.map(({ path, Component }) =>
         <Route key={path} path={path} Component={Component} />
       )}
-      {/* <Route path='/movies' element={<CatalogPage />} />
-      <Route path='/movies/:genre' element={<CatalogPage />} />
-      <Route path='/movies/:genre/:year' element={<CatalogPage />} />
-      <Route path='/movies/:year' element={<CatalogPage />} />
-      <Route path='/movie/:id' element={<FilmPage />} />
-      <Route path='/persons/:id' element={<PersonPage />} /> */}
     </Routes>
   )
 }
