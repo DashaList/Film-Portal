@@ -5,6 +5,21 @@ import Main from '../pages/MainPage/MainPage'
 import { BreadcrumbsRoute } from 'use-react-router-breadcrumbs';
 import FilmCrumb from '../components/Breadcrumbs/FilmCrumb';
 import Admin from '../pages/AdminPage/AdminPage';
+import SignIn from '../pages/SignInPage/SignInPage'
+import SignUp from '../pages/SignUpPage/SignUpPage'
+
+export const privateRoutes: BreadcrumbsRoute<string>[] = [
+    {
+        path: '/admin',
+        Component: Admin,
+        breadcrumb: 'Фильмы'
+    },
+    {
+        path: '/admin/:genre',
+        Component: Admin,
+        breadcrumb: 'Фильмы'
+    },
+]
 
 
 export const publicRoutes: BreadcrumbsRoute<string>[] = [
@@ -34,13 +49,13 @@ export const publicRoutes: BreadcrumbsRoute<string>[] = [
         breadcrumb: 'Фильмы'
     },
     {
-        path: '/admin',
-        Component: Admin,
+        path: '/signIn',
+        Component: SignIn,
         breadcrumb: 'Фильмы'
     },
     {
-        path: '/admin/:genre',
-        Component: Admin,
+        path: '/signUp',
+        Component: SignUp,
         breadcrumb: 'Фильмы'
     }
 ]

@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 import logo from '../../assets/img/svg/logo_white.svg'
 import search from '../../assets/img/svg/search.svg'
 import avatar from '../../assets/img/svg/avatar.svg'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import burger from '../../assets/img/svg/burger.svg'
 import { useWindowScrollY, useWindowWidth } from '../../hooks/hooks'
 import cn from 'classnames';
@@ -11,6 +11,9 @@ import cn from 'classnames';
 const Header = () => {
     const windowWidth = useWindowWidth()
     const scrollY = useWindowScrollY()
+
+    const navigate = useNavigate()
+    const tryFreeHandler = () => navigate("/signUp")
 
     return (
         <header className={cn(styles.Header, scrollY > 10 && styles.Header_small)}>
@@ -44,12 +47,12 @@ const Header = () => {
                         <a href="https://start.ru/tvchannels">ТВ</a>
                     </div>
                     <div className={styles.link}>
-                        <Link to="/admin/">Администрация</Link>
+                        <Link to="/admin">Администрация</Link>
                     </div>
                 </nav>}
             </div>
             <div className={styles.right}>
-                {windowWidth > 1024 && <Button>Попробовать бесплатно</Button>}
+                {windowWidth > 1024 && <Button onClick={tryFreeHandler}>Попробовать бесплатно</Button>}
                 <div className={styles.icons}>
                     <a href="!#">
                         <img className={styles.icon} src={search} alt="search" />
