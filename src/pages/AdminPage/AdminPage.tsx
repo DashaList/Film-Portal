@@ -15,7 +15,6 @@ import { useDispatch } from 'react-redux';
 
 
 const AdminPage = () => {
-    const dispatch = useDispatch()
     const { genre } = useParams()
     const genres = genre?.split('+') || ['']
     const [newFilmImg, setNewFilmImg] = useState('')
@@ -117,9 +116,7 @@ const AdminPage = () => {
         console.log(newFilm)
     }
 
-    const toggleDeletMode = () => {
-        dispatch({ type: 'toggleDel' })
-    }
+   
 
     return (
         <div className={styles.page}>
@@ -168,7 +165,7 @@ const AdminPage = () => {
             <div onClick={addNewFilm}>
                 <Button variant='outlined'>+ Добавить фильм</Button>
             </div>
-            <div onClick={toggleDeletMode}>
+            <div >
                 <Button variant='outlined'>- Удалить фильм</Button>
             </div>
             <Catalog genres={genres} />
