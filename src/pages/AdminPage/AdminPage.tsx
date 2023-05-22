@@ -11,9 +11,11 @@ import ProfessionsData from '../../ProfessionsData.json'
 import Button from '../../components/UI/Button/Button';
 import { useEffect, useState } from 'react';
 import PersonColumn from '../../components/PersonColumn/PersonColumn';
+import { useDispatch } from 'react-redux';
 
 
 const AdminPage = () => {
+    const dispatch = useDispatch()
     const { genre } = useParams()
     const genres = genre?.split('+') || ['']
     const [newFilmImg, setNewFilmImg] = useState('')
@@ -110,14 +112,15 @@ const AdminPage = () => {
     ])
 
     const [newFilm, setNewFilm] = useState(addedFilm)
-
-
     const addNewFilm = () => {
         setNewFilm(addedFilm)
         console.log(newFilm)
     }
 
-    
+    const toggleDeletMode = () => {
+        dispatch({ type: 'toggleDel' })
+    }
+
     return (
         <div className={styles.page}>
             <Path>
@@ -165,10 +168,10 @@ const AdminPage = () => {
             <div onClick={addNewFilm}>
                 <Button variant='outlined'>+ Добавить фильм</Button>
             </div>
-            <div >
+            <div onClick={toggleDeletMode}>
                 <Button variant='outlined'>- Удалить фильм</Button>
             </div>
-            <Catalog  genres={genres} />
+            <Catalog genres={genres} />
         </div>
     );
 };
