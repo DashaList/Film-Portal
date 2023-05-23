@@ -4,11 +4,20 @@ import styles from './FilmPage.module.scss'
 import FilmData from '../../FilmData.json'
 import Button from '../../components/UI/Button/Button';
 import PersonColumn from '../../components/PersonColumn/PersonColumn';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CommentBox from '../../components/CommentBox/CommentBox';
+import { useAppSelector } from '../../hooks/redux';
+import TranscriptionData from '../../TranscriptionData.json'
+
 
 
 const FilmPage = () => {
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const [language, setLanguage] = useState(TranscriptionData[0])
+    useEffect(() => {
+        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
+    }, [RusLanguage])
+
     const { id } = useParams()
     const film = FilmData.find((obj) => obj.id === Number(id))
     const [DescriptionState, getDescriptionState] = useState(false)
@@ -24,18 +33,18 @@ const FilmPage = () => {
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
-                        <Link to="/"> Главная </Link>
-                        <Link to="/movies">Фильмы</Link>
-                        <Link to={`/movies/:${film?.genre[0].name_en}`}>{film?.genre[0].name_ru}</Link>
-                        <Link to="/movie/:id">{film?.name_ru}</Link>
+                        <Link to="/"> {language.Path.main} </Link>
+                        <Link to="/movies">{language.Path.main}</Link>
+                        <Link to={`/movies/:${film?.genre[0].name_en}`}>{RusLanguage ? film?.genre[0].name_ru : film?.genre[0].name_en}</Link>
+                        <Link to="/movie/:id">{RusLanguage ? film?.name_ru : film?.name_en}</Link>
                     </Path>
                     <div className={styles.filmInfo}>
-                        <h1 className={styles.filmName}>{film?.name_ru}</h1>
+                        <h1 className={styles.filmName}>{RusLanguage ? film?.name_ru : film?.name_en}</h1>
                         <div className={styles.descriptionShort}>
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
                             <span className={styles.link}>{film?.year},</span>
                             {film?.genre.map(genre => (
-                                <span className={styles.link}>{genre.name_ru},</span>
+                                <span className={styles.link}>{RusLanguage ? genre.name_ru:genre.name_en},</span>
                             ))}
                             <span className={styles.link}>{film?.age}, {film?.time} </span>
                         </div>
@@ -45,19 +54,17 @@ const FilmPage = () => {
                         <div className={styles.btnBox}>
                             <Button >
                                 <img src="https://start.ru/static/images/movie/play.svg" />
-                                Смотреть бесплатно
+                                {language.Button.watch_free}
                             </Button>
                             <Button variant="outlined">
                                 <img src="https://start.ru/static/images/product/kino.svg" />
-                                Смотреть трейлер
+                                {language.Button.watch_tr}
                             </Button>
                         </div>
                     </div>
                 </div>
             </div>
             <div className={styles.FilmBotInfo}>
-                <div> Описание Подборки Трейлеры Актеры и съемочная группа Сюжет Статьи о фильме Добавить в избранное
-                </div>
                 <h1 className={styles.header}> Фильм {film?.name_ru} смотреть онлайн </h1>
                 <div className={styles.trailerBox}>
                     <iframe className={styles.trailer} src="https://www.youtube.com/embed/otmeAaifX04" title="YouTube trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" />
@@ -85,17 +92,17 @@ const FilmPage = () => {
                     </div>
                 </div>
                 <div className={styles.toggleDescription} style={DescriptionState ? { display: 'none' } : { display: 'flex' }} onClick={toggleDiscription}>
-                    <div className={styles.more} > Показать ещё</div>
+                    <div className={styles.more} > {language.FilmPage.more}</div>
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
                 <div className={styles.toggleDescription} style={DescriptionState ? { display: 'flex' } : { display: 'none' }} onClick={toggleDiscription}>
-                    <div className={styles.more}> Свернуть</div>
+                    <div className={styles.more}> {language.FilmPage.hide}</div>
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
 
-                <h2 className={styles.subheader}>Актеры и съемочная группа</h2>
+                <h2 className={styles.subheader}>{language.FilmPage.persons}</h2>
                 <div className={styles.persons}>
-                    <h3 className={styles.columnHeader}> В главных ролях </h3>
+                    <h3 className={styles.columnHeader}> {language.FilmPage.actor} </h3>
                     {film?.actor.map(person => (
                         <PersonColumn person={person} />
                     ))}

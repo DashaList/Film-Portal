@@ -11,7 +11,9 @@ import ProfessionsData from '../../ProfessionsData.json'
 import Button from '../../components/UI/Button/Button';
 import { useEffect, useState } from 'react';
 import PersonColumn from '../../components/PersonColumn/PersonColumn';
-import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../hooks/redux';
+import TranscriptionData from '../../TranscriptionData.json'
+
 
 
 const AdminPage = () => {
@@ -116,7 +118,12 @@ const AdminPage = () => {
         console.log(newFilm)
     }
 
-   
+
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const [language, setLanguage] = useState(TranscriptionData[0])
+    useEffect(() => {
+        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
+    }, [RusLanguage])
 
     return (
         <div className={styles.page}>
@@ -127,16 +134,16 @@ const AdminPage = () => {
             <h1 className={styles.header}> Администрация </h1>
             <div className={styles.adminBox}>
                 <div className={styles.inputs}>
-                    <InputBox name={'Адрес изображения'} func={setNewFilmImg} />
-                    <InputBox name={'Год'} inpType='number' func={setNewFilmYear} />
-                    <InputBox name={'Страна'} func={setNewFilmCountry} />
-                    <InputBox name={'Краткое описание'} func={setNewFilmTagline} />
-                    <InputBox name={'Возрастное ограничение'} inpType='number' func={setNewFilmAge} />
-                    <InputBox name={'Продолжительность в мин'} inpType='number' func={setNewFilmTime} />
-                    <InputBox name={'Рейтинг'} inpType='number' func={setNewFilmRating} />
-                    <InputBox name={'Кол-во оценок'} inpType='number' func={setNewFilmMarks} />
-                    <InputBox name={'Название на русском'} func={setNewFilmName_ru} />
-                    <InputBox name={'Название на английском'} func={setNewFilmName_en} />
+                    <InputBox name_en={'Image URL'} name_ru={'Адрес изображения'} func={setNewFilmImg} />
+                    <InputBox name_en={'Year'} name_ru={'Год'} inpType='number' func={setNewFilmYear} />
+                    <InputBox name_en={'Country'} name_ru={'Страна'} func={setNewFilmCountry} />
+                    <InputBox name_en={'Short description'} name_ru={'Краткое описание'} func={setNewFilmTagline} />
+                    <InputBox name_en={'Age restriction'} name_ru={'Возрастное ограничение'} inpType='number' func={setNewFilmAge} />
+                    <InputBox name_en={'Duration in minutes'} name_ru={'Продолжительность в мин'} inpType='number' func={setNewFilmTime} />
+                    <InputBox name_en={'Rating'} name_ru={'Рейтинг'} inpType='number' func={setNewFilmRating} />
+                    <InputBox name_en={'Number of ratings'} name_ru={'Кол-во оценок'} inpType='number' func={setNewFilmMarks} />
+                    <InputBox name_en={'Name in Russian'} name_ru={'Название на русском'} func={setNewFilmName_ru} />
+                    <InputBox name_en={'Name in English'} name_ru={'Название на английском'} func={setNewFilmName_en} />
                     <textarea placeholder='Полное описание' onChange={(e) => setNewFilmDescription(e.target.value)} />
                 </div>
 
@@ -146,15 +153,15 @@ const AdminPage = () => {
                     ))}
                 </div >
                 <div className={styles.inputs}>
-                    <InputBox name={'Фамилия и Имя человека'} func={setPersonName} />
-                    <InputBox name={'Ссылка на фото'} func={setPersonImg} />
+                    <InputBox name_en={'Last name and First name of the person'} name_ru={'Фамилия и Имя человека'} func={setPersonName} />
+                    <InputBox name_en={'Photo`s URL'} name_ru={'Ссылка на фото'} func={setPersonImg} />
                     <div className={styles.genreBox}>
                         {ProfessionsData.map(profession => (
                             <Checkbox position={profession} key={profession.name_en} func={addPersonProf} />
                         ))}
                     </div >
                     <div onClick={addPerson}>
-                        <Button variant='outlined' >+ Добавить человека</Button>
+                        <Button variant='outlined' >{language.Button.add_person}</Button>
                     </div>
 
                     {personsArray.map(person => (
@@ -163,10 +170,10 @@ const AdminPage = () => {
                 </div>
             </div>
             <div onClick={addNewFilm}>
-                <Button variant='outlined'>+ Добавить фильм</Button>
+                <Button variant='outlined'>{language.Button.add_Film}</Button>
             </div>
             <div >
-                <Button variant='outlined'>- Удалить фильм</Button>
+                <Button variant='outlined'>{language.Button.del_Film}</Button>
             </div>
             <Catalog genres={genres} />
         </div>
