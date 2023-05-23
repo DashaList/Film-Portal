@@ -1,0 +1,13 @@
+.Flag {
+    margin: auto;
+    width: 2vw;
+    height: 2vw;
+    scale: 1;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover {
+        cursor: pointer;
+        scale: 1.2;
+        transition: all 0.3s ease-in-out;
+    }
+}

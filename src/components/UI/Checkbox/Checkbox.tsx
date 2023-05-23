@@ -1,5 +1,6 @@
 import { FC,  useState } from 'react';
 import styles from './Checkbox.module.scss'
+import { useAppSelector } from '../../../hooks/redux';
 
 interface CheckboxProps {
     position: any
@@ -8,6 +9,7 @@ interface CheckboxProps {
 
 const Checkbox: FC<CheckboxProps> = ({ position, func }) => {
     const [checked, setChecked] = useState(false);
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(e.target.checked);
@@ -16,7 +18,7 @@ const Checkbox: FC<CheckboxProps> = ({ position, func }) => {
     return (
         <label className={styles.checkboxPoint} key={position.name_en}>
             <input type="checkbox" defaultChecked={false} checked={checked} className={styles.checkbox} onChange={handleCheckboxChange} value={position.name_en} name="genre" />
-            {position.name_ru}
+            {RusLanguage? position.name_ru : position.name_en}
         </label>
     );
 };

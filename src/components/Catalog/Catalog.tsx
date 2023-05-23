@@ -9,10 +9,13 @@ import Slider from '../../components/UI/Slider/Slider';
 import InputBox from '../UI/InputBox/InputBox';
 import GenresData from '../../GenresData.json'
 import { Link } from 'react-router-dom';
+import TranscriptionData from '../../TranscriptionData.json'
+import { useAppSelector } from '../../hooks/redux';
 
 interface CatalogProps {
     genres: string[]
 }
+
 const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [Films, setFilms] = useState(FilmData);
     const [sortState, setSort] = useState('none');
@@ -22,6 +25,13 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [countryFilter, setCountryFilter] = useState<string>("")
     const [actrosFilter, setActrosFilter] = useState<string>("")
     const [directorFilter, setDirectorFilter] = useState<string>("")
+
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const [language, setLanguage] = useState(TranscriptionData[0])
+    useEffect(() => {
+        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
+    }, [RusLanguage])
+
     useEffect(() => {
         let filterFilms = FilmData;
         if (yearFilter) {
@@ -81,23 +91,24 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
         }
     }, [sortState]);
     return (
+
         <>
             <div className={styles.filtersBox}>
-                <Selector name={'Жанр'} array={GenresData} filter={'genre'} />
-                <Selector func={setYearFilter} name={'Год'} array={YearData} filter={'year'} />
-                <Selector func={setCountryFilter} name={'Страны'} array={["США", "Росcия"]} filter='none' />
-                <Slider func={setRatingFilter} max={10} name={'Рейтинг от'} />
-                <Slider func={setratingValueFilter} max={1000000} name={'Кол-во оценок от'} />
-                <InputBox name='Поиск по актёрам' func={setActrosFilter} />
-                <InputBox name='Поиск по режиссёру' func={setDirectorFilter} />
+                <Selector name_ru={'Жанр'} array={GenresData} filter={'genre'} name_en={'Genre'} />
+                <Selector func={setYearFilter} name_ru={'Год'} array={YearData} filter={'year'} name_en={'Year'} />
+                <Selector func={setCountryFilter} name_ru={'Страны'} array={["США", "Росcия"]} filter='none' name_en={'Country'} />
+                <Slider func={setRatingFilter} max={10} name_ru={'Рейтинг от'} name_en={'Rating from'} />
+                <Slider func={setratingValueFilter} max={1000000} name_ru={'Кол-во оценок от'} name_en={'Number of ratings from'} />
+                <InputBox name_ru='Поиск по актёрам' func={setActrosFilter} name_en={'Search by actors'} />
+                <InputBox name_ru='Поиск по режиссёру' func={setDirectorFilter} name_en={'Search by director'} />
                 <Link to='/movies/'>
-                    <Button variant='outlined' >Сбросить</Button>
+                    <Button variant='outlined' >{language.Button.clean}</Button>
                 </Link >
-                <Selector name={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} />
+                <Selector name_ru={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} name_en={'Sort'} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <Button variant='outlined'>
-                Показать ещё
+                {language.Button.more}
                 <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
             </Button>
         </>
