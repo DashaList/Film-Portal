@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../UI/Button/Button";
 import styles from './CommentBox.module.scss'
+import { useAppSelector } from "../../hooks/redux";
+import TranscriptionData from '../../TranscriptionData.json'
+
 
 const CommentBox = () => {
     const [addAuthor, setAuthor] = useState('')
@@ -72,6 +75,13 @@ const CommentBox = () => {
         setTargetId(0)
 
     }
+
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const [language, setLanguage] = useState(TranscriptionData[0])
+    useEffect(() => {
+        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
+    }, [RusLanguage])
+    
     return (
         <div className={styles.commentBox}>
             {comments.map((comment) => (
@@ -82,7 +92,7 @@ const CommentBox = () => {
                             <h3 className={styles.commentAuthor}> {comment.auhtor}</h3>
                         </div>
                         <div onClick={() => showFormSubcomment(comment.id)}>
-                            <Button variant='outlined'> Ответить на комментарий </Button>
+                            <Button variant='outlined'> {language.Button.answer} </Button>
                         </div>
                     </div>
                     <h2 className={styles.theme}>{comment.theme} </h2>
@@ -117,11 +127,11 @@ const CommentBox = () => {
                 <input className={styles.addCommentBoxHeader} type="text" placeholder="Тема" value={addTheme} onChange={e => setTheme(e.target.value)} />
                 <textarea className={styles.addCommentBoxText} placeholder="Текст" value={addText} onChange={e => setText(e.target.value)} />
                 <div onClick={AddComment} className={styles.btn}>
-                    <Button > Опубликовать </Button>
+                    <Button > {language.Button.public} </Button>
                 </div>
             </div>
             <div onClick={showForm} className={styles.btn}>
-                <Button> Добавить комментарий </Button>
+                <Button> {language.Button.add_Comment} </Button>
             </div>
         </div>
     );

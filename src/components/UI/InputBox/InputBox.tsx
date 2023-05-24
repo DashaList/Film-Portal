@@ -1,14 +1,18 @@
 import { FC } from 'react';
 import styles from './InputBox.module.scss';
+import { useAppSelector } from '../../../hooks/redux';
 
 interface InputBoxProps {
     inpType?: 'text'|'number'|'radio',
-    name: string,
+    name_ru: string,
+    name_en: string,
     func?: any
 }
-const InputBox: FC<InputBoxProps> = ({ inpType='text', name, func }) => {
+const InputBox: FC<InputBoxProps> = ({ inpType='text', name_ru, name_en, func }) => {
+  const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+
     return <div className={styles.InputBox}>
-        <input autoFocus type={inpType} autoComplete='off' placeholder={name} className={styles.input} onChange={(e) => func(e.target.value)} />
+        <input autoFocus type={inpType} autoComplete='off' placeholder={ RusLanguage? name_ru: name_en} className={styles.input} onChange={(e) => func(e.target.value)} />
     </div>;
 
 }

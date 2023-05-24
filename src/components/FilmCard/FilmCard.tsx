@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import HoverBaner from '../HoverBaner/HoverBaner';
 import cn from 'classnames'
 import { useSelector } from 'react-redux';
+import { useAppSelector } from '../../hooks/redux';
 
 interface FilmCardProps {
     film: IFilm,
@@ -12,10 +13,10 @@ interface FilmCardProps {
 }
 
 const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
-    
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
     const State: any = useSelector<TypeState>(state => state)
     const deleteFilm = () => {
-        State.deleteMode? {}:{}
+        State.deleteMode ? {} : {}
     }
     switch (film.id) {
         case 0:
@@ -38,11 +39,11 @@ const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
                             <HoverBaner />
                         </div>
                         <div className={cn(styles.text, type == 'forRow' ? styles.textForRow : '')}>
-                            <div className={styles.name}> {film.name_ru} </div>
+                            <div className={styles.name}> {RusLanguage? film.name_ru:film.name_en} </div>
                             <div className={styles.genre}>
                                 {film.genre.map((genre, index) => (
                                     <span key={index}>
-                                        {genre.name_ru}
+                                        {RusLanguage? genre.name_ru:genre.name_en}
                                         {index !== film.genre.length - 1 && ", "}
                                     </span>
                                 ))}

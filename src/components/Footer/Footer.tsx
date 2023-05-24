@@ -32,110 +32,119 @@ import rombica from '../../assets/img/svg/rombica.svg'
 import tvip from '../../assets/img/svg/tvip.svg'
 import chromecast from '../../assets/img/svg/chromecast.svg'
 import { useWindowWidth } from '../../hooks/hooks'
+import { useAppSelector } from '../../hooks/redux'
+import { useEffect, useState } from 'react'
+import TranscriptionData from '../../TranscriptionData.json'
+
 
 const Footer = () => {
 
     const windowWidth = useWindowWidth()
     const tvs = [samsumg, lg, sony, philips, haier, panasonic, mi, huawei, tcl, hisense, googleTv, miBox, appleTv, rombica, tvip, chromecast]
+    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const [language, setLanguage] = useState(TranscriptionData[0])
+    useEffect(() => {
+        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
+    }, [RusLanguage])
 
-  return (
-    <footer>
-        {windowWidth >= 1024 && <div className={styles.Footer}>
-            <div className={styles.footer__item}>
-                <div className={styles.menu}>
-                    <a href="!#" className={styles.link}>Регистрация и оплата</a>
-                    <a href="!#" className={styles.link}>Политика приватности</a>
-                    <a href="!#" className={styles.link}>Пользовательское соглашение</a>
-                    <a href="!#" className={styles.link}>Сообщить об ошибке</a>
-                </div>
-                <div className={styles.copyright}>
-                    <div>
-                        <img src={age18} alt="18+" />
-                    </div>
-                    <span>© ООО «Старт.Ру», 2017-2023</span>
-                </div>
-            </div>
-            <div className={styles.footer__item}>
-                <div className={styles.menu}>
-                    <a href="!#" className={styles.link}>О нас</a>
-                    <a href="!#" className={styles.link}>Контакты</a>
-                    <a href="!#" className={styles.link}>Партнерам</a>
-                    <a href="!#" className={styles.link}>Вакансии</a>
-                    <a href="!#" className={styles.link}>Акции</a>
-                    <a href="!#" className={styles.link}>Журнал</a>
-                </div>
-                <div className={styles.payment}>
-                    <span className={styles.bottom_title}>Система&nbsp;оплаты</span>
-                    <div className={styles.payment_images}>
-                        <img src={cloudPayment} alt="cloud payment" />
-                        <img src={payonline} alt="payonline" />
-                    </div>
-                </div>
-            </div>
-            <div className={styles.footer__item}>
-                <div>
+    return (
+        <footer>
+            {windowWidth >= 1024 && <div className={styles.Footer}>
+                <div className={styles.footer__item}>
                     <div className={styles.menu}>
-                        <a href="!#" className={styles.link}>Служба поддержки</a>
-                        <a href="!#" className={styles.link}>Где смотреть</a>
-                        <a href="!#" className={styles.link}>Вопросы и ответы</a>
+                        <a href="!#" className={styles.link}>{language.Footer.registration}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.privat}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.consent}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.error}</a>
                     </div>
-                    <div className={styles.social}>
-                        <a href="!#" className={styles.social__items}>
-                            <img src={youtube} alt="youtube" />
-                        </a>
-                        <a href="!#" className={styles.social__items}>
-                            <img src={vk} alt="vk" />
-                        </a>
-                        <a href="!#" className={styles.social__items}>
-                            <img src={ok} alt="ok" />
-                        </a>
-                        <a href="!#" className={styles.social__items}>
-                            <img src={tiktok} alt="tiktok" />
-                        </a>
-                        <a href="!#" className={styles.social__items}>
-                            <img src={tg} alt="tg" />
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <span className={styles.bottom_title}>Мы принимаем карты</span>
-                    <div className={styles.cards}>
-                        <a href="!#">
-                            <img src={visa} alt="visa" />
-                        </a>
-                        <a href="!#">
-                        <img src={mir} alt="mir" />
-                        </a>
-                        <a href="!#">
-                            <img src={mastercard} alt="mastercard" />
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div className={cn(styles.footer__item, styles.footer__item_last)}>
-                <div className={styles.apps}>
-                    <div>
-                        <img src={apple} alt="apple" />
-                    </div>
-                    <div>
-                        <img src={google} alt="google" />
-                    </div>
-                    <div>
-                        <img src={Huawei} alt="Huawei" />
-                    </div>
-                </div>
-                <span className={styles.bottom_title}>START на большом экране</span>
-                <div className={styles.tvs}>
-                    {tvs.map(item => 
-                        <div key={item}>
-                            <img src={item} alt={item} />
+                    <div className={styles.copyright}>
+                        <div>
+                            <img src={age18} alt="18+" />
                         </div>
-                    )}
+                        <span>© ООО «Старт.Ру», 2017-2023</span>
+                    </div>
                 </div>
-            </div>
-        </div>}
-    </footer>
-  )
+                <div className={styles.footer__item}>
+                    <div className={styles.menu}>
+                        <a href="!#" className={styles.link}>{language.Footer.about}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.contacts}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.partners}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.work}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.stocks}</a>
+                        <a href="!#" className={styles.link}>{language.Footer.Journal}</a>
+                    </div>
+                    <div className={styles.payment}>
+                        <span className={styles.bottom_title}>{language.Footer.pay_sistem}</span>
+                        <div className={styles.payment_images}>
+                            <img src={cloudPayment} alt="cloud payment" />
+                            <img src={payonline} alt="payonline" />
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.footer__item}>
+                    <div>
+                        <div className={styles.menu}>
+                            <a href="!#" className={styles.link}>{language.Footer.sup}</a>
+                            <a href="!#" className={styles.link}>{language.Footer.watch}</a>
+                            <a href="!#" className={styles.link}>{language.Footer.FAQ}</a>
+                        </div>
+                        <div className={styles.social}>
+                            <a href="!#" className={styles.social__items}>
+                                <img src={youtube} alt="youtube" />
+                            </a>
+                            <a href="!#" className={styles.social__items}>
+                                <img src={vk} alt="vk" />
+                            </a>
+                            <a href="!#" className={styles.social__items}>
+                                <img src={ok} alt="ok" />
+                            </a>
+                            <a href="!#" className={styles.social__items}>
+                                <img src={tiktok} alt="tiktok" />
+                            </a>
+                            <a href="!#" className={styles.social__items}>
+                                <img src={tg} alt="tg" />
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <span className={styles.bottom_title}>{language.Footer.cards}</span>
+                        <div className={styles.cards}>
+                            <a href="!#">
+                                <img src={visa} alt="visa" />
+                            </a>
+                            <a href="!#">
+                                <img src={mir} alt="mir" />
+                            </a>
+                            <a href="!#">
+                                <img src={mastercard} alt="mastercard" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className={cn(styles.footer__item, styles.footer__item_last)}>
+                    <div className={styles.apps}>
+                        <div>
+                            <img src={apple} alt="apple" />
+                        </div>
+                        <div>
+                            <img src={google} alt="google" />
+                        </div>
+                        <div>
+                            <img src={Huawei} alt="Huawei" />
+                        </div>
+                    </div>
+                    <span className={styles.bottom_title}>{language.Footer.slogan}</span>
+                    <div className={styles.tvs}>
+                        {tvs.map(item =>
+                            <div key={item}>
+                                <img src={item} alt={item} />
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>}
+        </footer>
+    )
 }
 
 export default Footer
