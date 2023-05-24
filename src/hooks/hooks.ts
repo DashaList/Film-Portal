@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const useWindowWidth = () => {
     const [windowWidth, setWindowWidth] = useState(document.documentElement.clientWidth);
@@ -36,4 +36,27 @@ export const useWindowScrollY = () => {
   }, []);
 
   return scroll;
+}
+
+
+export const useOutsideClick = (callback: () => void) => {
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const outsideClickHandler = (e: MouseEvent) => {
+        if (ref.current && !ref.current.contains(e.target as Node)) {
+          callback();
+        }
+    }
+
+    document.addEventListener('mousedown', outsideClickHandler);
+
+    return () => {
+        document.removeEventListener('mousedown', outsideClickHandler);
+    };
+
+  }, [callback])
+
+  return ref;
 }

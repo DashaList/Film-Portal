@@ -49,12 +49,12 @@ export const publicRoutes: BreadcrumbsRoute<string>[] = [
         breadcrumb: 'Фильмы'
     },
     {
-        path: '/signIn',
+        path: '/signin',
         Component: SignIn,
         breadcrumb: 'Фильмы'
     },
     {
-        path: '/signUp',
+        path: '/signup',
         Component: SignUp,
         breadcrumb: 'Фильмы'
     }

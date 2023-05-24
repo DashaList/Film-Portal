@@ -9,7 +9,7 @@
     height: auto;
     padding-bottom: 105px;
     margin: 0px auto;
-    background-color: rgb(245, 245, 245);
+    background-color: $color-background-white;
 
     .formWrapper {
         height: 100%;
@@ -28,7 +28,7 @@
         font-size: 24px;
         font-weight: bold;
         line-height: 28px;
-        color: rgb(29, 31, 35);
+        color: $color-dark-grey;
         margin-bottom: 24px;
 
         @media (min-width: 1441px) {
@@ -39,75 +39,8 @@
         }
     }
 
-    .signInput {
-        position: relative;
-        width: 100%;
-        height: 48px;
-        box-sizing: border-box;
-        display: block;
-        border: 1px solid rgb(209, 209, 214);
-        background-color: rgb(255, 255, 255);
-        border-radius: 4px;
-        font-size: 16px;
-        padding: 0px 16px;
-
-        @media (min-width: 1441px) {
-            height: 3.3333vw;
-            border: 0.069444vw solid rgb(209, 209, 214);
-            border-radius: 0.27777vw;
-            font-size: 1.1111vw;
-            padding: 0px 1.11111vw;
-        }
-
-        label {
-            position: absolute;
-    left: 0px;
-    top: 0px;
-    line-height: 24px;
-    padding: 10px 0px 0px 16px;
-    font-size: 16px;
-    color: rgb(117, 125, 138);
-    transition: all 0.2s ease 0s;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 100%;
-        }
-
-        input {
-            width: 100%;
-            height: 100%;
-            padding: 0px 16px;
-            position: absolute;
-            bottom: 0px;
-            left: 0px;
-            box-sizing: border-box;
-            display: block;
-            border: none;
-            background-color: transparent;
-            color: rgb(72, 73, 75);
-
-            @media (min-width: 1441px) {
-                padding: 0px 1.1111vw;
-            }
-
-    //         &:focus {
-    //             height: 22px;
-    // margin-bottom: 5px;
-    // font-size: 16px;
-
-            
-    //         }
-
-    //         &:focus .placeholder{
-    //             padding: 0.625vw 0px 0px 1.1111vw;
-    // font-size: 0.8333vw;
-    // line-height: 1;
-    //         }
-        }
-    }
-
     .passwordInput {
+        position: relative;
         margin-top: 8px;
 
         @media (min-width: 1441px) {
@@ -115,35 +48,14 @@
         }
     }
 
-    .passwordEye {
-        position: absolute;
-        right: 16px;
-        top: 50%;
-        width: 20px;
-        height: 20px;
-        cursor: pointer;
-        margin-top: -10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.2s ease 0s;
-
-        @media (min-width: 1441px) {
-            width: 1.388vw;
-            height: 1.388vw;
-            right: 1.111vw;
-            margin-top: -0.6944vw;
-        }
-    }
-
-    .signInBtn {
+    .signUpBtn {
         margin: 24px 0 8px;
 
         @media (min-width: 1441px) {
             margin: 1.6666vw 0 0.55555vw;
         }
     }
-    .signInBtn button {
+    .signUpBtn button {
         width: 100%;
     }
 
@@ -178,7 +90,7 @@
         
         .divideText {
             display: inline-block;
-            background-color: #f5f5f5;
+            background-color: $color-background-white;
             color: #7c7f84;
             position: relative;
             z-index: 2;
@@ -240,18 +152,18 @@
             -o-transition: all .3s ease-in-out;
             -moz-transition: all .3s ease-in-out;
             -webkit-transition: all .3s ease-in-out;
-            border-bottom: 1px solid rgba(227,55,73,.2);
+            border-bottom: 1px solid rgba($color-pale-red, .2);
             color: $color-red;
 
             @media (min-width: 1441px) {
-               border-bottom: .069vw solid rgba(227,55,73,.2);
+               border-bottom: .069vw solid rgba($color-pale-red, .2);
             }
         }
         a:hover {
-            border-bottom: 0.069vw solid #e33749;
+            border-bottom: 0.069vw solid $color-pale-red;
 
             @media (min-width: 1441px) {
-                border-bottom: 0.069vw solid #e33749;
+                border-bottom: 0.069vw solid $color-pale-red;
             }
         }
     }

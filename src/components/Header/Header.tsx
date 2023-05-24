@@ -5,15 +5,21 @@ import search from '../../assets/img/svg/search.svg'
 import avatar from '../../assets/img/svg/avatar.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import burger from '../../assets/img/svg/burger.svg'
-import { useWindowScrollY, useWindowWidth } from '../../hooks/hooks'
+import { useOutsideClick, useWindowScrollY, useWindowWidth } from '../../hooks/hooks'
 import cn from 'classnames';
+import HeaderDropdown from '../HeaderDropdown/HeaderDropdown'
+import { useState } from 'react'
 
 const Header = () => {
     const windowWidth = useWindowWidth()
     const scrollY = useWindowScrollY()
 
     const navigate = useNavigate()
-    const tryFreeHandler = () => navigate("/signUp")
+    const signupHandler = () => navigate("/signup")
+    const signinHandler = () => navigate("/signin")
+
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const dropdownRef = useOutsideClick(() => setIsDropdownOpen(false))    
 
     return (
         <header className={cn(styles.Header, scrollY > 10 && styles.Header_small)}>
@@ -52,18 +58,25 @@ const Header = () => {
                 </nav>}
             </div>
             <div className={styles.right}>
-                {windowWidth > 1024 && <Button onClick={tryFreeHandler}>Попробовать бесплатно</Button>}
+                {windowWidth > 1024 &&
+                <Button onClick={signupHandler}>Попробовать бесплатно</Button>}
                 <div className={styles.icons}>
-                    <a href="!#">
+                    <div>
                         <img className={styles.icon} src={search} alt="search" />
-                    </a>
-                    {windowWidth > 1024 && <a href="!#">
+                    </div>
+                    {windowWidth > 1024 &&
+                    <div onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                         <img className={styles.icon} src={avatar} alt="avatar" />
-                    </a>}
-                    {windowWidth <= 1024 && <a href="!#">
+                    </div>}
+                    {windowWidth <= 1024 &&
+                    <div>
                         <img className={cn(styles.icon, styles.burger)} src={burger} alt="burger" />
-                    </a>}
+                    </div>}
+
                 </div>
+                {isDropdownOpen &&
+                    <HeaderDropdown loginHandler={signinHandler} refProps={dropdownRef} onMouseLeave={() => setIsDropdownOpen(false)}></HeaderDropdown>
+                }
             </div>
         </header>
     )
