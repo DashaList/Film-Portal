@@ -1,12 +1,10 @@
 import styles from './SignUpPage.module.scss'
-import eyeOn from '../../assets/img/svg/eye-on.svg'
-import eyeOff from '../../assets/img/svg/eye-off.svg'
-import cn from 'classnames'
 import Button from '../../components/UI/Button/Button'
 import google from '../../assets/img/svg/google_sign.svg'
 import vk from '../../assets/img/svg/vk-1.svg'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import Input from '../../components/UI/Input/Input'
 
 const SignUpPage = () => {
 
@@ -19,20 +17,16 @@ const SignUpPage = () => {
   return (
     <div className={styles.SignUpPage}>
         <div className={styles.formWrapper}>
-            <div className={styles.title}>
-                <span>Зарегистрируйтесь и смотрите START 7 дней бесплатно</span>
+            <h2 className={styles.title}>Зарегистрируйтесь и смотрите START 7 дней бесплатно</h2>
+            <Input type="text"placeholder='Введите e-mail'></Input>
+            <div className={styles.passwordInput}>
+                <Input
+                type={showPassword ? "text" : "password"}
+                placeholder='Придумайте пароль'
+                passwordEye={{showPassword, eyeClickHandler}}
+                ></Input>
             </div>
-            <div className={styles.signInput}>
-                {/* <label htmlFor="login" className={styles.placeholder}>Введите </label> */}
-                <input type="text" id='login' maxLength={254} placeholder='Введите e-mail'/>
-            </div>
-            <div className={cn(styles.signInput, styles.passwordInput)}>
-                <input type={showPassword ? "text" : "password"} placeholder='Придумайте пароль'/>
-                <div className={styles.passwordEye} onClick={eyeClickHandler}>
-                    {showPassword ? <img src={eyeOn} alt="" /> : <img src={eyeOff} alt="" />}
-                </div>
-            </div>
-            <div className={styles.signInBtn}>
+            <div className={styles.signUpBtn}>
                 <Button>Зарегистрироваться</Button>
             </div>
             <div className={styles.divide}>
@@ -51,7 +45,7 @@ const SignUpPage = () => {
             </div>
             <div className={styles.signBottom}>
                 <span>Уже есть аккаунт? </span>
-                <Link to={"/signIn"}>Войти</Link>
+                <Link to={"/signin"}>Войти</Link>
             </div>
         </div>
     </div>
