@@ -1,12 +1,12 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import filmReducer from './reducers/filmSlice'
 import personReducer from './reducers/personSlice'
-import toogleLanguage from './reducers/ToggleLanguage'
+import languageReducer from './reducers/languageSlice'
 
 const rootReducer = combineReducers({
   filmReducer,
   personReducer,
-  toogleLanguage
+  languageReducer
 })
 
 export const setupStore = () => {

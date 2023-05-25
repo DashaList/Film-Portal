@@ -40,7 +40,7 @@ const BannerSlide: FC<BannerSlideProps> = ({film}) => {
           </Button>
           <Button variant="translucent">
             <img src="https://start.ru/static/images/product/kino.svg" />
-              Смотреть трейлер
+              Трейлер
           </Button>
           <Button variant="translucent">
             <img src={favorite}/>

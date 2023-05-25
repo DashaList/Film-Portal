@@ -9,7 +9,7 @@ interface CheckboxProps {
 
 const Checkbox: FC<CheckboxProps> = ({ position, func }) => {
     const [checked, setChecked] = useState(false);
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(e.target.checked);

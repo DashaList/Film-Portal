@@ -15,7 +15,7 @@ import TranscriptionData from '../../TranscriptionData.json'
 
 
 const Header = () => {
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
     const [language, setLanguage] = useState(TranscriptionData[0])
     useEffect(() => {
         RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
@@ -67,7 +67,7 @@ const Header = () => {
                 </nav>}
             </div>
             <div className={styles.right}>
-                {windowWidth > 1024 && <Button onClick={signupHandler}>{language.Button.test_free}</Button>}
+                {windowWidth > 1024 && <Button size='small' onClick={signupHandler}>{language.Button.test_free}</Button>}
                 <div className={styles.icons}>
                     <div>
                         <img className={styles.icon} src={search} alt="search" />

@@ -4,7 +4,7 @@ import { changeLanguage } from '../../store/actions/languageActions'
 
 
 const LanguageFlag = () => {
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
     const dispatch = useAppDispatch()
 
     const change = () => {

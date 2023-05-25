@@ -13,7 +13,7 @@ interface FilmCardProps {
 }
 
 const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
     const State: any = useSelector<TypeState>(state => state)
     const deleteFilm = () => {
         State.deleteMode ? {} : {}

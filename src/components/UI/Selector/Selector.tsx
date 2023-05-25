@@ -14,7 +14,7 @@ interface SelectorProps {
 }
 
 const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func, }) => {
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);

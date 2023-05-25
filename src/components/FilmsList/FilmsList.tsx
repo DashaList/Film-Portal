@@ -12,7 +12,7 @@ interface FilmsListProps {
 
 const FilmsList: FC<FilmsListProps> = ({ films }) => {
   
-  const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+  const { RusLanguage } = useAppSelector(state => state.languageReducer)
   const [language, setLanguage] = useState(TranscriptionData[0])
   useEffect(() => {
     RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
