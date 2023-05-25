@@ -9,7 +9,7 @@ interface InputBoxProps {
     func?: any
 }
 const InputBox: FC<InputBoxProps> = ({ inpType='text', name_ru, name_en, func }) => {
-  const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+  const { RusLanguage } = useAppSelector(state => state.languageReducer)
 
     return <div className={styles.InputBox}>
         <input autoFocus type={inpType} autoComplete='off' placeholder={ RusLanguage? name_ru: name_en} className={styles.input} onChange={(e) => func(e.target.value)} />

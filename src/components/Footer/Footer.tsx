@@ -41,7 +41,7 @@ const Footer = () => {
 
     const windowWidth = useWindowWidth()
     const tvs = [samsumg, lg, sony, philips, haier, panasonic, mi, huawei, tcl, hisense, googleTv, miBox, appleTv, rombica, tvip, chromecast]
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
     const [language, setLanguage] = useState(TranscriptionData[0])
     useEffect(() => {
         RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])

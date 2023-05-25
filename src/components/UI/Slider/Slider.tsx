@@ -9,7 +9,7 @@ interface SliderProps {
     func?: any
 }
 const Slider: FC<SliderProps> = ({ name_ru, name_en, max, func }) => {
-    const { RusLanguage } = useAppSelector(state => state.toogleLanguage)
+    const { RusLanguage } = useAppSelector(state => state.languageReducer)
 
     const [valueSlider, setValueSlider] = useState(0)
     useEffect(() => {

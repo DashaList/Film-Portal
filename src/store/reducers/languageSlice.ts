@@ -6,7 +6,7 @@ interface LanguageState {
 const initialState: LanguageState = {
     RusLanguage: true
 }
-export const toogleLanguage = createSlice({
+export const languageSlice = createSlice({
     name: 'language',
     initialState,
     reducers: {
@@ -16,4 +16,4 @@ export const toogleLanguage = createSlice({
     }
 })
 
-export default toogleLanguage.reducer;
+export default languageSlice.reducer;
