@@ -81,9 +81,9 @@ const CommentBox = () => {
     useEffect(() => {
         RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
     }, [RusLanguage])
-    
+
     return (
-        <div className={styles.commentBox}>
+        <div className={styles.commentBox} data-testid='Comment'>
             {comments.map((comment) => (
                 <div className={styles.comment} key={comment.id}>
                     <div className={styles.commentHeader}>
@@ -91,7 +91,7 @@ const CommentBox = () => {
                             <img src={comment.avatar} alt="" className={styles.avatar} />
                             <h3 className={styles.commentAuthor}> {comment.auhtor}</h3>
                         </div>
-                        <div onClick={() => showFormSubcomment(comment.id)}>
+                        <div onClick={() => showFormSubcomment(comment.id)} data-testid='answer'>
                             <Button variant='outlined'> {language.Button.answer} </Button>
                         </div>
                     </div>
@@ -122,15 +122,15 @@ const CommentBox = () => {
 
             ))}
 
-            <div className={styles.addCommentBox} style={displayForm ? { display: 'flex' } : { display: 'none' }}>
+            <div className={styles.addCommentBox} data-testid='newCommetnBox' style={displayForm ? { display: 'flex' } : { display: 'none' }}>
                 <input className={styles.addCommentBoxHeader} type="text" placeholder="Имя" value={addAuthor} onChange={e => setAuthor(e.target.value)} />
                 <input className={styles.addCommentBoxHeader} type="text" placeholder="Тема" value={addTheme} onChange={e => setTheme(e.target.value)} />
                 <textarea className={styles.addCommentBoxText} placeholder="Текст" value={addText} onChange={e => setText(e.target.value)} />
-                <div onClick={AddComment} className={styles.btn}>
+                <div onClick={AddComment} data-testid='Post' className={styles.btn}>
                     <Button > {language.Button.public} </Button>
                 </div>
             </div>
-            <div onClick={showForm} className={styles.btn}>
+            <div onClick={showForm} data-testid='addComment' className={styles.btn}>
                 <Button> {language.Button.add_Comment} </Button>
             </div>
         </div>

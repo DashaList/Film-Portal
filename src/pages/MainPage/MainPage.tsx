@@ -25,12 +25,12 @@ const MainPage = () => {
 
       <BannerSlider slides={films}></BannerSlider>
 
-      <div className={styles.contentRow}>
+      <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title={'Истории'} slides={
           StoriesData.concat(StoriesData).map(item => <StoriesCard imgSrc={item}></StoriesCard>)
         }></RowSlider>
       </div>
-      <div className={styles.contentRow}>
+      <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title={'Топ-10 на START'} slides={
           Top10Data.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.imgLink} filmLink={item.filmLink} key={index}></Top10Card>)
         }></RowSlider>
@@ -38,13 +38,13 @@ const MainPage = () => {
       <div className="">Ad Banner</div>
       <div className="">Календарь премьер?</div>
       <div className="">Новый сезон премьер?</div>
-      <div className={styles.contentRow}>
+      <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title='Драмы' slides={
           films.concat(FilmData).concat(FilmData).map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
-      <div className={styles.contentRow}>
-        <RowSlider title='Мелодрамы' slides={
+      <div className={styles.contentRow} data-testid='RowSlider'>
+        <RowSlider title='Мелодрамы'  slides={
           FilmData.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
