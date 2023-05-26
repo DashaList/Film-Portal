@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { FC, ReactNode } from 'react'
-import styles  from './Button.module.scss'
+import styles from './Button.module.scss'
 
 interface ButtonProps {
     variant?: 'contained' | 'outlined' | "translucent";

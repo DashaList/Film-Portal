@@ -41,19 +41,19 @@ const PersonPage = () => {
                             <p> {language.Path.main} </p>
                             <Link to="/persons">{language.Path.persons}</Link>
                         </Path>
-                        <h3>{person?.name}</h3>
-                        <p className={styles.description}>Эдди Мёрфи (Eddie Murphy) — популярный американский актер, режиссер, сценарист, продюсер и музыкант. Обладатель премии «Золотой глобус» и номинант на премию «Оскар» за роль второго плана (фильм «Девушка мечты»).</p>
+                        <h3 data-testid='fullName'>{person?.name}</h3>
+                        <p className={styles.description} data-testid='biography'>Эдди Мёрфи (Eddie Murphy) — популярный американский актер, режиссер, сценарист, продюсер и музыкант. Обладатель премии «Золотой глобус» и номинант на премию «Оскар» за роль второго плана (фильм «Девушка мечты»).</p>
                     </div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.personPhoto}>
-                        <img src={person?.img} alt="" />
+                        <img src={person?.img} alt="" data-testid='avatarPerson'/>
                     </div>
                 </div>
             </div>
             <div className={styles.bottom}>
-                <h1>{person?.name} {language.PersonPage.films}</h1>
-                <FilmsList films={films}></FilmsList>
+                <h1 data-testid='filmgraphy'>{person?.name} {language.PersonPage.films}</h1>
+                <FilmsList films={films} ></FilmsList>
             </div>
         </div>
     )

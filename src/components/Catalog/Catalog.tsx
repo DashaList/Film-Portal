@@ -95,7 +95,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
         <>
             <div className={styles.filtersBox}>
                 <Selector name_ru={'Жанр'} array={GenresData} filter={'genre'} name_en={'Genre'} />
-                <Selector func={setYearFilter} name_ru={'Год'} array={YearData} filter={'year'} name_en={'Year'} />
+                <Selector func={setYearFilter} name_ru={'Год'} array={YearData} filter={'year'} name_en={'Year'}/>
                 <Selector func={setCountryFilter} name_ru={'Страны'} array={["США", "Росcия"]} filter='none' name_en={'Country'} />
                 <Slider func={setRatingFilter} max={10} name_ru={'Рейтинг от'} name_en={'Rating from'} />
                 <Slider func={setratingValueFilter} max={1000000} name_ru={'Кол-во оценок от'} name_en={'Number of ratings from'} />

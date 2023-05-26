@@ -13,7 +13,7 @@ export interface SelectorProps {
     func?: any
 }
 
-const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func, }) => {
+const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func}) => {
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
 
     const [genreBoxState, setGenreBox] = useState(false);
@@ -72,32 +72,27 @@ const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none',
     switch (filter) {
         case 'genre': return (
             <div className={styles.filter}  >
-                <div className={styles.selector} onClick={toggleShowBox} id={name_ru}> {RusLanguage? name_ru:name_en}
+                <div className={styles.wraper}>
+                    <div className={styles.selector} data-testid='genre' onClick={toggleShowBox} id={name_ru}> {RusLanguage ? name_ru : name_en}</div>
+                    {genreBoxState && (
+                        <div className={styles.filterBox} data-testid="genresBox" ref={blockRef}>
+                            {array.map(filter => (
+                                <Checkbox position={filter} func={addFilterPosition} key={filter} data-testid='checkbox' />
+                            ))
+                            }
+                        </div >)}
                 </div>
-                {genreBoxState && (
-                    <div className={styles.filterBox} ref={blockRef}>
-                        {array.map(filter => (
-                            <Checkbox position={filter} func={addFilterPosition} key={filter} />
-                        ))
-                        }
-                    </div >)}
             </div>
         );
-        case 'year': return (
-            <select className={styles.selector} id={name_ru} onChange={handleChange}>
-                <option className={styles.option} value="none" disabled selected>{RusLanguage? name_ru:name_en} <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" /> </option>
-                {array.map(option => (
-                    <option className={styles.option} value={option} key={option}>{option}</option>
-                ))}
-            </select>
-        )
         default: return (
-            <select className={styles.selector} id={name_ru} onChange={handleChange}>
-                <option className={styles.option} value="none" disabled selected>{RusLanguage? name_ru:name_en} <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" /> </option>
-                {array.map(option => (
-                    <option className={styles.option} value={option} key={option}>{option}</option>
-                ))}
-            </select>
+            <div className={styles.wraper}>
+                <select className={styles.selector} id={name_ru} onChange={handleChange}>
+                    <option className={styles.option} value="none" disabled selected>{RusLanguage ? name_ru : name_en}</option>
+                    {array.map(option => (
+                        <option className={styles.option} value={option} key={option}>{option}</option>
+                    ))}
+                </select>
+            </div>
         )
     }
 }

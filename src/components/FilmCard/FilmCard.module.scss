@@ -68,7 +68,7 @@
     border-radius: 2px;
     font-style: normal;
     font-weight: 700;
-    font-size: 12px;
+    font-size: 0.7vw;
     line-height: 1;
     color: $color-black;
 }
@@ -99,7 +99,7 @@
 }
 .name {
     border-bottom: 1px solid rgba(242, 242, 242, 0.2);
-    font-size: 16px;
+    font-size: 1vw;
     line-height: 1.25;
     overflow: hidden;
     white-space: nowrap;
@@ -111,7 +111,7 @@
 }
 .genre {
     margin-top: 2px;
-    font-size: 12px;
+    font-size: 0.5vw;
     line-height: 16px;
     color: $color-light-grey;
     overflow: hidden;
