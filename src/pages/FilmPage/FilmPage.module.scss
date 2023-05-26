@@ -70,6 +70,7 @@
 }
 .link {
     border-bottom: 1px solid hsla(217, 8%, 50%, 0.32);
+    font-size: 1vw;
     &:last-child {
         border-bottom: none;
     }
@@ -96,7 +97,7 @@
     padding: 0 55px;
 }
 .header {
-    font-size: 48px;
+    font-size: 3vw;
     line-height: 52px;
 }
 .trailerBox {
@@ -132,7 +133,7 @@
     transition: all 0.3s ease-in;
 
     p {
-        font-size: 20px;
+        font-size: 1vw;
         line-height: 1.4;
     }
 }
@@ -144,7 +145,7 @@
     overflow: hidden;
     transition: all 0.3s ease-in;
     p {
-        font-size: 20px;
+        font-size: 1vw;
         line-height: 1.4;
     }
 }
@@ -157,7 +158,7 @@
 .more {
     display: inline;
     gap: 15px;
-    font-size: 1.1111vw;
+    font-size: 1vw;
     line-height: 1.25;
     cursor: pointer;
     overflow: visible;
@@ -182,13 +183,14 @@
     justify-content: start;
     align-items: center;
     gap: 10px;
+    font-size: 0.8vw;
 }
 .subheader {
-    font-size: 32px;
+    font-size: 2vw;
     line-height: 40px;
 }
 .columnHeader {
-    font-size: 16px;
+    font-size: 1vw;
     line-height: 22px;
     margin-bottom: 4px;
 }
