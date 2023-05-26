@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import Checkbox from '../Checkbox/Checkbox';
 import { useAppSelector } from '../../../hooks/redux';
 
-interface SelectorProps {
+export interface SelectorProps {
     name_ru: string,
     name_en: string,
     array: any[],

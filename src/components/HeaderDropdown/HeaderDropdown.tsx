@@ -31,12 +31,12 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMous
                     <span>Служба поддержки</span>
             </a>
 
-            <div className={cn(styles.dropdownBlock, styles.authBlock)}>
+            <div className={cn(styles.dropdownBlock, styles.authBlock)} onClick={loginHandler}>
                 <div className={styles.authText}>Уже есть аккаунт?</div>
-                <button className={styles.loginBtn} onClick={loginHandler}>
+                <div className={styles.loginBtn}>
                     Войти
                     <img src={login} alt="" />
-                </button>
+                </div>
             </div>
 
         </div>

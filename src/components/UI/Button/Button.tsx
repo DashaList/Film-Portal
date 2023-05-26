@@ -4,14 +4,16 @@ import styles  from './Button.module.scss'
 
 interface ButtonProps {
     variant?: 'contained' | 'outlined' | "translucent";
+    size?: 'small' | 'medium' | 'large';
     children: ReactNode;
     onClick?: () => void
 }
 
-const Button: FC<ButtonProps> = ({variant = 'contained', children, onClick = () => null}) => {
+const Button: FC<ButtonProps> = ({variant = 'contained', size= 'medium', children, onClick = () => null}) => {
     const mainCn = cn(
         styles.Button,
-        styles[variant]
+        styles[variant],
+        styles[size]
     )
 
     return (

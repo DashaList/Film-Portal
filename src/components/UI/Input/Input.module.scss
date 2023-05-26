@@ -9,6 +9,7 @@
     border-radius: 4px;
     font-size: 16px;
     padding: 0px 16px;
+    max-width: 350px;
 
     @media (min-width: 1441px) {
         height: 3.3333vw;
@@ -16,6 +17,7 @@
         border-radius: 0.27777vw;
         font-size: 1.1111vw;
         padding: 0px 1.11111vw;
+        max-width: none;
     }
 
     input {

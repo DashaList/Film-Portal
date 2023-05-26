@@ -1,10 +1,8 @@
 @import '../../../App/App.scss';
 
 .SliderIndicators {
-    position: absolute;
-    bottom: 140px;
-    right: 56px;
     padding: 0 32px;
+    width: fit-content;
 
     @media (min-width: 1441px) {
         bottom: 9.72vw;

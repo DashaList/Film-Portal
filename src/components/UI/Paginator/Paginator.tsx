@@ -2,7 +2,7 @@ import { FC, useEffect, useRef, useState } from 'react'
 import styles from './Paginator.module.scss'
 import { useWindowWidth } from '../../../hooks/hooks'
 
-interface PaginatorProps {
+export interface PaginatorProps {
   sliderWidth: number,
   scroll: number
 }

@@ -60,10 +60,13 @@ const BannerSlider: FC<BannerSliderProps> = ({slides}) => {
             </div>
         </div>
 
-        <SliderIndicators goToPrev={goToPrev}
-            goToNext={goToNext}
-            indicatorsNumber={slides.length}
-            activeIndicator={currentIndex}></SliderIndicators>
+        <div className={styles.indicatorsWrap}>
+            <SliderIndicators goToPrev={goToPrev}
+                goToNext={goToNext}
+                indicatorsNumber={slides.length}
+                activeIndicator={currentIndex}
+            ></SliderIndicators>
+        </div>
     </div>
   )
 }

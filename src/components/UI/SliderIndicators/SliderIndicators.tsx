@@ -3,7 +3,7 @@ import arrow from '../../../assets/img/svg/arrow.svg'
 import styles from './SliderIndicators.module.scss'
 import cn from 'classnames'
 
-interface SliderIndicatorsProps {
+export interface SliderIndicatorsProps {
     goToPrev: () => void;
     goToNext: () => void;
     indicatorsNumber: number;

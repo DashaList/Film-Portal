@@ -3,16 +3,9 @@ import Button from '../../components/UI/Button/Button'
 import google from '../../assets/img/svg/google_sign.svg'
 import vk from '../../assets/img/svg/vk-1.svg'
 import { Link } from 'react-router-dom'
-import { useState } from 'react'
 import Input from '../../components/UI/Input/Input'
 
 const SignUpPage = () => {
-
-    const [showPassword, setShowPassword] = useState(false)
-
-    const eyeClickHandler = () => {
-        setShowPassword(!showPassword)
-    }
 
   return (
     <div className={styles.SignUpPage}>
@@ -20,11 +13,7 @@ const SignUpPage = () => {
             <h2 className={styles.title}>Зарегистрируйтесь и смотрите START 7 дней бесплатно</h2>
             <Input type="text"placeholder='Введите e-mail'></Input>
             <div className={styles.passwordInput}>
-                <Input
-                type={showPassword ? "text" : "password"}
-                placeholder='Придумайте пароль'
-                passwordEye={{showPassword, eyeClickHandler}}
-                ></Input>
+                <Input type="text"placeholder='Введите пароль'></Input>
             </div>
             <div className={styles.signUpBtn}>
                 <Button>Зарегистрироваться</Button>

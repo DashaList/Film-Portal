@@ -52,11 +52,11 @@ const FilmPage = () => {
                             <p>{film?.description} </p>
                         </div>
                         <div className={styles.btnBox}>
-                            <Button >
+                            <Button size='large'>
                                 <img src="https://start.ru/static/images/movie/play.svg" />
                                 {language.Button.watch_free}
                             </Button>
-                            <Button variant="outlined">
+                            <Button variant="outlined" size='large'>
                                 <img src="https://start.ru/static/images/product/kino.svg" />
                                 {language.Button.watch_tr}
                             </Button>
