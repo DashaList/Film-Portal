@@ -133,7 +133,7 @@ const AdminPage = () => {
             </Path>
             <h1 className={styles.header}> Администрация </h1>
             <div className={styles.adminBox}>
-                <div className={styles.inputs}>
+                <div className={styles.inputs} data-testid='addInfoFilmBox'>
                     <InputBox name_en={'Image URL'} name_ru={'Адрес изображения'} func={setNewFilmImg} />
                     <InputBox name_en={'Year'} name_ru={'Год'} inpType='number' func={setNewFilmYear} />
                     <InputBox name_en={'Country'} name_ru={'Страна'} func={setNewFilmCountry} />
@@ -147,7 +147,7 @@ const AdminPage = () => {
                     <textarea placeholder='Полное описание' onChange={(e) => setNewFilmDescription(e.target.value)} />
                 </div>
 
-                <div className={styles.genreBox}>
+                <div className={styles.genreBox} data-testid='adminGenres'>
                     {GenresData.map(filter => (
                         <Checkbox position={filter} key={filter.name_en} func={addGenrePosition} />
                     ))}

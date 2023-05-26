@@ -13,7 +13,7 @@ interface SelectorProps {
     func?: any
 }
 
-const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func, }) => {
+const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func}) => {
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
 
     const [genreBoxState, setGenreBox] = useState(false);
@@ -73,11 +73,11 @@ const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none',
         case 'genre': return (
             <div className={styles.filter}  >
                 <div className={styles.wraper}>
-                    <div className={styles.selector} onClick={toggleShowBox} id={name_ru}> {RusLanguage ? name_ru : name_en}</div>
+                    <div className={styles.selector} data-testid='genre' onClick={toggleShowBox} id={name_ru}> {RusLanguage ? name_ru : name_en}</div>
                     {genreBoxState && (
-                        <div className={styles.filterBox} ref={blockRef}>
+                        <div className={styles.filterBox} data-testid="genresBox" ref={blockRef}>
                             {array.map(filter => (
-                                <Checkbox position={filter} func={addFilterPosition} key={filter} />
+                                <Checkbox position={filter} func={addFilterPosition} key={filter} data-testid='checkbox' />
                             ))
                             }
                         </div >)}

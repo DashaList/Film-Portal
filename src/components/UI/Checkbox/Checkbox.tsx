@@ -16,7 +16,7 @@ const Checkbox: FC<CheckboxProps> = ({ position, func }) => {
         func(position, e.target.checked)
     };
     return (
-        <label className={styles.checkboxPoint} key={position.name_en}>
+        <label className={styles.checkboxPoint} key={position.name_en} >
             <input type="checkbox" defaultChecked={false} checked={checked} className={styles.checkbox} onChange={handleCheckboxChange} value={position.name_en} name="genre" />
             {RusLanguage? position.name_ru : position.name_en}
         </label>

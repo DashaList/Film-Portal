@@ -29,7 +29,7 @@ const FilmPage = () => {
         <div className={styles.page}>
             <div className={styles.baner}>
                 <div className={styles.banerBox}>
-                    <img className={styles.imgBaner} src={film?.img} alt="" />
+                    <img className={styles.imgBaner} src={film?.img} alt="" data-testid='Baner'/>
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
@@ -39,8 +39,8 @@ const FilmPage = () => {
                         <Link to="/movie/:id">{RusLanguage ? film?.name_ru : film?.name_en}</Link>
                     </Path>
                     <div className={styles.filmInfo}>
-                        <h1 className={styles.filmName}>{RusLanguage ? film?.name_ru : film?.name_en}</h1>
-                        <div className={styles.descriptionShort}>
+                        <h1 className={styles.filmName} data-testid='Name'>{RusLanguage ? film?.name_ru : film?.name_en}</h1>
+                        <div className={styles.descriptionShort} data-testid='info'>
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
                             <span className={styles.link}>{film?.year},</span>
                             {film?.genre.map(genre => (
@@ -48,15 +48,15 @@ const FilmPage = () => {
                             ))}
                             <span className={styles.link}>{film?.age}, {film?.time} </span>
                         </div>
-                        <div className={styles.description}>
+                        <div className={styles.description} data-testid='shortDescription'>
                             <p>{film?.description} </p>
                         </div>
                         <div className={styles.btnBox}>
-                            <Button >
+                            <Button data-testid='watch_free'>
                                 <img src="https://start.ru/static/images/movie/play.svg" />
                                 {language.Button.watch_free}
                             </Button>
-                            <Button variant="outlined">
+                            <Button variant="outlined" data-testid='watch_tr'>
                                 <img src="https://start.ru/static/images/product/kino.svg" />
                                 {language.Button.watch_tr}
                             </Button>
@@ -66,15 +66,15 @@ const FilmPage = () => {
             </div>
             <div className={styles.FilmBotInfo}>
                 <h1 className={styles.header}> Фильм {film?.name_ru} смотреть онлайн </h1>
-                <div className={styles.trailerBox}>
+                <div className={styles.trailerBox} data-testid='trailer'>
                     <iframe className={styles.trailer} src="https://www.youtube.com/embed/otmeAaifX04" title="YouTube trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" />
                 </div>
-                <div className={styles.descriptionWrapper}>
+                <div className={styles.descriptionWrapper} data-testid='description'>
                     <div className={DescriptionState ? styles.descriptionFull : styles.descriptionFullSlash}>
                         <p>{film?.description} <br></br></p>
 
                     </div>
-                    <div className={styles.socialBox}>
+                    <div className={styles.socialBox} data-testid='socialBox'>
                         <div className={styles.box}>
                             <Button variant='outlined'>
                                 <img src="https://start.ru/static/images/product/like.svg" alt="" />
@@ -92,17 +92,17 @@ const FilmPage = () => {
                     </div>
                 </div>
                 <div className={styles.toggleDescription} style={DescriptionState ? { display: 'none' } : { display: 'flex' }} onClick={toggleDiscription}>
-                    <div className={styles.more} > {language.FilmPage.more}</div>
+                    <div className={styles.more} data-testid='more'> {language.FilmPage.more}</div>
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
                 <div className={styles.toggleDescription} style={DescriptionState ? { display: 'flex' } : { display: 'none' }} onClick={toggleDiscription}>
-                    <div className={styles.more}> {language.FilmPage.hide}</div>
+                    <div className={styles.more} data-testid='hide'> {language.FilmPage.hide}</div>
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
 
                 <h2 className={styles.subheader}>{language.FilmPage.persons}</h2>
                 <div className={styles.persons}>
-                    <h3 className={styles.columnHeader}> {language.FilmPage.actor} </h3>
+                    <h3 className={styles.columnHeader} data-testid='persons'> {language.FilmPage.actor} </h3>
                     {film?.actor.map(person => (
                         <PersonColumn person={person} />
                     ))}

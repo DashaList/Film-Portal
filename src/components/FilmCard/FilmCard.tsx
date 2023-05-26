@@ -14,10 +14,7 @@ interface FilmCardProps {
 
 const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const State: any = useSelector<TypeState>(state => state)
-    const deleteFilm = () => {
-        State.deleteMode ? {} : {}
-    }
+   
     switch (film.id) {
         case 0:
             return (
@@ -29,7 +26,7 @@ const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
                 </div>
             )
         default: return (
-            <div onClick={deleteFilm}>
+            <div data-testid='FilmCard' >
                 <Link to={`/film/${film.id}`}>
                     <div className={styles.FilmCard}>
                         <div className={styles.baner}>
