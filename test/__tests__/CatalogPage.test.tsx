@@ -25,7 +25,7 @@ describe("Проверка каталога", () => {
         it("Проверка окрытия блока жанров", () => {
             const genreBtn = screen.getByTestId('genre')
             expect(screen.queryByTestId('genresBox')).toBeNull();
-            act(() => { fireEvent.click(genreBtn) })
+            fireEvent.click(genreBtn) 
             expect(screen.getByTestId('genresBox')).toBeInTheDocument();
         });
 

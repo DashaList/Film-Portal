@@ -34,3 +34,16 @@ export interface crossPoint {
     img?: string,
     name: string,
 }
+export interface InputBoxProps {
+    inpType?: 'text' | 'number' | 'radio',
+    name_ru: string,
+    name_en: string,
+    func?: any
+}
+export interface SelectorProps {
+    name_ru: string,
+    name_en: string,
+    array: any[],
+    filter: 'none' | 'genre' | 'year',
+    func?: any
+}
