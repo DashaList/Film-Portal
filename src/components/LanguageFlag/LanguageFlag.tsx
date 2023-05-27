@@ -14,7 +14,7 @@ const LanguageFlag = () => {
 
     return (
         <div>
-            <img src={RusLanguage ? "https://cdn-icons-png.flaticon.com/512/3054/3054051.png" : "https://cdn-icons-png.flaticon.com/512/4009/4009124.png"} alt="" className={styles.Flag} onClick={change} />
+            <img data-testid='Language flag' src={RusLanguage ? "https://cdn-icons-png.flaticon.com/512/3054/3054051.png" : "https://cdn-icons-png.flaticon.com/512/4009/4009124.png"} alt="" className={styles.Flag} onClick={change} />
         </div>
     );
 };

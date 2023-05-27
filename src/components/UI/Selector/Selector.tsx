@@ -1,17 +1,11 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import styles from './Selector.module.scss'
-import { genre } from '../../../types/types';
+import { SelectorProps, genre } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from '../Checkbox/Checkbox';
 import { useAppSelector } from '../../../hooks/redux';
 
-export interface SelectorProps {
-    name_ru: string,
-    name_en: string,
-    array: any[],
-    filter: 'none' | 'genre' | 'year',
-    func?: any
-}
+
 
 const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func}) => {
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
