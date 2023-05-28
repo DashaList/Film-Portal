@@ -11,9 +11,9 @@ const SignInPage = () => {
     <div className={styles.SignInPage}>
       <div className={styles.formWrapper}>
           <h2 className={styles.title}>Вход в аккаунт</h2>
-          <Input type="text" placeholder='Введите e-mail'></Input>
+          <Input type="text" placeholder='Введите e-mail' style='light'></Input>
           <div className={styles.passwordInput}>
-            <Input type="password" placeholder='Придумайте пароль'></Input>
+            <Input type="password" placeholder='Придумайте пароль' style='light'></Input>
           </div>
           <div className={styles.signInBtn}>
               <Button>Войти</Button>

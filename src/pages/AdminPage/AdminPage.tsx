@@ -2,7 +2,6 @@ import { Link, useParams } from 'react-router-dom';
 import Catalog from '../../components/Catalog/Catalog';
 import styles from './AdminPage.module.scss';
 import Path from '../../components/UI/Path/Path';
-import InputBox from '../../components/UI/InputBox/InputBox'
 import GenresData from '../../GenresData.json'
 import FilmData from '../../FilmData.json'
 import PeopleData from '../../PeopleData.json'
@@ -13,6 +12,7 @@ import { useEffect, useState } from 'react';
 import PersonColumn from '../../components/PersonColumn/PersonColumn';
 import { useAppSelector } from '../../hooks/redux';
 import TranscriptionData from '../../TranscriptionData.json'
+import Input from '../../components/UI/Input/Input';
 
 
 
@@ -37,9 +37,9 @@ const AdminPage = () => {
 
 
     const formatTime = (minutes: number) => {
-        let hours = Math.floor(minutes / 60);
-        let mins = minutes % 60;
-        let result = minutes + " мин. / " + (hours < 10 ? "0" : "") + hours + ":" + (mins < 10 ? "0" : "") + mins;
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        const result = minutes + " мин. / " + (hours < 10 ? "0" : "") + hours + ":" + (mins < 10 ? "0" : "") + mins;
         return result;
     }
     const addGenrePosition = (genre: any, isChecked: boolean) => {
@@ -54,7 +54,7 @@ const AdminPage = () => {
 
     const [personsArray, setPersonsArray] = useState<any[]>([]);
     const addPerson = () => {
-        let person = PeopleData.find(person => person.name === personName)
+        const person = PeopleData.find(person => person.name === personName)
         const newPerson = {
             id: PeopleData.length + personsArray.length + 1,
             img: personImg || 'https://i.pinimg.com/736x/4e/cc/67/4ecc67781ecf9bd4b2fd69f7b8e16d02.jpg',
@@ -134,7 +134,7 @@ const AdminPage = () => {
             <h1 className={styles.header}> Администрация </h1>
             <div className={styles.adminBox}>
                 <div className={styles.inputs} data-testid='addInfoFilmBox'>
-                    <InputBox name_en={'Image URL'} name_ru={'Адрес изображения'} func={setNewFilmImg} />
+                    {/* <InputBox name_en={'Image URL'} name_ru={'Адрес изображения'} func={setNewFilmImg} />
                     <InputBox name_en={'Year'} name_ru={'Год'} inpType='number' func={setNewFilmYear} />
                     <InputBox name_en={'Country'} name_ru={'Страна'} func={setNewFilmCountry} />
                     <InputBox name_en={'Short description'} name_ru={'Краткое описание'} func={setNewFilmTagline} />
@@ -143,7 +143,17 @@ const AdminPage = () => {
                     <InputBox name_en={'Rating'} name_ru={'Рейтинг'} inpType='number' func={setNewFilmRating} />
                     <InputBox name_en={'Number of ratings'} name_ru={'Кол-во оценок'} inpType='number' func={setNewFilmMarks} />
                     <InputBox name_en={'Name in Russian'} name_ru={'Название на русском'} func={setNewFilmName_ru} />
-                    <InputBox name_en={'Name in English'} name_ru={'Название на английском'} func={setNewFilmName_en} />
+                    <InputBox name_en={'Name in English'} name_ru={'Название на английском'} func={setNewFilmName_en} /> */}
+                    <Input type='text' placeholder={'Адрес изображения'} func={setNewFilmImg} />
+                    <Input type='number' placeholder={'Год'} func={setNewFilmYear} />
+                    <Input type='text' placeholder={'Страна'} func={setNewFilmCountry} />
+                    <Input type='text' placeholder={'Краткое описание'} func={setNewFilmTagline} />
+                    <Input type='number' placeholder={'Возрастное ограничение'}  func={setNewFilmAge} />
+                    <Input type='number' placeholder={'Продолжительность в мин'} func={setNewFilmTime} />
+                    <Input type='number' placeholder={'Рейтинг'} func={setNewFilmRating} />
+                    <Input type='number' placeholder={'Кол-во оценок'} func={setNewFilmMarks} />
+                    <Input type='text' placeholder={'Название на русском'} func={setNewFilmName_ru} />
+                    <Input type='text' placeholder={'Название на английском'} func={setNewFilmName_en} />
                     <textarea placeholder='Полное описание' onChange={(e) => setNewFilmDescription(e.target.value)} />
                 </div>
 
@@ -153,8 +163,10 @@ const AdminPage = () => {
                     ))}
                 </div >
                 <div className={styles.inputs}>
-                    <InputBox name_en={'Last name and First name of the person'} name_ru={'Фамилия и Имя человека'} func={setPersonName} />
-                    <InputBox name_en={'Photo`s URL'} name_ru={'Ссылка на фото'} func={setPersonImg} />
+                    {/* <InputBox name_en={'Last name and First name of the person'} name_ru={'Фамилия и Имя человека'} func={setPersonName} />
+                    <InputBox name_en={'Photo`s URL'} name_ru={'Ссылка на фото'} func={setPersonImg} /> */}
+                    <Input type='text' placeholder={'Фамилия и Имя человека'} func={setPersonName} />
+                    <Input type='text' placeholder={'Ссылка на фото'} func={setPersonImg} />
                     <div className={styles.genreBox}>
                         {ProfessionsData.map(profession => (
                             <Checkbox position={profession} key={profession.name_en} func={addPersonProf} />
