@@ -11,7 +11,7 @@ export interface InputProps {
     //name_ru: string,
     //name_en: string,
     func?: any;
-    style: 'light' | 'dark'
+    style?: 'light' | 'dark'
 }
 
 const Input: FC<InputProps> = ({type, placeholder, func, style = 'dark'}) => {
