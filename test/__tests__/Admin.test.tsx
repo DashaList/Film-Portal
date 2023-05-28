@@ -56,18 +56,40 @@ describe("Проверка Страницы Администрации", () => {
         });
     })
     describe("Проверка блока админки", () => {
-        it("Проверка inputBoxs", () => {
+        it("Проверка inputBox Адрес изображения", () => {
             expect(screen.getByPlaceholderText('Адрес изображения')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Год", () => {
             expect(screen.getByPlaceholderText('Год')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Страна", () => {
             expect(screen.getByPlaceholderText('Страна')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Краткое описание", () => {
             expect(screen.getByPlaceholderText('Краткое описание')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Возрастное ограничение", () => {
             expect(screen.getByPlaceholderText('Возрастное ограничение')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Продолжительность в мин", () => {
             expect(screen.getByPlaceholderText('Продолжительность в мин')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Рейтинг", () => {
             expect(screen.getByPlaceholderText('Рейтинг')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Кол-во оценок", () => {
             expect(screen.getByPlaceholderText('Кол-во оценок')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Название на русском", () => {
             expect(screen.getByPlaceholderText('Название на русском')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Название на английском", () => {
             expect(screen.getByPlaceholderText('Название на английском')).toBeInTheDocument();
+        });
+        it("Проверка inputBox Фамилия и Имя человека", () => {
             expect(screen.getByPlaceholderText('Фамилия и Имя человека')).toBeInTheDocument();
+        });
+        it("Проверка Ссылка на фото", () => {
             expect(screen.getByPlaceholderText('Ссылка на фото')).toBeInTheDocument();
         });
         it("Проверка checkBox жанров", () => {

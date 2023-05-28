@@ -14,7 +14,7 @@ interface HeaderDropdownProps {
 const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMouseLeave}) => {
 
   return (
-    <div className={styles.Dropdown} ref={refProps} onMouseLeave={onMouseLeave}>
+    <div data-testid='HeaderDropdown'className={styles.Dropdown} ref={refProps} onMouseLeave={onMouseLeave}>
         <div className={styles.triangle}></div>
         <div className={styles.dropdownWrapper}>
             <div className={styles.dropdownBlock}>
@@ -26,12 +26,12 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMous
 
             <a href="https://start.ru/support" className={styles.dropdownBlock}>
                     <div>
-                        <img src={supportIcon} alt="" />
+                        <img src={supportIcon} alt="support" />
                     </div>
                     <span>Служба поддержки</span>
             </a>
 
-            <div className={cn(styles.dropdownBlock, styles.authBlock)} onClick={loginHandler}>
+            <div data-testid='Login'className={cn(styles.dropdownBlock, styles.authBlock)} onClick={loginHandler}>
                 <div className={styles.authText}>Уже есть аккаунт?</div>
                 <div className={styles.loginBtn}>
                     Войти
