@@ -11,9 +11,9 @@ const SignUpPage = () => {
     <div className={styles.SignUpPage}>
         <div className={styles.formWrapper}>
             <h2 className={styles.title}>Зарегистрируйтесь и смотрите START 7 дней бесплатно</h2>
-            <Input type="text"placeholder='Введите e-mail'></Input>
+            <Input type="text"placeholder='Введите e-mail' style='light'></Input>
             <div className={styles.passwordInput}>
-                <Input type="text"placeholder='Введите пароль'></Input>
+                <Input type="text"placeholder='Введите пароль' style='light'></Input>
             </div>
             <div className={styles.signUpBtn}>
                 <Button>Зарегистрироваться</Button>
