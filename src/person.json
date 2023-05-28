@@ -1,0 +1,110 @@
+{
+    "id": 1360,
+    "name_ru": "Дик Поуп",
+    "name_en": "Dick Pope",
+    "birthday": null,
+    "place_of_birth": "Бромли, Кент, Англия, Великобритания",
+    "poster": "289688.webp",
+    "actor": [],
+    "composer": [],
+    "designer": [],
+    "director": [],
+    "editor": [],
+    "operator": [
+        {
+            "id": 9,
+            "name_ru": "Иллюзионист",
+            "name_en": "The Illusionist",
+            "poster": "102198.webp",
+            "rating": 8,
+            "genres": [
+                {
+                    "id": 5,
+                    "name_ru": "Триллеры",
+                    "name_ru_singular": "Триллер",
+                    "name_en": "thriller"
+                },
+                {
+                    "id": 7,
+                    "name_ru": "Мелодрамы",
+                    "name_ru_singular": "Мелодрама",
+                    "name_en": "romance"
+                },
+                {
+                    "id": 8,
+                    "name_ru": "Детективы",
+                    "name_ru_singular": "Детектив",
+                    "name_en": "mystery"
+                },
+                {
+                    "id": 10,
+                    "name_ru": "Фэнтези",
+                    "name_ru_singular": "Фэнтези",
+                    "name_en": "fantasy"
+                },
+                {
+                    "id": 15,
+                    "name_ru": "Драмы",
+                    "name_ru_singular": "Драма",
+                    "name_en": "drama"
+                }
+            ],
+            "country": [
+                {
+                    "id": 3,
+                    "name": "США"
+                },
+                {
+                    "id": 230,
+                    "name": "Чехия"
+                }
+            ]
+        },
+        {
+            "id": 559,
+            "name_ru": "Легенда",
+            "name_en": "Legend",
+            "poster": "839954.webp",
+            "rating": 7.2,
+            "genres": [
+                {
+                    "id": 5,
+                    "name_ru": "Триллеры",
+                    "name_ru_singular": "Триллер",
+                    "name_en": "thriller"
+                },
+                {
+                    "id": 15,
+                    "name_ru": "Драмы",
+                    "name_ru_singular": "Драма",
+                    "name_en": "drama"
+                },
+                {
+                    "id": 18,
+                    "name_ru": "Криминал",
+                    "name_ru_singular": "Криминал",
+                    "name_en": "crime"
+                }
+            ],
+            "country": [
+                {
+                    "id": 7,
+                    "name": "Великобритания"
+                },
+                {
+                    "id": 4,
+                    "name": "Франция"
+                },
+                {
+                    "id": 3,
+                    "name": "США"
+                }
+            ]
+        }
+    ],
+    "producer": [],
+    "translator": [],
+    "voiceDirector": [],
+    "voice": [],
+    "writer": []
+}
