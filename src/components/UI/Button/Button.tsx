@@ -6,7 +6,7 @@ interface ButtonProps {
     variant?: 'contained' | 'outlined' | "translucent";
     size?: 'small' | 'medium' | 'large';
     children: ReactNode;
-    onClick?: () => void
+    onClick?: (...args: any[]) => void
 }
 
 const Button: FC<ButtonProps> = ({variant = 'contained', size= 'medium', children, onClick = () => null}) => {

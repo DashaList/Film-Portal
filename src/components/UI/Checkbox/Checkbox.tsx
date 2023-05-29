@@ -2,7 +2,7 @@ import { FC,  useState } from 'react';
 import styles from './Checkbox.module.scss'
 import { useAppSelector } from '../../../hooks/redux';
 
-interface CheckboxProps {
+export interface CheckboxProps {
     position: any
     func?: any
 }

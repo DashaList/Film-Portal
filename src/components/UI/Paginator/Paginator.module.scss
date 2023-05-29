@@ -1,9 +1,7 @@
 @import '../../../App/App.scss';
 
 .Paginanor {
-    position: absolute;
-    top: -22px;
-    right: 50px;
+
     width: 107px;
     height: 4px;
     margin-left: 16px;
@@ -13,8 +11,7 @@
     z-index: 1;
 
     @media (min-width: 1441px) {
-        top: -1.53vw;
-        width: 7.43vw;
+
         height: 0.28vw;
         margin-left: 1.1vw;
         border-radius: 0.21vw;
