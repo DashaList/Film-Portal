@@ -8,7 +8,6 @@ export const fetchPersons = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(personSlice.actions.personsFetching())
         const response = await axios.get<IPeople[]>('/PersonData.json')
-        console.log(response)
         dispatch(personSlice.actions.personsFetchingSuccess(
             response.data
         ))
