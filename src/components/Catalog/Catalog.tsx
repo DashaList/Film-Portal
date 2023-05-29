@@ -6,11 +6,11 @@ import Selector from '../UI/Selector/Selector';
 import Button from '../../components/UI/Button/Button';
 import YearData from '../../YearData.json'
 import Slider from '../../components/UI/Slider/Slider';
-import InputBox from '../UI/InputBox/InputBox';
 import GenresData from '../../GenresData.json'
 import { Link } from 'react-router-dom';
 import TranscriptionData from '../../TranscriptionData.json'
 import { useAppSelector } from '../../hooks/redux';
+import Input from '../UI/Input/Input';
 
 interface CatalogProps {
     genres: string[]
@@ -28,6 +28,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
 
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
     const [language, setLanguage] = useState(TranscriptionData[0])
+
     useEffect(() => {
         RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
     }, [RusLanguage])
@@ -99,8 +100,10 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 <Selector func={setCountryFilter} name_ru={'Страны'} array={["США", "Росcия"]} filter='none' name_en={'Country'} />
                 <Slider func={setRatingFilter} max={10} name_ru={'Рейтинг от'} name_en={'Rating from'} />
                 <Slider func={setratingValueFilter} max={1000000} name_ru={'Кол-во оценок от'} name_en={'Number of ratings from'} />
-                <InputBox name_ru='Поиск по актёрам' func={setActrosFilter} name_en={'Search by actors'} />
-                <InputBox name_ru='Поиск по режиссёру' func={setDirectorFilter} name_en={'Search by director'} />
+                {/* <InputBox name_ru='Поиск по актёрам' func={setActrosFilter} name_en={'Search by actors'} /> */}
+                <Input type='text' placeholder='Поиск по актёрам' func={setActrosFilter} style='dark'/>
+                {/* <InputBox name_ru='Поиск по режиссёру' func={setDirectorFilter} name_en={'Search by director'} /> */}
+                <Input type='text' placeholder='Поиск по режиссёру' func={setDirectorFilter} style='dark'/>
                 <Link to='/movies/'>
                     <Button variant='outlined' >{language.Button.clean}</Button>
                 </Link >
