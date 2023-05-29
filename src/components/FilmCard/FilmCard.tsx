@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IFilm, TypeState } from '../../types/types';
+import { IPersonsFilms, TypeState } from '../../types/types';
 import styles from './FilmCard.module.scss'
 import { Link } from 'react-router-dom';
 import HoverBaner from '../HoverBaner/HoverBaner';
@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 import { useAppSelector } from '../../hooks/redux';
 
 interface FilmCardProps {
-    film: IFilm,
+    film: IPersonsFilms,
     type: 'forGrid' | 'forRow'
 }
 
@@ -30,18 +30,18 @@ const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
                 <Link to={`/film/${film.id}`}>
                     <div className={styles.FilmCard}>
                         <div className={styles.baner}>
-                            {type == 'forGrid' && <img className={styles.imgBaner} src={film.img} alt="" />}
-                            {type == 'forRow' && <div className={styles.imgBannerDiv} style={{ backgroundImage: `url(${'"' + film.img + '"'})` }}></div>}
+                            {type == 'forGrid' && <img className={styles.imgBaner} src={film.poster} alt="" />}
+                            {type == 'forRow' && <div className={styles.imgBannerDiv} style={{ backgroundImage: `url(${'"' + film.poster + '"'})` }}></div>}
                             <div className={film.rating >= 7 ? styles.ratingTop : styles.rating}> {film.rating.toFixed(1)}</div>
                             <HoverBaner />
                         </div>
                         <div className={cn(styles.text, type == 'forRow' ? styles.textForRow : '')}>
                             <div className={styles.name}> {RusLanguage? film.name_ru:film.name_en} </div>
                             <div className={styles.genre}>
-                                {film.genre.map((genre, index) => (
+                                {film.genres.map((genre, index) => (
                                     <span key={index}>
                                         {RusLanguage? genre.name_ru:genre.name_en}
-                                        {index !== film.genre.length - 1 && ", "}
+                                        {index !== film.genres.length - 1 && ", "}
                                     </span>
                                 ))}
                             </div>

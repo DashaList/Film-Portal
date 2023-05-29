@@ -54,7 +54,7 @@ const AdminPage = () => {
 
     const [personsArray, setPersonsArray] = useState<any[]>([]);
     const addPerson = () => {
-        const person = PeopleData.find(person => person.name === personName)
+        const person = PeopleData.find(person => person.name_ru === personName)||PeopleData.find(person => person.name_en === personName)
         const newPerson = {
             id: PeopleData.length + personsArray.length + 1,
             img: personImg || 'https://i.pinimg.com/736x/4e/cc/67/4ecc67781ecf9bd4b2fd69f7b8e16d02.jpg',

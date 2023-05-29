@@ -63,7 +63,7 @@ export interface IFimsPersons {
     directors: crossPoint[],
     editors?: crossPoint[],
     operators?: crossPoint[],
-    producers?: crossPoint[],
+    producer?: crossPoint[],
     translators?: crossPoint[],
     voiceDirectors?: crossPoint[],
     voices?: crossPoint[],
@@ -92,7 +92,7 @@ export interface ICountry {
     id: number,
     name: string
 }
-interface IFilmPerson {
+export interface IPersonsFilms {
     id: number;
     name_ru: string;
     name_en: string;
@@ -105,18 +105,23 @@ export interface IPerson {
     id: number,
     name_ru: string,
     name_en: string,
-    birthday?: string,
+    birthday?: string|null,
     place_of_birth: string,
     poster: string,
-    actor: IFilmPerson[],
-    composer: IFilmPerson[],
-    designer: IFilmPerson[],
-    director: IFilmPerson[],
-    editor: IFilmPerson[],
-    operator: IFilmPerson[],
+    actor: IPersonsFilms[]|[],
+    composer: IPersonsFilms[]|[],
+    designer: IPersonsFilms[]|[],
+    director: IPersonsFilms[]|[],
+    editor: IPersonsFilms[]|[],
+    operator: IPersonsFilms[]|[],
+    producer: IPersonsFilms[]|[],
+    translator: crossPoint[]|[],
+    voiceDirector: IPersonsFilms[]|[],
+    voice: IPersonsFilms[]|[],
+    writer: IPersonsFilms[]|[],
 }
 export interface IMain {
-    drama: IFilmPerson[],
-    comedy: IFilmPerson[],
-    rating: IFilmPerson[]
+    drama: IPersonsFilms[],
+    comedy: IPersonsFilms[],
+    rating: IPersonsFilms[]
 }

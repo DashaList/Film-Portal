@@ -22,7 +22,8 @@ const FilmPage = () => {
     const { id } = useParams()
 
     //const film = FilmData.find((obj) => obj.id === Number(id))
-    const film: IFilmData = Film
+    const films: IFilmData[] = Film
+    const film:IFilmData = Film.find((obj) => obj.id === Number(id))||Film[0]
     ////////////
     const url = ""
     const filmPageAxios = (method: string = "GET", body: any = null) => {
@@ -131,7 +132,7 @@ const FilmPage = () => {
                     {film?.persons.directors && <PersonList position={film?.persons.directors} nameProfessions={language.FilmPage.directors} />}
                     {film?.persons.editors && <PersonList position={film?.persons.editors} nameProfessions={language.FilmPage.editors} />}
                     {film?.persons.operators && <PersonList position={film?.persons.operators} nameProfessions={language.FilmPage.operators} />}
-                    {film?.persons.producers && <PersonList position={film?.persons.producers} nameProfessions={language.FilmPage.producers} />}
+                    {film?.persons.producer && <PersonList position={film?.persons.producer} nameProfessions={language.FilmPage.producer} />}
                     {film?.persons.translators && <PersonList position={film?.persons.translators} nameProfessions={language.FilmPage.translators} />}
                     {film?.persons.voiceDirectors && <PersonList position={film?.persons.voiceDirectors} nameProfessions={language.FilmPage.voiceDirectors} />}
                     {film?.persons.voices && <PersonList position={film?.persons.voices} nameProfessions={language.FilmPage.voices} />}
