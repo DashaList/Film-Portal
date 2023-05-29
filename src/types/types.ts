@@ -15,6 +15,7 @@ export interface IFilm {
 export interface genre {
     id: number,
     name_ru: string,
+    name_ru_singular?: string,
     name_en: string
 }
 
@@ -31,7 +32,7 @@ export interface TypeState {
 }
 export interface crossPoint {
     id: number,
-    img?: string,
+    poster?: string,
     name: string,
 }
 export interface InputBoxProps {
@@ -46,4 +47,69 @@ export interface SelectorProps {
     array: any[],
     filter: 'none' | 'genre' | 'year',
     func?: any
+}
+export interface IBudget {
+    currency: string,
+    number: number
+}
+export interface IFimsPersons {
+    actors: crossPoint[],
+    composers: crossPoint[],
+    designers?: crossPoint[],
+    directors: crossPoint[],
+    editors?: crossPoint[],
+    operators?: crossPoint[],
+    producers?: crossPoint[],
+    translators?: crossPoint[],
+    voiceDirectors?: crossPoint[],
+    voices?: crossPoint[],
+    writers?: crossPoint[],
+}
+export interface IFilmData {
+    id: number,
+    id_kinopoisk: number,
+    name_ru: string,
+    name_en: string,
+    tagline: string,
+    world_premier: string,
+    age: string,
+    MPAA: string,
+    duration_min: number,
+    rating: number,
+    marks: number,
+    poster: string,
+    genre: genre[],
+    year?: number,
+    country: crossPoint[],
+    budget: IBudget[]
+    description?: string,
+    persons: IFimsPersons[]
+}
+interface IFilmPerson {
+    id: number;
+    name_ru: string;
+    name_en: string;
+    poster: string;
+    rating: number;
+    genres: genre[];
+    country: crossPoint[];
+}
+export interface IPerson {
+    id: number,
+    name_ru: string,
+    name_en: string,
+    birthday?: string,
+    place_of_birth: string,
+    poster: string,
+    actor: IFilmPerson[],
+    composer: IFilmPerson[],
+    designer: IFilmPerson[],
+    director: IFilmPerson[],
+    editor: IFilmPerson[],
+    operator: IFilmPerson[],
+}
+export interface IMain {
+    drama: IFilmPerson[],
+    comedy: IFilmPerson[],
+    rating: IFilmPerson[]
 }

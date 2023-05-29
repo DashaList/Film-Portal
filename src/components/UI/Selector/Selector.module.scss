@@ -23,7 +23,9 @@
         display: none;
     }
     appearance: none;
-    height: 100%;
+    height: 3.33vw;
+    padding: 0 1.84vw;
+
     width: 10vw;
     min-width: 115px;
     display: flex;
@@ -34,7 +36,6 @@
     color: #fff;
     border-radius: 4px;
     gap: 15px;
-    padding: 10px 35px 10px 15px;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.3s ease-in-out;
