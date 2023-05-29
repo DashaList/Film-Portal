@@ -3,15 +3,14 @@ import Path from '../../components/UI/Path/Path';
 import styles from './FilmPage.module.scss'
 import FilmData from '../../FilmData.json'
 import Button from '../../components/UI/Button/Button';
-import PersonColumn from '../../components/PersonColumn/PersonColumn';
 import { useEffect, useState } from 'react';
 import CommentBox from '../../components/CommentBox/CommentBox';
 import { useAppSelector } from '../../hooks/redux';
 import TranscriptionData from '../../TranscriptionData.json'
-
-
-
-
+import axios from 'axios';
+import { IFilmData } from '../../types/types'
+import Film from '../../film.json'
+import PersonList from '../../components/PersonList/PersonList';
 
 const FilmPage = () => {
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
@@ -21,37 +20,61 @@ const FilmPage = () => {
     }, [RusLanguage])
 
     const { id } = useParams()
-    const film = FilmData.find((obj) => obj.id === Number(id))
-    const [DescriptionState, getDescriptionState] = useState(false)
 
+    //const film = FilmData.find((obj) => obj.id === Number(id))
+    const films: IFilmData[] = Film
+    const film:IFilmData = Film.find((obj) => obj.id === Number(id))||Film[0]
+    ////////////
+    const url = ""
+    const filmPageAxios = (method: string = "GET", body: any = null) => {
+        axios({
+            method: method,
+            url: url,
+            data: body
+        })
+            .then(response => {
+                let film: IFilmData = response.data
+                return film
+            })
+            .catch(error => (console.log(error)))
+    }
+    filmPageAxios()
+    ///////////////
+    const [DescriptionState, getDescriptionState] = useState(false)
     const toggleDiscription = () => {
         getDescriptionState(!DescriptionState)
+    }
+    const formatTime = (minutes: number) => {
+        const hours = Math.floor(minutes / 60);
+        const mins = minutes % 60;
+        const result = minutes + " мин. / " + (hours < 10 ? "0" : "") + hours + ":" + (mins < 10 ? "0" : "") + mins;
+        return result;
     }
     return (
         <div className={styles.page}>
             <div className={styles.baner}>
                 <div className={styles.banerBox}>
-                    <img className={styles.imgBaner} src={film?.img} alt="" data-testid='Baner' />
+                    <img className={styles.imgBaner} src={film?.poster} alt="" data-testid='Baner' />
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
                         <Link to="/"> {language.Path.main} </Link>
                         <Link to="/movies">{language.Path.main}</Link>
-                        <Link to={`/movies/:${film?.genre[0].name_en}`}>{RusLanguage ? film?.genre[0].name_ru : film?.genre[0].name_en}</Link>
+                        <Link to={`/movies/:${film?.genres[0].name_en}`}>{RusLanguage ? film?.genres[0].name_ru : film?.genres[0].name_en}</Link>
                         <Link to="/movie/:id">{RusLanguage ? film?.name_ru : film?.name_en}</Link>
                     </Path>
                     <div className={styles.filmInfo}>
                         <h1 className={styles.filmName} data-testid='Name'>{RusLanguage ? film?.name_ru : film?.name_en}</h1>
                         <div className={styles.descriptionShort} data-testid='info'>
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
-                            <span className={styles.link}>{film?.year},</span>
-                            {film?.genre.map(genre => (
+                            <span className={styles.link}>{new Date(film?.world_premier).getFullYear()},</span>
+                            {film?.genres.map(genre => (
                                 <span className={styles.link}>{RusLanguage ? genre.name_ru : genre.name_en},</span>
                             ))}
-                            <span className={styles.link}>{film?.age}, {film?.time} </span>
+                            <span className={styles.link}>{film?.age}, {formatTime(film.duration_min)} </span>
                         </div>
                         <div className={styles.description} data-testid='shortDescription'>
-                            <p>{film?.description} </p>
+                            <p>{film?.tagline} </p>
                         </div>
                         <div className={styles.btnBox}>
                             <Button size='large' data-testid='watch_free'>
@@ -74,7 +97,6 @@ const FilmPage = () => {
                 <div className={styles.descriptionWrapper} data-testid='description'>
                     <div className={DescriptionState ? styles.descriptionFull : styles.descriptionFullSlash}>
                         <p>{film?.description} <br></br></p>
-
                     </div>
                     <div className={styles.socialBox} data-testid='socialBox'>
                         <div className={styles.box}>
@@ -104,15 +126,21 @@ const FilmPage = () => {
 
                 <h2 className={styles.subheader}>{language.FilmPage.persons}</h2>
                 <div className={styles.persons}>
-                    <h3 className={styles.columnHeader} data-testid='persons'> {language.FilmPage.actor} </h3>
-                    {film?.actor.map(person => (
-                        <PersonColumn person={person} />
-                    ))}
-
+                    {film?.persons.actors && <PersonList position={film?.persons.actors} nameProfessions={language.FilmPage.actor} />}
+                    {film?.persons.composers && <PersonList position={film?.persons.composers} nameProfessions={language.FilmPage.composers} />}
+                    {film?.persons.designers && <PersonList position={film?.persons.designers} nameProfessions={language.FilmPage.designers} />}
+                    {film?.persons.directors && <PersonList position={film?.persons.directors} nameProfessions={language.FilmPage.directors} />}
+                    {film?.persons.editors && <PersonList position={film?.persons.editors} nameProfessions={language.FilmPage.editors} />}
+                    {film?.persons.operators && <PersonList position={film?.persons.operators} nameProfessions={language.FilmPage.operators} />}
+                    {film?.persons.producer && <PersonList position={film?.persons.producer} nameProfessions={language.FilmPage.producer} />}
+                    {film?.persons.translators && <PersonList position={film?.persons.translators} nameProfessions={language.FilmPage.translators} />}
+                    {film?.persons.voiceDirectors && <PersonList position={film?.persons.voiceDirectors} nameProfessions={language.FilmPage.voiceDirectors} />}
+                    {film?.persons.voices && <PersonList position={film?.persons.voices} nameProfessions={language.FilmPage.voices} />}
+                    {film?.persons.writers && <PersonList position={film?.persons.writers} nameProfessions={language.FilmPage.writers} />}
                 </div>
             </div>
             <CommentBox />
-        </div>
+        </div >
     );
 };
 

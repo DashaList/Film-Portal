@@ -1,13 +1,13 @@
 import { FC, useEffect, useState } from 'react'
 import styles from './FilmsList.module.scss'
-import { IFilm } from '../../types/types'
+import { IPersonsFilms } from '../../types/types'
 import FilmCard from '../FilmCard/FilmCard'
 import { useAppSelector } from '../../hooks/redux'
 import TranscriptionData from '../../TranscriptionData.json'
 
 
 interface FilmsListProps {
-  films: IFilm[]
+  films: IPersonsFilms[]
 }
 
 const FilmsList: FC<FilmsListProps> = ({ films }) => {

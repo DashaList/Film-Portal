@@ -1,3 +1,5 @@
+import { existsSync } from "fs"
+
 export interface IFilm {
     id: number,
     name_ru: string,
@@ -32,8 +34,10 @@ export interface TypeState {
 }
 export interface crossPoint {
     id: number,
-    poster?: string,
-    name: string,
+    poster?: string | undefined,
+    name_ru?: string | null,
+    name_en?: string | null,
+
 }
 export interface InputBoxProps {
     inpType?: 'text' | 'number' | 'radio',
@@ -54,12 +58,12 @@ export interface IBudget {
 }
 export interface IFimsPersons {
     actors: crossPoint[],
-    composers: crossPoint[],
+    composers?: crossPoint[],
     designers?: crossPoint[],
     directors: crossPoint[],
     editors?: crossPoint[],
     operators?: crossPoint[],
-    producers?: crossPoint[],
+    producer?: crossPoint[],
     translators?: crossPoint[],
     voiceDirectors?: crossPoint[],
     voices?: crossPoint[],
@@ -77,39 +81,47 @@ export interface IFilmData {
     duration_min: number,
     rating: number,
     marks: number,
-    poster: string,
-    genre: genre[],
-    year?: number,
-    country: crossPoint[],
-    budget: IBudget[]
+    poster: string | undefined,
+    genres: genre[],
+    country: ICountry[],
+    budget?: IBudget,
     description?: string,
-    persons: IFimsPersons[]
+    persons: IFimsPersons
 }
-interface IFilmPerson {
+export interface ICountry {
+    id: number,
+    name: string
+}
+export interface IPersonsFilms {
     id: number;
     name_ru: string;
     name_en: string;
     poster: string;
     rating: number;
     genres: genre[];
-    country: crossPoint[];
+    country: ICountry[];
 }
 export interface IPerson {
     id: number,
     name_ru: string,
     name_en: string,
-    birthday?: string,
+    birthday?: string|null,
     place_of_birth: string,
     poster: string,
-    actor: IFilmPerson[],
-    composer: IFilmPerson[],
-    designer: IFilmPerson[],
-    director: IFilmPerson[],
-    editor: IFilmPerson[],
-    operator: IFilmPerson[],
+    actor: IPersonsFilms[]|[],
+    composer: IPersonsFilms[]|[],
+    designer: IPersonsFilms[]|[],
+    director: IPersonsFilms[]|[],
+    editor: IPersonsFilms[]|[],
+    operator: IPersonsFilms[]|[],
+    producer: IPersonsFilms[]|[],
+    translator: crossPoint[]|[],
+    voiceDirector: IPersonsFilms[]|[],
+    voice: IPersonsFilms[]|[],
+    writer: IPersonsFilms[]|[],
 }
 export interface IMain {
-    drama: IFilmPerson[],
-    comedy: IFilmPerson[],
-    rating: IFilmPerson[]
+    drama: IPersonsFilms[],
+    comedy: IPersonsFilms[],
+    rating: IPersonsFilms[]
 }

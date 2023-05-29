@@ -8,6 +8,9 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { useEffect, useState } from 'react'
 import { fetchPersons } from '../../store/actions/personActions'
 import TranscriptionData from '../../TranscriptionData.json'
+import axios from 'axios'
+import { IPerson,  IPersonsFilms } from '../../types/types'
+import Person from '../../person.json'
 
 
 const PersonPage = () => {
@@ -26,9 +29,28 @@ const PersonPage = () => {
     }, [])
 
     const { id } = useParams()
-    const person = persons.find((person) => person.id === Number(id))
+    ////////////
+    const url = ""
+    const filmPageAxios = (method: string = "GET", body: any = null) => {
+        axios({
+            method: method,
+            url: url,
+            data: body
+        })
+            .then(response => {
+                let person: IPerson = response.data
+                return person
+            })
+            .catch(error => (console.log(error)))
+    }
+    filmPageAxios()
+    ///////////////
+    // const person = persons.find((person) => person.id === Number(id))
+    // const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
 
-    const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
+    const person: IPerson = Person
+    let films: IPersonsFilms[] = person.operator
+
 
     return (
         <div className={styles.PersonPage}>
@@ -41,18 +63,18 @@ const PersonPage = () => {
                             <p> {language.Path.main} </p>
                             <Link to="/persons">{language.Path.persons}</Link>
                         </Path>
-                        <h3 data-testid='fullName'>{person?.name}</h3>
-                        <p className={styles.description} data-testid='biography'>Эдди Мёрфи (Eddie Murphy) — популярный американский актер, режиссер, сценарист, продюсер и музыкант. Обладатель премии «Золотой глобус» и номинант на премию «Оскар» за роль второго плана (фильм «Девушка мечты»).</p>
+                        <h3 data-testid='fullName'>{RusLanguage ? person?.name_ru : person?.name_en}</h3>
+                        <p className={styles.description} data-testid='biography'></p>
                     </div>
                 </div>
                 <div className={styles.right}>
                     <div className={styles.personPhoto}>
-                        <img src={person?.img} alt="" data-testid='avatarPerson'/>
+                        <img src={person?.poster} alt="" data-testid='avatarPerson' />
                     </div>
                 </div>
             </div>
             <div className={styles.bottom}>
-                <h1 data-testid='filmgraphy'>{person?.name} {language.PersonPage.films}</h1>
+                <h1 data-testid='filmgraphy'>{RusLanguage ? person?.name_ru : person?.name_en} {language.PersonPage.films}</h1>
                 <FilmsList films={films} ></FilmsList>
             </div>
         </div>

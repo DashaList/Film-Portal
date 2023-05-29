@@ -49,7 +49,17 @@
       "more": "Показать ещё",
       "hide": "Свернуть",
       "persons": "Актеры и съемочная группа",
-      "actor": "В главных ролях "
+      "actor": "В главных ролях ",
+      "composers": "Композиторы",
+      "designers": "Дизайнеры",
+      "directors": "Режиссеры",
+      "editors": "Редакторы",
+      "operators": "Операторы",
+      "producer": "Продюсеры",
+      "translators": "Переводчики",
+      "voiceDirectors": "Режиссеры озвучивания",
+      "voices": "Голоса",
+      "writers": "Сценаристы"
     },
     "PersonPage": {
       "films": "фильмография"
@@ -124,7 +134,17 @@
       "more": "Show more",
       "hide": "Collapse",
       "persons": "Actors and crew",
-      "actor": "Starring "
+      "actor": "Actors ",
+      "composers": "Composers",
+      "designers": "Designers",
+      "directors": "Directors",
+      "editors": "Editors",
+      "operators": "Operators",
+      "producer": "Producers",
+      "translators": "Translators",
+      "voiceDirectors": "Voice directors",
+      "voices": "Voices",
+      "writers": "Writers"
     },
     "PersonPage": {
       "films": "filmography"

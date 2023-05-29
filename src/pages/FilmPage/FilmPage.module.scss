@@ -154,6 +154,12 @@
     gap: 15px;
     justify-content: start;
     align-items: center;
+    &:nth-last-of-type(2) {
+        img {
+            transform: rotate(180deg);
+        }
+    }
+    
 }
 .more {
     display: inline;
@@ -189,8 +195,11 @@
     font-size: 2vw;
     line-height: 40px;
 }
-.columnHeader {
-    font-size: 1vw;
-    line-height: 22px;
-    margin-bottom: 4px;
+
+.persons {
+    width: 100%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
 }
