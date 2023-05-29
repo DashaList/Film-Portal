@@ -1,3 +1,5 @@
+import { existsSync } from "fs"
+
 export interface IFilm {
     id: number,
     name_ru: string,
@@ -32,8 +34,10 @@ export interface TypeState {
 }
 export interface crossPoint {
     id: number,
-    poster?: string,
-    name: string,
+    poster?: string | undefined,
+    name_ru?: string | null,
+    name_en?: string | null,
+
 }
 export interface InputBoxProps {
     inpType?: 'text' | 'number' | 'radio',
@@ -54,7 +58,7 @@ export interface IBudget {
 }
 export interface IFimsPersons {
     actors: crossPoint[],
-    composers: crossPoint[],
+    composers?: crossPoint[],
     designers?: crossPoint[],
     directors: crossPoint[],
     editors?: crossPoint[],
@@ -77,13 +81,16 @@ export interface IFilmData {
     duration_min: number,
     rating: number,
     marks: number,
-    poster: string,
-    genre: genre[],
-    year?: number,
-    country: crossPoint[],
-    budget: IBudget[]
+    poster: string | undefined,
+    genres: genre[],
+    country: ICountry[],
+    budget?: IBudget,
     description?: string,
-    persons: IFimsPersons[]
+    persons: IFimsPersons
+}
+export interface ICountry {
+    id: number,
+    name: string
 }
 interface IFilmPerson {
     id: number;
@@ -92,7 +99,7 @@ interface IFilmPerson {
     poster: string;
     rating: number;
     genres: genre[];
-    country: crossPoint[];
+    country: ICountry[];
 }
 export interface IPerson {
     id: number,
