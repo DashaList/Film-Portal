@@ -6,6 +6,10 @@
         align-items: center;
         width: 381px;
         height: 160px;
+
+        // width: 305px;
+        // height: 233px;
+
         position: relative;
 
         @media (min-width: 1441px) {
@@ -20,6 +24,9 @@
             left: 0;
             width: 25px;
             height: 160px;
+
+            // width: 36px;
+            // height: 233px;
             background-image: url(../../assets/img/svg/ellipse.svg);
             background-position: 50%;
             background-size: cover;
@@ -38,6 +45,9 @@
             right: 0;
             width: 25px;
             height: 160px;
+
+            // width: 36px;
+            // height: 233px;
             background-image: url(../../assets/img/svg/ellipse.svg);
             background-position: 50%;
             background-size: cover;
@@ -77,6 +87,9 @@
         display: flex;
         width: 242px;
         height: 136px;
+        
+        // width: 146px;
+        // height: 209px;
         border-radius: 4px;
         background-size: cover;
         background-repeat: no-repeat;
@@ -87,6 +100,10 @@
             width: 16.794vw;
             height: 9.438vw;
             border-radius: 0.28vw;
+
+            
+            // width: 10.132vw;
+            // height: 14.504vw;
         }
 
         &:hover::after {

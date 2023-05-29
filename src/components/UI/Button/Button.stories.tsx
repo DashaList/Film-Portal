@@ -9,8 +9,9 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
+type Story = StoryObj<typeof Button>;
 
-export const Default: StoryObj<typeof Button> = {
+export const Default: Story = {
   args: {
     children: 'Click me',
     variant: 'contained',
@@ -18,7 +19,7 @@ export const Default: StoryObj<typeof Button> = {
   },
 };
 
-export const Large: StoryObj<typeof Button> = {
+export const Large: Story = {
   args: {
     children: 'Click me',
     variant: 'outlined',

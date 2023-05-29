@@ -9,17 +9,28 @@ const meta: Meta<InputProps> = {
 };
 
 export default meta;
+type Story = StoryObj<InputProps>;
 
-export const Default: StoryObj<InputProps> = {
+export const Light: Story = {
   args: {
     type: 'text',
-    placeholder: 'Введите...'
+    placeholder: 'Введите...',
+    style: 'light'
   },
 };
 
-export const Password: StoryObj<InputProps> = {
+export const Password: Story = {
   args: {
     type: 'password',
-    placeholder: 'Введите пароль'
+    placeholder: 'Введите пароль',
+    style: 'light'
+  },
+};
+
+export const Dark: Story = {
+  args: {
+    type: 'text',
+    placeholder: 'Введите...',
+    style: 'dark'
   },
 };

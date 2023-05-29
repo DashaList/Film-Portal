@@ -9,8 +9,9 @@ const meta: Meta<PaginatorProps> = {
 };
 
 export default meta;
+type Story = StoryObj<PaginatorProps>;
 
-export const Default: StoryObj<PaginatorProps> = {
+export const Default: Story = {
   args: {
     sliderWidth: 5000,
     scroll: 0

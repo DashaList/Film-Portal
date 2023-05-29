@@ -88,6 +88,17 @@
         }
     }
 
+    .paginator {
+        position: absolute;
+        top: -22px;
+        right: 50px;
+
+        @media (min-width: 1441px) {
+            top: -1.53vw;
+            width: 7.43vw;
+        }
+    }
+
     .leftArrow {
         left: 0;
     }
@@ -114,10 +125,20 @@
             border-bottom-left-radius: 0.21vw;
         }
     }
-    .fadeRight {
-        right: 0;
-    }
     .fadeLeft {
         left: 0;
+        width: 56px;
+
+        @media (min-width: 1441px) {
+            padding: 0 3.89vw;
+        }
+    }
+    .fadeRight {
+        right: 0;
+        width: 56px;
+
+        @media (min-width: 1441px) {
+            padding: 0 3.89vw;
+        }
     }
 }

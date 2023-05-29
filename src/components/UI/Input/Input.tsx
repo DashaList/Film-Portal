@@ -10,11 +10,11 @@ export interface InputProps {
     //inpType?: 'text' | 'number' | 'radio',
     //name_ru: string,
     //name_en: string,
-    func?: any;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     style?: 'light' | 'dark'
 }
 
-const Input: FC<InputProps> = ({type, placeholder, func, style = 'dark'}) => {
+const Input: FC<InputProps> = ({type, placeholder, onChange, style = 'dark'}) => {
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -25,11 +25,12 @@ const Input: FC<InputProps> = ({type, placeholder, func, style = 'dark'}) => {
   return (
     <div className={cn(styles.Input, styles[style],)}>
         {type !== 'password' &&
-            <input type={type} placeholder={placeholder} onChange={(e) => func(e.target.value)} data-testid='inputBox'/>
+            // <input type={type} placeholder={placeholder} onChange={(e) => func(e.target.value)} data-testid='inputBox'/>
+            <input type={type} placeholder={placeholder} onChange={onChange} data-testid='inputBox'/>
         }
         {type === 'password' &&
             <>
-                <input type={showPassword ? "text" : "password"} placeholder={placeholder}/>
+                <input type={showPassword ? "text" : "password"} placeholder={placeholder} onChange={onChange}/>
                 <div className={styles.passwordEye} onClick={eyeClickHandler}>
                     {showPassword ? <img src={eyeOff} alt="" /> : <img src={eyeOn} alt="" />}
                 </div>
