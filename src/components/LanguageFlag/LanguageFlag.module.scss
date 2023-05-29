@@ -1,7 +1,10 @@
+.flagBox{
+    width: 2.5vw;
+    height: 2.5vw;
+}
 .Flag {
-    margin: auto;
-    width: 2vw;
-    height: 2vw;
+    width: 100%;
+    height: 100%;
     scale: 1;
     transition: all 0.3s ease-in-out;
     cursor: pointer;

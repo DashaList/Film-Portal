@@ -11,6 +11,8 @@ import TranscriptionData from '../../TranscriptionData.json'
 
 
 
+
+
 const FilmPage = () => {
     const { RusLanguage } = useAppSelector(state => state.languageReducer)
     const [language, setLanguage] = useState(TranscriptionData[0])
@@ -29,7 +31,7 @@ const FilmPage = () => {
         <div className={styles.page}>
             <div className={styles.baner}>
                 <div className={styles.banerBox}>
-                    <img className={styles.imgBaner} src={film?.img} alt="" data-testid='Baner'/>
+                    <img className={styles.imgBaner} src={film?.img} alt="" data-testid='Baner' />
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
@@ -44,7 +46,7 @@ const FilmPage = () => {
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
                             <span className={styles.link}>{film?.year},</span>
                             {film?.genre.map(genre => (
-                                <span className={styles.link}>{RusLanguage ? genre.name_ru:genre.name_en},</span>
+                                <span className={styles.link}>{RusLanguage ? genre.name_ru : genre.name_en},</span>
                             ))}
                             <span className={styles.link}>{film?.age}, {film?.time} </span>
                         </div>
