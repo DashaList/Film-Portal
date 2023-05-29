@@ -95,8 +95,8 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 break;
         }
     }, [sortState]);
-    return (
 
+    return (
         <>
             <div className={styles.filtersBox}>
                 <Selector name_ru={'Жанр'} array={GenresData} filter={'genre'} name_en={'Genre'} />
@@ -105,9 +105,9 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 <Slider func={setRatingFilter} max={10} name_ru={'Рейтинг от'} name_en={'Rating from'} />
                 <Slider func={setratingValueFilter} max={1000000} name_ru={'Кол-во оценок от'} name_en={'Number of ratings from'} />
                 {/* <InputBox name_ru='Поиск по актёрам' func={setActrosFilter} name_en={'Search by actors'} /> */}
-                <Input type='text' placeholder='Поиск по актёрам' func={setActrosFilter} style='dark' />
+                <Input type='text' placeholder='Поиск по актёрам' onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
                 {/* <InputBox name_ru='Поиск по режиссёру' func={setDirectorFilter} name_en={'Search by director'} /> */}
-                <Input type='text' placeholder='Поиск по режиссёру' func={setDirectorFilter} style='dark' />
+                <Input type='text' placeholder='Поиск по режиссёру' onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
                 <Link to='/movies/'>
                     <Button variant='outlined' >{language.Button.clean}</Button>
                 </Link >

@@ -125,6 +125,10 @@ const AdminPage = () => {
         RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
     }, [RusLanguage])
 
+    // const inputHandler = (setter) => {
+    //     React.MouseEvent<HTMLButtonElement> (e) => func(e.target.value)
+    // }
+
     return (
         <div className={styles.page}>
             <Path>
@@ -144,16 +148,16 @@ const AdminPage = () => {
                     <InputBox name_en={'Number of ratings'} name_ru={'Кол-во оценок'} inpType='number' func={setNewFilmMarks} />
                     <InputBox name_en={'Name in Russian'} name_ru={'Название на русском'} func={setNewFilmName_ru} />
                     <InputBox name_en={'Name in English'} name_ru={'Название на английском'} func={setNewFilmName_en} /> */}
-                    <Input type='text' placeholder={'Адрес изображения'} func={setNewFilmImg} />
-                    <Input type='number' placeholder={'Год'} func={setNewFilmYear} />
-                    <Input type='text' placeholder={'Страна'} func={setNewFilmCountry} />
-                    <Input type='text' placeholder={'Краткое описание'} func={setNewFilmTagline} />
-                    <Input type='number' placeholder={'Возрастное ограничение'}  func={setNewFilmAge} />
-                    <Input type='number' placeholder={'Продолжительность в мин'} func={setNewFilmTime} />
-                    <Input type='number' placeholder={'Рейтинг'} func={setNewFilmRating} />
-                    <Input type='number' placeholder={'Кол-во оценок'} func={setNewFilmMarks} />
-                    <Input type='text' placeholder={'Название на русском'} func={setNewFilmName_ru} />
-                    <Input type='text' placeholder={'Название на английском'} func={setNewFilmName_en} />
+                    <Input type='text' placeholder='Адрес изображения' onChange={(e) => setNewFilmImg(e.target.value)} />
+                    <Input type='number' placeholder='Год' onChange={(e) => setNewFilmYear(+e.target.value)} />
+                    <Input type='text' placeholder='Страна' onChange={(e) => setNewFilmCountry([...newFilmCountry, e.target.value])} />
+                    <Input type='text' placeholder='Краткое описание' onChange={(e) => setNewFilmTagline(e.target.value)} />
+                    <Input type='number' placeholder='Возрастное ограничение'  onChange={(e) => setNewFilmAge(+e.target.value)} />
+                    <Input type='number' placeholder='Продолжительность в мин' onChange={(e) => setNewFilmTime(+e.target.value)} />
+                    <Input type='number' placeholder='Рейтинг' onChange={(e) => setNewFilmRating(+e.target.value)} />
+                    <Input type='number' placeholder='Кол-во оценок' onChange={(e) => setNewFilmMarks(+e.target.value)} />
+                    <Input type='text' placeholder='Название на русском' onChange={(e) => setNewFilmName_ru(e.target.value)} />
+                    <Input type='text' placeholder='Название на английском' onChange={(e) => setNewFilmName_en(e.target.value)} />
                     <textarea placeholder='Полное описание' onChange={(e) => setNewFilmDescription(e.target.value)} />
                 </div>
 
@@ -165,8 +169,8 @@ const AdminPage = () => {
                 <div className={styles.inputs}>
                     {/* <InputBox name_en={'Last name and First name of the person'} name_ru={'Фамилия и Имя человека'} func={setPersonName} />
                     <InputBox name_en={'Photo`s URL'} name_ru={'Ссылка на фото'} func={setPersonImg} /> */}
-                    <Input type='text' placeholder={'Фамилия и Имя человека'} func={setPersonName} />
-                    <Input type='text' placeholder={'Ссылка на фото'} func={setPersonImg} />
+                    <Input type='text' placeholder={'Фамилия и Имя человека'} onChange={(e) => setPersonName(e.target.value)} />
+                    <Input type='text' placeholder={'Ссылка на фото'} onChange={(e) => setPersonImg(e.target.value)} />
                     <div className={styles.genreBox}>
                         {ProfessionsData.map(profession => (
                             <Checkbox position={profession} key={profession.name_en} func={addPersonProf} />
