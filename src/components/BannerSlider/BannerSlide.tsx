@@ -4,12 +4,15 @@ import styles from './BannerSlide.module.scss'
 import Button from '../UI/Button/Button'
 import favorite from '../../assets/img/svg/favorite.svg'
 import { useWindowWidth } from '../../hooks/hooks'
+import { useTranslation } from 'react-i18next'
 
 interface BannerSlideProps {
     film: IFilm
 }
 
 const BannerSlide: FC<BannerSlideProps> = ({film}) => {
+
+  const { t } = useTranslation()
 
   const windowWidth = useWindowWidth()
 
@@ -22,8 +25,8 @@ const BannerSlide: FC<BannerSlideProps> = ({film}) => {
       <div className={styles.info}>
         <h1 className={styles.filmName}>{film?.name_ru}</h1>
         <div className={styles.descriptionShort}>
-          <span className={styles.descItem}>{film?.year}</span>
-            {film?.genre.map((genre, index) => (
+          <span className={styles.descItem}>{film?.world_premier}</span>
+            {film?.genres.map((genre, index) => (
               <span key={index} className={styles.descItem}>{genre.name_ru}</span>
             ))}
           <span className={styles.descItem}>
@@ -36,11 +39,11 @@ const BannerSlide: FC<BannerSlideProps> = ({film}) => {
         <div className={styles.buttons}>
           <Button >
             <img src="https://start.ru/static/images/movie/play.svg" />
-              Смотреть бесплатно
+              {t("watch_for_free")}
           </Button>
           <Button variant="translucent">
             <img src="https://start.ru/static/images/product/kino.svg" />
-              Трейлер
+              {t('trailer')}
           </Button>
           <Button variant="translucent">
             <img src={favorite}/>

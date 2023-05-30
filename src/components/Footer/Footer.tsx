@@ -14,6 +14,8 @@ import mastercard from '../../assets/img/svg/mastercard.svg'
 import apple from '../../assets/img/svg/apple.svg'
 import google from '../../assets/img/svg/google.svg'
 import Huawei from '../../assets/img/svg/Huawei.svg'
+import appleEn from '../../assets/img/svg/apple_en.svg'
+import googleEn from '../../assets/img/svg/google_en.svg'
 
 import samsumg from '../../assets/img/svg/samsung.svg'
 import lg from '../../assets/img/svg/lg.svg'
@@ -32,9 +34,6 @@ import rombica from '../../assets/img/svg/rombica.svg'
 import tvip from '../../assets/img/svg/tvip.svg'
 import chromecast from '../../assets/img/svg/chromecast.svg'
 import { useWindowWidth } from '../../hooks/hooks'
-import { useAppSelector } from '../../hooks/redux'
-import { useEffect, useState } from 'react'
-import TranscriptionData from '../../TranscriptionData.json'
 import { useTranslation } from 'react-i18next'
 
 
@@ -43,7 +42,8 @@ const Footer = () => {
     const windowWidth = useWindowWidth()
     const tvs = [samsumg, lg, sony, philips, haier, panasonic, mi, huawei, tcl, hisense, googleTv, miBox, appleTv, rombica, tvip, chromecast]
 
-    const { t } = useTranslation()
+    const { t, i18n } = useTranslation()
+    const RusLanguage = i18n.resolvedLanguage === 'ru'
 
     return (
         <footer>
@@ -122,14 +122,16 @@ const Footer = () => {
                 <div className={cn(styles.footer__item, styles.footer__item_last)}>
                     <div className={styles.apps}>
                         <div>
-                            <img src={apple} alt="apple" />
+                            <img src={RusLanguage ? apple : appleEn} alt="apple" />
                         </div>
                         <div>
-                            <img src={google} alt="google" />
+                            <img src={RusLanguage ? google : googleEn} alt="google" />
                         </div>
-                        <div>
-                            <img src={Huawei} alt="Huawei" />
-                        </div>
+                        {RusLanguage &&
+                            <div>
+                                <img src={Huawei} alt="Huawei" />
+                            </div>
+                        }
                     </div>
                     <span className={styles.bottom_title}>{t('Footer.slogan')}</span>
                     <div className={styles.tvs}>

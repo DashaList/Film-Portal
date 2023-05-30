@@ -2,8 +2,11 @@ import styles from './SignUpPage.module.scss'
 import AuthForm from '../../components/AuthForm/AuthForm'
 import { useAppDispatch } from '../../hooks/redux'
 import { register } from '../../store/actions/userActions'
+import { useTranslation } from 'react-i18next'
 
 const SignUpPage = () => {
+
+    const { t } = useTranslation()
     
     const dispatch = useAppDispatch()
 
@@ -15,11 +18,11 @@ const SignUpPage = () => {
   return (
     <div className={styles.SignUpPage}>
         <AuthForm type='signup'
-            title='Зарегистрируйтесь и смотрите START 7 дней бесплатно'
-            btnName='Зарегистрироваться'
+            title={t('watch_start_7_days')}
+            btnName={t('sign_up')}
             bottomText={{
-                left: 'Уже есть аккаунт? ',
-                right: 'Войти'
+                left: `${t('have_an_account?')} `,
+                right: t('sign_in')
           }}
           submitHandler={signupHandler}  />
     </div>

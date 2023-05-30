@@ -2,8 +2,11 @@ import styles from './SignInPage.module.scss'
 import AuthForm from '../../components/AuthForm/AuthForm'
 import { useAppDispatch } from '../../hooks/redux'
 import { login } from '../../store/actions/userActions'
+import { useTranslation } from 'react-i18next'
 
 const SignInPage = () => {
+
+    const { t } = useTranslation()
 
     const dispatch = useAppDispatch()
 
@@ -15,11 +18,11 @@ const SignInPage = () => {
   return (
     <div className={styles.SignInPage}>
       <AuthForm type='signin'
-        title='Вход в аккаунт'
-        btnName='Войти'
+        title={t('sign_in_account')}
+        btnName={t('sign_in')}
         bottomText={{
-            left: 'Нет аккаунта? ',
-            right: 'Попробуйте бесплатно'
+            left: `${t('no_account?')} `,
+            right: t('try_for_free')
         }}
         submitHandler={signinHandler} />
   </div>

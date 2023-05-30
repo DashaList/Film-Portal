@@ -8,7 +8,9 @@
       "New": "Новинки",
       "Journal": "Журнал",
       "TV": "ТВ",
-      "Administration": "Администрация"
+      "Administration": "Администрация",
+      "change_language": "Изменить язык",
+      "support_center": "Служба поддержки"
     },
     "Footer": {
       "registration": "Регистрация и оплата",
@@ -71,12 +73,13 @@
     "Catalog": {
       "header": "Фильмы смотреть онлайн "
     },
-    "SignUpPage": {
+    "Auth": {
       "header": "Зарегистрируйтесь и смотрите START 7 дней бесплатно",
       "email": "Введите e-mail",
       "password": "Придумайте пароль",
       "account": "Уже есть аккаунт?",
-      "signIn": "Войти"
+      "signIn": "Войти",
+      "or": "или"
     },
     "AdminPage": {
         "title": "Администрация",
@@ -96,5 +99,31 @@
     },
     "FilmsList": {
       "empty": "К сожалению, мы ничего не нашли!"
-    }
+    },
+    "watch_for_free": "Смотреть бесплатно",
+    "trailer": "Трейлер",
+    "genre": "Жанр",
+    "year": "Год",
+    "countries": "Страны",
+    "sort": "Сортировка",    
+    "by_popularity": "По рейтингу",
+    "by_the_number_of_ratings": "По количеству оценок на Кинопоиске",
+    "newest": "По дате выхода (сначала свежие)",
+    "oldest": "По дате выхода (сначала старые)",
+    "alphabetically_(A-Z)": "По алфавиту (А-Я)",
+    "alphabetically_(Z-A)": "По алфавиту (Я-А)",
+    "search_by_actors": "Поиск по актёрам",
+    "search_by_director": "Поиск по режиссёру",
+    "rating_from": "Рейтинг от",
+    "number_of_ratings_from": "Кол-во оценок от",
+    "have_an_account?": "Уже есть аккаунт?",
+    "no_account?": "Нет аккаунта?",
+    "sign_in": "Войти",
+    "sign_up": "Зарегистрироваться",
+    "sign_in_account": "Вход в аккаунт",
+    "share": "Поделиться",
+    "movie": "Фильм",
+    "watch_online": "смотреть онлайн",
+    "try_for_free": "Попробуйте бесплатно",
+    "watch_start_7_days": "Зарегистрируйтесь и смотрите START 7 дней бесплатно"
 }

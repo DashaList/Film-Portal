@@ -8,7 +8,9 @@
       "New": "Novelties",
       "Journal": "Magazine",
       "TV": "TV",
-      "Administration": "Administration"
+      "Administration": "Administration",
+      "change_language": "Change language",
+      "support_center": "Support Center"
     },
     "Footer": {
       "registration": "Registration and payment",
@@ -71,12 +73,13 @@
     "Catalog": {
       "header": "Watch Movies online "
     },
-    "SignUpPage": {
+    "Auth": {
       "header": "Register and watch START 7 days for free",
       "email": "Enter e-mail",
       "password": "Come up with a password",
       "account": "Already have an account?",
-      "signIn": "Log in"
+      "signIn": "Log in",
+      "or": "or"
     },
     "AdminPage": {
       "title": "Administration",
@@ -96,5 +99,31 @@
     },
     "FilmsList": {
       "empty": "Unfortunately, we didn't find anything!"
-    }
+    },
+    "watch_for_free": "Watch for free",
+    "trailer": "Trailer",
+    "genre": "Genre",
+    "year": "Year",
+    "countries": "Contries",
+    "sort": "Sort",
+    "by_popularity": "By popularity",
+    "by_the_number_of_ratings": "By the number of ratings",
+    "newest": "Newest",
+    "oldest": "Oldest",
+    "alphabetically_(A-Z)": "Alphabetically (A-Z)",
+    "alphabetically_(Z-A)": "Alphabetically (Z-A)",
+    "search_by_actors": "Search by actors",
+    "search_by_director": "Search by director",
+    "rating_from": "Rating from",
+    "number_of_ratings_from": "Number of ratings from",
+    "have_an_account?": "Already have an account?",
+    "no_account?": "No account?",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "sign_in_account": "Sign in",
+    "share": "Share",
+    "movie": "Movie",
+    "watch_online": "watch online",
+    "try_for_free": "Try for free",
+    "watch_start_7_days": "Sign up and watch START 7 days for free"
 }

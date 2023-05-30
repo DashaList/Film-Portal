@@ -32,7 +32,7 @@ const MainPage = () => {
       </div>
       <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title={'Топ-10 на START'} slides={
-          films.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.img} filmLink={item.img} key={index}></Top10Card>)
+          films.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.poster} filmLink={item.tagline} key={index}></Top10Card>)
         }></RowSlider>
       </div>
       <div className="">Ad Banner</div>
@@ -40,12 +40,12 @@ const MainPage = () => {
       <div className="">Новый сезон премьер?</div>
       <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title='Драмы' slides={
-          films.concat(FilmData).concat(FilmData).map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
+          films.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
       <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title='Мелодрамы'  slides={
-          FilmData.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
+          films.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
         }></RowSlider>
       </div>
 

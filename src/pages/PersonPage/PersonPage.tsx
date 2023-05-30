@@ -49,7 +49,7 @@ const PersonPage = () => {
     // const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
 
     const person: IPerson = Person
-    let films: IPersonsFilms[] = person.operator
+    const films: IPersonsFilms[] = person.operator
 
 
     return (
