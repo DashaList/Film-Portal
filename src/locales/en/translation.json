@@ -117,5 +117,13 @@
     "rating_from": "Rating from",
     "number_of_ratings_from": "Number of ratings from",
     "have_an_account?": "Already have an account?",
-    "sign_in": "Sign in"
+    "no_account?": "No account?",
+    "sign_in": "Sign in",
+    "sign_up": "Sign up",
+    "sign_in_account": "Sign in",
+    "share": "Share",
+    "movie": "Movie",
+    "watch_online": "watch online",
+    "try_for_free": "Try for free",
+    "watch_start_7_days": "Sign up and watch START 7 days for free"
 }

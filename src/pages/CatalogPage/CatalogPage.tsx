@@ -3,18 +3,10 @@ import { Link, useParams } from 'react-router-dom';
 import Path from '../../components/UI/Path/Path';
 import GenresData from '../../GenresData.json'
 import Catalog from '../../components/Catalog/Catalog';
-import { useAppSelector } from '../../hooks/redux';
-import { useEffect, useState} from 'react';
-import TranscriptionData from '../../TranscriptionData.json'
 import { useTranslation } from 'react-i18next';
 
 
 const CatalogPage = () => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    // const [language, setLanguage] = useState(TranscriptionData[0])
-    // useEffect(() => {
-    //     RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    // }, [RusLanguage])
 
     const { t, i18n } = useTranslation()
 

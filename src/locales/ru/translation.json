@@ -117,5 +117,13 @@
     "rating_from": "Рейтинг от",
     "number_of_ratings_from": "Кол-во оценок от",
     "have_an_account?": "Уже есть аккаунт?",
-    "sign_in": "Войти"
+    "no_account?": "Нет аккаунта?",
+    "sign_in": "Войти",
+    "sign_up": "Зарегистрироваться",
+    "sign_in_account": "Вход в аккаунт",
+    "share": "Поделиться",
+    "movie": "Фильм",
+    "watch_online": "смотреть онлайн",
+    "try_for_free": "Попробуйте бесплатно",
+    "watch_start_7_days": "Зарегистрируйтесь и смотрите START 7 дней бесплатно"
 }
