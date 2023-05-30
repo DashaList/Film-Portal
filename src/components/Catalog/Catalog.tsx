@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 import TranscriptionData from '../../TranscriptionData.json'
 import { useAppSelector } from '../../hooks/redux';
 import Input from '../UI/Input/Input';
+import { useTranslation } from 'react-i18next';
 
 interface CatalogProps {
     genres: string[]
@@ -29,12 +30,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [actrosFilter, setActrosFilter] = useState<string>("")
     const [directorFilter, setDirectorFilter] = useState<string>("")
 
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+    const { t } = useTranslation()
 
     useEffect(() => {
         let filterFilms = Film;
@@ -109,13 +105,13 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 {/* <InputBox name_ru='Поиск по режиссёру' func={setDirectorFilter} name_en={'Search by director'} /> */}
                 <Input type='text' placeholder='Поиск по режиссёру' onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
                 <Link to='/movies/'>
-                    <Button variant='outlined' >{language.Button.clean}</Button>
+                    <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
                 <Selector name_ru={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} name_en={'Sort'} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <Button variant='outlined'>
-                {language.Button.more}
+                {t('Button.more')}
                 <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
             </Button>
         </>

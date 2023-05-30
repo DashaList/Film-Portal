@@ -11,13 +11,12 @@ import axios from 'axios';
 import { IFilmData } from '../../types/types'
 import Film from '../../film.json'
 import PersonList from '../../components/PersonList/PersonList';
+import { useTranslation } from 'react-i18next';
 
 const FilmPage = () => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+
+    const { t, i18n } = useTranslation()
+    const RusLanguage = i18n.resolvedLanguage === 'ru'
 
     const { id } = useParams()
 
@@ -58,8 +57,8 @@ const FilmPage = () => {
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
-                        <Link to="/"> {language.Path.main} </Link>
-                        <Link to="/movies">{language.Path.main}</Link>
+                        <Link to="/"> {t('Path.main')} </Link>
+                        <Link to="/movies">{t('Path.main')}</Link>
                         <Link to={`/movies/:${film?.genres[0].name_en}`}>{RusLanguage ? film?.genres[0].name_ru : film?.genres[0].name_en}</Link>
                         <Link to="/movie/:id">{RusLanguage ? film?.name_ru : film?.name_en}</Link>
                     </Path>
@@ -79,11 +78,11 @@ const FilmPage = () => {
                         <div className={styles.btnBox}>
                             <Button size='large' data-testid='watch_free'>
                                 <img src="https://start.ru/static/images/movie/play.svg" />
-                                {language.Button.watch_free}
+                                {t('Button.watch_free')}
                             </Button>
                             <Button variant="outlined" size='large' data-testid='watch_tr'>
                                 <img src="https://start.ru/static/images/product/kino.svg" />
-                                {language.Button.watch_tr}
+                                {t('Button.watch_tr')}
                             </Button>
                         </div>
                     </div>
@@ -116,27 +115,27 @@ const FilmPage = () => {
                     </div>
                 </div>
                 <div className={styles.toggleDescription} style={DescriptionState ? { display: 'none' } : { display: 'flex' }} onClick={toggleDiscription}>
-                    <div className={styles.more} data-testid='more'> {language.FilmPage.more}</div>
+                    <div className={styles.more} data-testid='more'> {t('FilmPage.more')}</div>
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
                 <div className={styles.toggleDescription} style={DescriptionState ? { display: 'flex' } : { display: 'none' }} onClick={toggleDiscription}>
-                    <div className={styles.more} data-testid='hide'> {language.FilmPage.hide}</div>
+                    <div className={styles.more} data-testid='hide'> {t('FilmPage.hide')}</div>
                     <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                 </div>
 
-                <h2 className={styles.subheader}>{language.FilmPage.persons}</h2>
+                <h2 className={styles.subheader}>{t('FilmPage.persons')}</h2>
                 <div className={styles.persons}>
-                    {film?.persons.actors && <PersonList position={film?.persons.actors} nameProfessions={language.FilmPage.actor} />}
-                    {film?.persons.composers && <PersonList position={film?.persons.composers} nameProfessions={language.FilmPage.composers} />}
-                    {film?.persons.designers && <PersonList position={film?.persons.designers} nameProfessions={language.FilmPage.designers} />}
-                    {film?.persons.directors && <PersonList position={film?.persons.directors} nameProfessions={language.FilmPage.directors} />}
-                    {film?.persons.editors && <PersonList position={film?.persons.editors} nameProfessions={language.FilmPage.editors} />}
-                    {film?.persons.operators && <PersonList position={film?.persons.operators} nameProfessions={language.FilmPage.operators} />}
-                    {film?.persons.producer && <PersonList position={film?.persons.producer} nameProfessions={language.FilmPage.producer} />}
-                    {film?.persons.translators && <PersonList position={film?.persons.translators} nameProfessions={language.FilmPage.translators} />}
-                    {film?.persons.voiceDirectors && <PersonList position={film?.persons.voiceDirectors} nameProfessions={language.FilmPage.voiceDirectors} />}
-                    {film?.persons.voices && <PersonList position={film?.persons.voices} nameProfessions={language.FilmPage.voices} />}
-                    {film?.persons.writers && <PersonList position={film?.persons.writers} nameProfessions={language.FilmPage.writers} />}
+                    {film?.persons.actors && <PersonList position={film?.persons.actors} nameProfessions={t('FilmPage.actor')} />}
+                    {film?.persons.composers && <PersonList position={film?.persons.composers} nameProfessions={t('FilmPage.composers')} />}
+                    {film?.persons.designers && <PersonList position={film?.persons.designers} nameProfessions={t('FilmPage.designers')} />}
+                    {film?.persons.directors && <PersonList position={film?.persons.directors} nameProfessions={t('FilmPage.directors')} />}
+                    {film?.persons.editors && <PersonList position={film?.persons.editors} nameProfessions={t('FilmPage.editors')} />}
+                    {film?.persons.operators && <PersonList position={film?.persons.operators} nameProfessions={t('FilmPage.operators')} />}
+                    {film?.persons.producer && <PersonList position={film?.persons.producer} nameProfessions={t('FilmPage.producer')} />}
+                    {film?.persons.translators && <PersonList position={film?.persons.translators} nameProfessions={t('FilmPage.translators')} />}
+                    {film?.persons.voiceDirectors && <PersonList position={film?.persons.voiceDirectors} nameProfessions={t('FilmPage.voiceDirectors')} />}
+                    {film?.persons.voices && <PersonList position={film?.persons.voices} nameProfessions={t('FilmPage.voices')} />}
+                    {film?.persons.writers && <PersonList position={film?.persons.writers} nameProfessions={t('FilmPage.writers')} />}
                 </div>
             </div>
             <CommentBox />

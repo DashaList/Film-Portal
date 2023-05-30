@@ -6,6 +6,7 @@ import HoverBaner from '../HoverBaner/HoverBaner';
 import cn from 'classnames'
 import { useSelector } from 'react-redux';
 import { useAppSelector } from '../../hooks/redux';
+import { useTranslation } from 'react-i18next';
 
 interface FilmCardProps {
     film: IPersonsFilms,
@@ -13,7 +14,9 @@ interface FilmCardProps {
 }
 
 const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
+    
+    const { i18n } = useTranslation()
+    const  RusLanguage = ( i18n.resolvedLanguage === 'ru' )
    
     switch (film.id) {
         case 0:
