@@ -32,7 +32,7 @@ const MainPage = () => {
       </div>
       <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title={'Топ-10 на START'} slides={
-          Top10Data.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.imgLink} filmLink={item.filmLink} key={index}></Top10Card>)
+          films.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.img} filmLink={item.img} key={index}></Top10Card>)
         }></RowSlider>
       </div>
       <div className="">Ad Banner</div>

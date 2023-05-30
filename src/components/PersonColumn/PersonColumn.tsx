@@ -5,13 +5,16 @@ import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/redux';
 import TranscriptionData from '../../TranscriptionData.json'
+import { useTranslation } from 'react-i18next';
 
 interface PersonColumnProps {
     person: crossPoint
 }
 
 const PersonColumn: FC<PersonColumnProps> = ({ person }) => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
+    const { i18n } = useTranslation()
+    const RusLanguage = ( i18n.resolvedLanguage === 'ru' )
+
     const currentPerson = PeopleData.find((obj) => obj.id === person.id) ? PeopleData.find((obj) => obj.id === person.id) : person
     return (
         <div className={styles.PersonColumn}>

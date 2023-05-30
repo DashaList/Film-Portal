@@ -35,46 +35,44 @@ import { useWindowWidth } from '../../hooks/hooks'
 import { useAppSelector } from '../../hooks/redux'
 import { useEffect, useState } from 'react'
 import TranscriptionData from '../../TranscriptionData.json'
+import { useTranslation } from 'react-i18next'
 
 
 const Footer = () => {
 
     const windowWidth = useWindowWidth()
     const tvs = [samsumg, lg, sony, philips, haier, panasonic, mi, huawei, tcl, hisense, googleTv, miBox, appleTv, rombica, tvip, chromecast]
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+
+    const { t } = useTranslation()
 
     return (
         <footer>
             {windowWidth >= 1024 && <div className={styles.Footer}>
                 <div className={styles.footer__item}>
                     <div className={styles.menu}>
-                        <a href="!#" className={styles.link}>{language.Footer.registration}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.privat}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.consent}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.error}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.registration')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.privat')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.consent')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.error')}</a>
                     </div>
                     <div className={styles.copyright}>
                         <div>
                             <img src={age18} alt="18+" />
                         </div>
-                        <span>© ООО «Старт.Ру», 2017-2023</span>
+                        <span>{t('Footer.copyright')}</span>
                     </div>
                 </div>
                 <div className={styles.footer__item}>
                     <div className={styles.menu}>
-                        <a href="!#" className={styles.link}>{language.Footer.about}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.contacts}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.partners}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.work}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.stocks}</a>
-                        <a href="!#" className={styles.link}>{language.Footer.Journal}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.about')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.contacts')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.partners')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.work')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.stocks')}</a>
+                        <a href="!#" className={styles.link}>{t('Footer.Journal')}</a>
                     </div>
                     <div className={styles.payment}>
-                        <span className={styles.bottom_title}>{language.Footer.pay_sistem}</span>
+                        <span className={styles.bottom_title}>{t('Footer.pay_sistem')}</span>
                         <div className={styles.payment_images}>
                             <img src={cloudPayment} alt="cloud payment" />
                             <img src={payonline} alt="payonline" />
@@ -84,9 +82,9 @@ const Footer = () => {
                 <div className={styles.footer__item}>
                     <div>
                         <div className={styles.menu}>
-                            <a href="!#" className={styles.link}>{language.Footer.sup}</a>
-                            <a href="!#" className={styles.link}>{language.Footer.watch}</a>
-                            <a href="!#" className={styles.link}>{language.Footer.FAQ}</a>
+                            <a href="!#" className={styles.link}>{t('Footer.sup')}</a>
+                            <a href="!#" className={styles.link}>{t('Footer.watch')}</a>
+                            <a href="!#" className={styles.link}>{t('Footer.FAQ')}</a>
                         </div>
                         <div className={styles.social}>
                             <a href="!#" className={styles.social__items}>
@@ -107,7 +105,7 @@ const Footer = () => {
                         </div>
                     </div>
                     <div>
-                        <span className={styles.bottom_title}>{language.Footer.cards}</span>
+                        <span className={styles.bottom_title}>{t('Footer.cards')}</span>
                         <div className={styles.cards}>
                             <a href="!#">
                                 <img src={visa} alt="visa" />
@@ -133,7 +131,7 @@ const Footer = () => {
                             <img src={Huawei} alt="Huawei" />
                         </div>
                     </div>
-                    <span className={styles.bottom_title}>{language.Footer.slogan}</span>
+                    <span className={styles.bottom_title}>{t('Footer.slogan')}</span>
                     <div className={styles.tvs}>
                         {tvs.map(item =>
                             <div key={item}>

@@ -6,11 +6,20 @@ import { store } from "../../src/store/store";
 import AdminPage from "../../src/pages/AdminPage/AdminPage";
 import '@testing-library/jest-dom/extend-expect';
 
-
+jest.mock('react-i18next', () => ({
+  useTranslation: () => {
+    return {
+      t: (str: string) => str,
+      i18n: {
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 
 describe("Проверка Страницы Администрации", () => {
     beforeEach(() => {
-        const RusLanguage = true
         render(<MemoryRouter>
             <Provider store={store}>
                 <AdminPage />
@@ -44,7 +53,7 @@ describe("Проверка Страницы Администрации", () => {
             expect(screen.getAllByText('Сортировка')).toHaveLength(1);
         });
         it("Проверка наличия Сброса", () => {
-            expect(screen.getAllByText('Сбросить')).toHaveLength(1);
+            expect(screen.getAllByText('Button.clean')).toHaveLength(1);
         });
     });
     describe("Проверка блока карточек фильмов", () => {
@@ -57,40 +66,40 @@ describe("Проверка Страницы Администрации", () => {
     })
     describe("Проверка блока админки", () => {
         it("Проверка inputBox Адрес изображения", () => {
-            expect(screen.getByPlaceholderText('Адрес изображения')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.image_URL')).toBeInTheDocument();
         });
         it("Проверка inputBox Год", () => {
-            expect(screen.getByPlaceholderText('Год')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.year')).toBeInTheDocument();
         });
         it("Проверка inputBox Страна", () => {
-            expect(screen.getByPlaceholderText('Страна')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.country')).toBeInTheDocument();
         });
         it("Проверка inputBox Краткое описание", () => {
-            expect(screen.getByPlaceholderText('Краткое описание')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.short_description')).toBeInTheDocument();
         });
         it("Проверка inputBox Возрастное ограничение", () => {
-            expect(screen.getByPlaceholderText('Возрастное ограничение')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.age')).toBeInTheDocument();
         });
         it("Проверка inputBox Продолжительность в мин", () => {
-            expect(screen.getByPlaceholderText('Продолжительность в мин')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.duration')).toBeInTheDocument();
         });
         it("Проверка inputBox Рейтинг", () => {
-            expect(screen.getByPlaceholderText('Рейтинг')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.rating')).toBeInTheDocument();
         });
         it("Проверка inputBox Кол-во оценок", () => {
-            expect(screen.getByPlaceholderText('Кол-во оценок')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.number_of_ratings')).toBeInTheDocument();
         });
         it("Проверка inputBox Название на русском", () => {
-            expect(screen.getByPlaceholderText('Название на русском')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.name_ru')).toBeInTheDocument();
         });
         it("Проверка inputBox Название на английском", () => {
-            expect(screen.getByPlaceholderText('Название на английском')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.name_en')).toBeInTheDocument();
         });
         it("Проверка inputBox Фамилия и Имя человека", () => {
-            expect(screen.getByPlaceholderText('Фамилия и Имя человека')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.person_name')).toBeInTheDocument();
         });
         it("Проверка Ссылка на фото", () => {
-            expect(screen.getByPlaceholderText('Ссылка на фото')).toBeInTheDocument();
+            expect(screen.getByPlaceholderText('AdminPage.photo_URL')).toBeInTheDocument();
         });
         it("Проверка checkBox жанров", () => {
             const genreBox = screen.getByTestId('adminGenres')

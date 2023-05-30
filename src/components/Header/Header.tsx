@@ -12,14 +12,19 @@ import LanguageFlag from '../LanguageFlag/LanguageFlag'
 import { useAppSelector } from '../../hooks/redux'
 import { useEffect, useState } from 'react'
 import TranscriptionData from '../../TranscriptionData.json'
+import { useTranslation } from 'react-i18next'
 
 
 const Header = () => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+
+    const { t } = useTranslation()
+
+    // const { RusLanguage } = useAppSelector(state => state.languageReducer)
+    // const [language, setLanguage] = useState(TranscriptionData[0])
+    // useEffect(() => {
+    //     RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
+    // }, [RusLanguage])
+
     const windowWidth = useWindowWidth()
     const scrollY = useWindowScrollY()
 
@@ -38,36 +43,36 @@ const Header = () => {
                 </Link>
                 {windowWidth > 1024 && <nav>
                     {windowWidth >= 1120 && <div className={styles.link}>
-                        <a href="https://start.ru/archive">{language.Header.TV_Movies}</a>
+                        <a href="https://start.ru/archive">{t('Header.TV_Movies')}</a>
                     </div>}
                     <div className={styles.link}>
-                        <Link to="/movies">{language.Header.Movies}</Link>
+                        <Link to="/movies">{t('Header.Movies')}</Link>
                     </div>
                     <div className={styles.link}>
-                        <a href="https://start.ru/series">{language.Header.Serials}</a>
+                        <a href="https://start.ru/series">{t('Header.Serials')}</a>
                     </div>
                     <div className={styles.link}>
-                        <Link to="/movies/animation">{language.Header.Animation}</Link>
+                        <Link to="/movies/animation">{t('Header.Animation')}</Link>
                     </div>
                     <div className={styles.link}>
-                        <Link to="/movies/comedy">{language.Header.Comedy}</Link>
+                        <Link to="/movies/comedy">{t('Header.Comedy')}</Link>
                     </div>
                     <div className={styles.link}>
-                        <a href="https://start.ru/new">{language.Header.New}</a>
+                        <a href="https://start.ru/new">{t('Header.New')}</a>
                     </div>
                     {windowWidth >= 1200 && <div className={styles.link}>
-                        <a href="https://start.ru/journal">{language.Header.Journal}</a>
+                        <a href="https://start.ru/journal">{t('Header.Journal')}</a>
                     </div>}
                     <div className={styles.link}>
-                        <a href="https://start.ru/tvchannels">{language.Header.TV}</a>
+                        <a href="https://start.ru/tvchannels">{t('Header.TV')}</a>
                     </div>
                     <div className={styles.link}>
-                        <Link to="/admin">{language.Header.Administration}</Link>
+                        <Link to="/admin">{t('Header.Administration')}</Link>
                     </div>
                 </nav>}
             </div>
             <div className={styles.right}>
-                {windowWidth > 1024 && <Button size='small' onClick={signupHandler}>{language.Button.test_free}</Button>}
+                {windowWidth > 1024 && <Button size='small' onClick={signupHandler}>{t('Button.test_free')}</Button>}
                 <div className={styles.icons}>
                     <div>
                         <img className={styles.icon} src={search} alt="search" />
