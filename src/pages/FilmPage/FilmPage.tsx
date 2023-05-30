@@ -8,10 +8,10 @@ import CommentBox from '../../components/CommentBox/CommentBox';
 import { useAppSelector } from '../../hooks/redux';
 import TranscriptionData from '../../TranscriptionData.json'
 import axios from 'axios';
-import { IFilmData } from '../../types/types'
 import Film from '../../film.json'
 import PersonList from '../../components/PersonList/PersonList';
 import { useTranslation } from 'react-i18next';
+import { IFilm } from '../../types/types';
 
 const FilmPage = () => {
 
@@ -21,8 +21,8 @@ const FilmPage = () => {
     const { id } = useParams()
 
     //const film = FilmData.find((obj) => obj.id === Number(id))
-    const films: IFilmData[] = Film
-    const film:IFilmData = Film.find((obj) => obj.id === Number(id))||Film[0]
+    const films: IFilm[] = Film
+    const film:IFilm = Film.find((obj) => obj.id === Number(id))||Film[0]
     ////////////
     const url = ""
     const filmPageAxios = (method: string = "GET", body: any = null) => {
@@ -32,7 +32,7 @@ const FilmPage = () => {
             data: body
         })
             .then(response => {
-                let film: IFilmData = response.data
+                let film: IFilm = response.data
                 return film
             })
             .catch(error => (console.log(error)))

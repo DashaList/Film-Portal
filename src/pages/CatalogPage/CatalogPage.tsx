@@ -24,9 +24,6 @@ const CatalogPage = () => {
         const foundGenre = GenresData.find((data) => data.name_en === genre);
         return i18n.resolvedLanguage === 'ru' ? foundGenre?.name_ru : foundGenre?.name_en;
     });
-    if (!genres.includes('')) {
-
-    }
 
     return (
         <div className={styles.page}>

@@ -4,7 +4,7 @@ import styles from './Top10Card.module.scss'
 
 interface Top10CardProps {
     topNumber: number
-    imgLink: string
+    imgLink: string | undefined
     filmLink: string
 }
 
@@ -17,7 +17,7 @@ const Top10Card: FC<Top10CardProps> = ({topNumber, imgLink, filmLink}) => {
             </div>
             <div className={styles.content} style={{backgroundImage: `url(${'"' + imgLink +'"'})`}}>
                 <div className={styles.playBtn}>
-                    <PlayButton></PlayButton>
+                    <PlayButton />
                 </div>
             </div>
         </a>

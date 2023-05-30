@@ -7,7 +7,7 @@ import { IFilm } from "../../types/types";
 export const fetchFilms = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(filmSlice.actions.filmsFetching())
-        const response = await axios.get<IFilm[]>('/FilmData.json')
+        const response = await axios.get<IFilm[]>('/film.json')
         dispatch(filmSlice.actions.filmsFetchingSuccess(
             response.data
         ))

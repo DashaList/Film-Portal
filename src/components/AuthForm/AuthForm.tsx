@@ -5,6 +5,7 @@ import google from '../../assets/img/svg/google_sign.svg'
 import vk from '../../assets/img/svg/vk-1.svg'
 import { Link } from 'react-router-dom'
 import { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface AuthFormProps {
     type: 'signin' | 'signup'
@@ -18,6 +19,8 @@ interface AuthFormProps {
 }
 
 const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHandler}) => {
+
+    const { t } = useTranslation()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -38,12 +41,12 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
         <Input type="password" placeholder='Введите пароль' onChange={passwordInputHandler} style='light'></Input>
         </div>
         <div className={styles.signBtn}>
-            <Button onClick={submitHandler}>{btnName}</Button>
+            <Button onClick={() => submitHandler(email, password)}>{btnName}</Button>
         </div>
         <div className={styles.divide}>
             <div className={styles.line}></div>
             <div className={styles.divideTextWrap}>
-                <div className={styles.divideText}>или</div>
+                <div className={styles.divideText}>{t('Auth.or')}</div>
             </div>
         </div>
         <div className={styles.signButtons}>
