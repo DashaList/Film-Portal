@@ -1,14 +1,17 @@
 import { FC, useEffect, useRef, useState } from 'react'
 import styles from './Selector.module.scss'
-import { SelectorProps, genre } from '../../../types/types';
+import { genre } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from '../Checkbox/Checkbox';
-import { useAppSelector } from '../../../hooks/redux';
 
+export interface SelectorProps {
+    name: string,
+    array: any[],
+    filter: 'none' | 'genre' | 'year',
+    func?: (...args: any[]) => void
+}
 
-
-const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none', func}) => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func}) => {
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
@@ -61,13 +64,15 @@ const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none',
     }, [genreFilterArray])
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        func(e.target.value)
+        if (func) {
+            func(e.target.value)
+        }
     }
     switch (filter) {
         case 'genre': return (
             <div className={styles.filter}  >
                 <div className={styles.wraper}>
-                    <div className={styles.selector} data-testid='genre' onClick={toggleShowBox} id={name_ru}> {RusLanguage ? name_ru : name_en}</div>
+                    <div className={styles.selector} data-testid='genre' onClick={toggleShowBox} id={name}> {name}</div>
                     {genreBoxState && (
                         <div className={styles.filterBox} data-testid="genresBox" ref={blockRef}>
                             {array.map(filter => (
@@ -80,8 +85,8 @@ const Selector: FC<SelectorProps> = ({ name_ru, name_en, array, filter = 'none',
         );
         default: return (
             <div className={styles.wraper}>
-                <select className={styles.selector} id={name_ru} onChange={handleChange}>
-                    <option className={styles.option} value="none" disabled selected>{RusLanguage ? name_ru : name_en}</option>
+                <select className={styles.selector} id={name} onChange={handleChange}>
+                    <option className={styles.option} value="none" disabled selected>{name}</option>
                     {array.map(option => (
                         <option className={styles.option} value={option} key={option}>{option}</option>
                     ))}

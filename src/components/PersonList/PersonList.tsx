@@ -4,6 +4,7 @@ import styles from './PersonList.module.scss'
 import TranscriptionData from '../../TranscriptionData.json'
 import PersonColumn from '../PersonColumn/PersonColumn';
 import { crossPoint } from '../../types/types';
+import { useTranslation } from 'react-i18next';
 
 interface PersonListProps {
     position: crossPoint[],
@@ -11,11 +12,9 @@ interface PersonListProps {
 }
 
 const PersonList: FC<PersonListProps> = ({ position, nameProfessions }) => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+
+    const { t } = useTranslation()
+
     const [PersonLenghtState, getPersonLenghtState] = useState(false)
     const showMore = () => {
         getPersonLenghtState(!PersonLenghtState)
@@ -35,11 +34,11 @@ const PersonList: FC<PersonListProps> = ({ position, nameProfessions }) => {
             {numVisible < position.length &&
                 <div>
                     <div className={styles.toggleLenght} style={PersonLenghtState ? { display: 'none' } : { display: 'flex' }} onClick={showMore}>
-                        <div className={styles.more} data-testid='more'> {language.FilmPage.more}</div>
+                        <div className={styles.more} data-testid='more'> {t('FilmPage.more')}</div>
                         <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                     </div>
                     <div className={styles.toggleLenght} style={PersonLenghtState ? { display: 'flex' } : { display: 'none' }} onClick={showHide}>
-                        <div className={styles.more} data-testid='hide'> {language.FilmPage.hide}</div>
+                        <div className={styles.more} data-testid='hide'> {t('FilmPage.hide')}</div>
                         <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
                     </div>
                 </div>}

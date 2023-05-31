@@ -9,11 +9,10 @@ import YearData from '../../YearData.json'
 import Slider from '../../components/UI/Slider/Slider';
 import GenresData from '../../GenresData.json'
 import { Link } from 'react-router-dom';
-import TranscriptionData from '../../TranscriptionData.json'
-import { useAppSelector } from '../../hooks/redux';
 import Input from '../UI/Input/Input';
 import axios from 'axios';
 import { IFilmData } from '../../types/types';
+import { useTranslation } from 'react-i18next';
 
 interface CatalogProps {
     genres: string[]
@@ -32,12 +31,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [actrosFilter, setActrosFilter] = useState<string>("")
     const [directorFilter, setDirectorFilter] = useState<string>("")
 
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+    const { t } = useTranslation()
 
     useEffect(() => {
         let filterFilms = Film;
@@ -106,19 +100,19 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
 
     useEffect(() => {
         switch (sortState) {
-            case 'по рейтингу':
+            case 'По рейтингу' || 'By popularity':
                 setFilms(prev => [...prev].sort((a, b) => b.rating - a.rating));
                 break;
-            case 'по дате выхода (сначала свежие)':
+            case 'По дате выхода (сначала свежие)' || 'Newest':
                 setFilms(prev => [...prev].sort((a, b) => new Date(b.world_premier).getFullYear() - new Date(a.world_premier).getFullYear()));
                 break;
-            case 'по дате выхода (сначала старые)':
+            case 'По дате выхода (сначала старые)' || 'Aldest':
                 setFilms(prev => [...prev].sort((a, b) => new Date(a.world_premier).getFullYear() - new Date(b.world_premier).getFullYear()));
                 break;
-            case 'по алфавиту (А-Я)':
+            case 'По алфавиту (А-Я)' || 'Alphabetically (A-Z)':
                 setFilms(prev => [...prev].sort((a, b) => a.name_ru.localeCompare(b.name_ru)));
                 break;
-            case 'по алфавиту (Я-А)':
+            case 'По алфавиту (Я-А)' || 'Alphabetically (Z-A)':
                 setFilms(prev => [...prev].sort((a, b) => b.name_ru.localeCompare(a.name_ru)));
                 break;
             default:
@@ -130,23 +124,22 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     return (
         <>
             <div className={styles.filtersBox}>
-                <Selector name_ru={'Жанр'} array={GenresData} filter={'genre'} name_en={'Genre'} />
-                <Selector func={setYearFilter} name_ru={'Год'} array={YearData} filter={'year'} name_en={'Year'} />
-                <Selector func={setCountryFilter} name_ru={'Страны'} array={["США", "Росcия"]} filter='none' name_en={'Country'} />
-                <Slider func={setRatingFilter} max={10} name_ru={'Рейтинг от'} name_en={'Rating from'} />
-                <Slider func={setratingValueFilter} max={1000000} name_ru={'Кол-во оценок от'} name_en={'Number of ratings from'} />
-                {/* <InputBox name_ru='Поиск по актёрам' func={setActrosFilter} name_en={'Search by actors'} /> */}
-                <Input type='text' placeholder='Поиск по актёрам' onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
-                {/* <InputBox name_ru='Поиск по режиссёру' func={setDirectorFilter} name_en={'Search by director'} /> */}
-                <Input type='text' placeholder='Поиск по режиссёру' onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
+                <Selector name={t('genre')} array={GenresData} filter={'genre'} />
+                <Selector func={setYearFilter} name={t('year')} array={YearData} filter={'year'} />
+                <Selector func={setCountryFilter} name={t('countries')} array={["США", "Росcия"]} filter='none' />
+                <Slider func={setRatingFilter} max={10} name={t('rating_from')} />
+                <Slider func={setratingValueFilter} max={1000000} name={t('number_of_ratings_from')} />
+                <Input type='text' placeholder={t('search_by_actors')} onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
+                <Input type='text' placeholder={t('search_by_director')} onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
                 <Link to='/movies/'>
-                    <Button variant='outlined' >{language.Button.clean}</Button>
+                    <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
-                <Selector name_ru={"Сортировка"} filter='none' func={setSort} array={['по количеству оценок на кинопоиске', 'по рейтингу', 'по дате выхода (сначала свежие)', 'по дате выхода (сначала старые)', 'по алфавиту (А-Я)', 'по алфавиту (Я-А)']} name_en={'Sort'} />
+                <Selector name={t('sort')} filter='none' func={setSort}
+                array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <Button variant='outlined'>
-                {language.Button.more}
+                {t('Button.more')}
                 <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
             </Button>
         </>

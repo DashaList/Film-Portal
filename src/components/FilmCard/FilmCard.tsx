@@ -1,19 +1,20 @@
 import { FC } from 'react';
-import { IPersonsFilms, TypeState } from '../../types/types';
+import { IFilm, IPersonsFilms, TypeState } from '../../types/types';
 import styles from './FilmCard.module.scss'
 import { Link } from 'react-router-dom';
 import HoverBaner from '../HoverBaner/HoverBaner';
 import cn from 'classnames'
-import { useSelector } from 'react-redux';
-import { useAppSelector } from '../../hooks/redux';
+import { useTranslation } from 'react-i18next';
 
 interface FilmCardProps {
-    film: IPersonsFilms,
+    film: IFilm,
     type: 'forGrid' | 'forRow'
 }
 
 const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
+    
+    const { i18n } = useTranslation()
+    const  RusLanguage = ( i18n.resolvedLanguage === 'ru' )
    
     switch (film.id) {
         case 0:

@@ -11,6 +11,7 @@ import TranscriptionData from '../../TranscriptionData.json'
 import axios from 'axios'
 import { IPerson, IPersonsFilms } from '../../types/types'
 import Person from '../../person.json'
+import { useTranslation } from 'react-i18next'
 
 
 const PersonPage = () => {
@@ -18,11 +19,9 @@ const PersonPage = () => {
     const { persons, loading, error } = useAppSelector(state => state.personReducer)
     const dispatch = useAppDispatch()
 
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
-    const [language, setLanguage] = useState(TranscriptionData[0])
-    useEffect(() => {
-        RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
-    }, [RusLanguage])
+    const { t, i18n } = useTranslation()
+
+    const RusLanguage = i18n.resolvedLanguage === 'ru'
 
     useEffect(() => {
         dispatch(fetchPersons())
@@ -41,7 +40,8 @@ const PersonPage = () => {
                 let person: IPerson = response.data
                 return person
             })
-            .catch(error => (console.log(error)))
+            //.catch(error => (console.log(error)))
+            .catch()
     }
     filmPageAxios()
     ///////////////
@@ -49,14 +49,14 @@ const PersonPage = () => {
     // const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
 
     const person: IPerson = Person
-    let films: IPersonsFilms[] = person.operator
+    const films: IPersonsFilms[] = person.operator
 
 
     return (
         <div className={styles.PersonPage}>
             <Path>
-                <p> {language.Path.main} </p>
-                <Link to="/persons">{language.Path.persons}</Link>
+                <p> {t('Path.main')} </p>
+                <Link to="/persons">{t('Path.persons')}</Link>
             </Path>
             <div className={styles.top}>
                 <div className={styles.left}>
@@ -73,7 +73,7 @@ const PersonPage = () => {
                 </div>
             </div>
             <div className={styles.bottom}>
-                <h1 data-testid='filmgraphy'>{RusLanguage ? person?.name_ru : person?.name_en} {language.PersonPage.films}</h1>
+                <h1 data-testid='filmgraphy'>{RusLanguage ? person?.name_ru : person?.name_en} {t('PersonPage.films')}</h1>
                 <FilmsList films={films} ></FilmsList>
             </div>
         </div>

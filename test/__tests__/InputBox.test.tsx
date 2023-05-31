@@ -1,29 +1,27 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
-import InputBox from '../../src/components/UI/InputBox/InputBox';
+import Input, { InputProps } from '../../src/components/UI/Input/Input';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from '../../src/store/store';
-import { InputBoxProps } from '../../src/types/types';
 
 describe('InputBox', () => {
     
-    const props: InputBoxProps = {
-        inpType: 'text',
-        name_ru: 'Тест',
-        name_en: 'Test',
-        func: jest.fn(),
+    const props: InputProps = {
+        type: 'text',
+        placeholder: 'Тест',
+        onChange: jest.fn(),
     };
     
     beforeEach(() => {
         render(<MemoryRouter>
             <Provider store={store}>
-                <InputBox {...props} />
+                <Input {...props} />
             </Provider>
         </MemoryRouter>);
     })
     test('Рендер с правильным названием prop', () => {
-        const input = screen.getByPlaceholderText(props.name_ru);
+        const input = screen.getByPlaceholderText(props.placeholder);
         expect(input).toBeInTheDocument();
     });
 
@@ -31,6 +29,6 @@ describe('InputBox', () => {
         const input = screen.getByTestId('inputBox');
         const value = 'testValue';
         fireEvent.change(input, { target: { value } });
-        expect(props.func).toHaveBeenCalledWith(value);
+        expect(props.onChange).toHaveBeenCalledWith(value);
     });
 });
