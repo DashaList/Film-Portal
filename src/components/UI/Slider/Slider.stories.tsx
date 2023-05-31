@@ -1,18 +1,19 @@
 import "../../../App/App.scss";
 import "../../../App/reset.scss";
 import type { Meta, StoryObj } from '@storybook/react';
-import Checkbox, { CheckboxProps } from './Checkbox';
+import Slider, { SliderProps } from './Slider';
 
-const meta: Meta<CheckboxProps> = {
-  title: 'Checkbox',
-  component: Checkbox,
+const meta: Meta<SliderProps> = {
+  title: 'Slider',
+  component: Slider,
 };
 
 export default meta;
-type Story = StoryObj<CheckboxProps>;
+type Story = StoryObj<SliderProps>;
 
 export const Default: Story = {
   args: {
-
+    name: 'Rating from',
+    max: 10
   },
 };
