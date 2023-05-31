@@ -1,75 +1,54 @@
-@import '../../App/App.scss';
+@import "../../App/App.scss";
 
 .PersonPage {
-    //padding: 90px 60px;
-    //padding: 0 60px;
+    padding: 3vw 60px;
 
     .top {
         width: 100%;
         position: relative;
         z-index: 10;
         overflow: hidden;
-        height: 576px;
-        background-color: $color-black;
-
+        padding: 3vw 0;
         display: flex;
         gap: 50px;
+        border-bottom: 1px solid $color-light-grey ;
     }
 
-    .background {
-        height: 420px;
-        width: 265px;
-        position: absolute;
-        right: 300px;
-        top: 200px;
-        margin-left: 0;
-        background-position: 100%;
-        background-size: cover;
-    }
-
-    .left_wrapper {        
-        // position: absolute;
-        // top: 0;
-        width: 620px;
+    .right_wrapper {
+        width: 100%;
         height: 100%;
-        z-index: 3;
-        padding-left: 40px;
-    }
-
-    .left {
-        // position: absolute;
-        // top: 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: start;
+        align-items: start;
+        gap: 3vh;
+
         height: 100%;
     }
-
     .description {
-        font-size: 24px;
+        font-size: 1.5vw;
         font-weight: 400;
         line-height: 36px;
-        margin-top: 16px;
-        margin-bottom: 28px;
     }
 
-    h1, h3 {
-        font-size: 48px;
+    h1,
+    h3 {
+        font-size: 3vw;
         font-weight: 700;
         line-height: 1.17;
     }
 
-    .right {
+    .left {
         display: flex;
         align-items: center;
 
         .personPhoto {
-            height: 420px;
-            width: 265px;
+            width: 100%;
+            height: auto;
+            margin-left: 10px;
+            -webkit-box-shadow: 0px 0px 10px 5px $color-light-grey;
+            -moz-box-shadow: 0px 0px 10px 5px $color-light-grey;
+            box-shadow: 0px 0px 10px 5px $color-light-grey;
         }
-    }
-
-    .bottom {
-        padding: 0 40px 56px;
     }
 }
