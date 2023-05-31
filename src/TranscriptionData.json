@@ -62,12 +62,15 @@
       "writers": "Сценаристы"
     },
     "PersonPage": {
-      "films": "фильмография"
+      "films": "фильмография",
+      "birthday": "День рождения: ",
+      "place_of_birth": "Место рождения: "
     },
     "Path": {
       "main": "Главная",
       "Movies": "Фильмы",
-      "persons": "Персоны"
+      "persons": "Персоны",
+      "admin": "Администрация"
     },
     "Catalog": {
       "header": "Фильмы смотреть онлайн "
@@ -147,12 +150,15 @@
       "writers": "Writers"
     },
     "PersonPage": {
-      "films": "filmography"
+      "films": "filmography",
+      "birthday": "Birthday: ",
+      "place_of_birth": "Place of birth: "
     },
     "Path": {
       "main": "Home",
       "Movies": "Movies",
-      "persons": "Persons"
+      "persons": "Persons",
+      "admin": "Administration"
     },
     "Catalog": {
       "header": "Watch Movies online "
