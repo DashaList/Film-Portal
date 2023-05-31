@@ -12,6 +12,8 @@ import { Link } from 'react-router-dom';
 import TranscriptionData from '../../TranscriptionData.json'
 import { useAppSelector } from '../../hooks/redux';
 import Input from '../UI/Input/Input';
+import axios from 'axios';
+import { IFilmData } from '../../types/types';
 
 interface CatalogProps {
     genres: string[]
@@ -20,6 +22,7 @@ interface CatalogProps {
 const Catalog: FC<CatalogProps> = ({ genres }) => {
     // const [Films, setFilms] = useState(FilmData);
     const [Films, setFilms] = useState(Film);
+
 
     const [sortState, setSort] = useState('none');
     const [yearFilter, setYearFilter] = useState<string>('')
@@ -62,7 +65,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
         }
         if (actrosFilter) {
             filterFilms = filterFilms.filter((film) =>
-                film.persons.actors.some((actor) => actor.name_ru.includes(actrosFilter))||film.persons.actors.some((actor) => actor.name_en?.includes(actrosFilter))
+                film.persons.actors.some((actor) => actor.name_ru.includes(actrosFilter)) || film.persons.actors.some((actor) => actor.name_en?.includes(actrosFilter))
             );
         }
         // if (directorFilter) {
@@ -72,6 +75,34 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
         // }
         setFilms(filterFilms)
     }, [yearFilter, genres, ratingFilter, ratingValueFilter, countryFilter, actrosFilter, directorFilter])
+    ////////////
+    const url = ""
+    const filmPageAxios = (method: string = "GET", body: any = null) => {
+        axios({
+            method: method,
+            url: url,
+            data: body
+        })
+            .then(response => {
+                let film: IFilmData = response.data
+                return film
+            })
+            .catch(error => (console.log(error)))
+    }
+    filmPageAxios()
+
+    useEffect(() => {
+        const filterData = {
+            year: yearFilter,
+            genres: genres,
+            rating: ratingFilter,
+            marks: ratingValueFilter,
+            country: countryFilter,
+            actors: actrosFilter,
+            directors: directorFilter
+        }
+    }, [yearFilter, genres, ratingFilter, ratingValueFilter, countryFilter, actrosFilter, directorFilter])
+    ///////////////
 
     useEffect(() => {
         switch (sortState) {

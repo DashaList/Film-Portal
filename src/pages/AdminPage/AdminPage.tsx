@@ -132,10 +132,10 @@ const AdminPage = () => {
     return (
         <div className={styles.page}>
             <Path>
-                <Link to="/"> Главная </Link>
-                <Link to="/admin">Администрация</Link>
+                <Link to="/"> {language.Path.main} </Link>
+                <Link to="/admin">{language.Path.admin}</Link>
             </Path>
-            <h1 className={styles.header}> Администрация </h1>
+            <h1 className={styles.header}> {language.Path.admin} </h1>
             <div className={styles.adminBox}>
                 <div className={styles.inputs} data-testid='addInfoFilmBox'>
                     {/* <InputBox name_en={'Image URL'} name_ru={'Адрес изображения'} func={setNewFilmImg} />
