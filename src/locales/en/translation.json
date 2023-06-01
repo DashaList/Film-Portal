@@ -68,7 +68,8 @@
     "Path": {
       "main": "Home",
       "Movies": "Movies",
-      "persons": "Persons"
+      "persons": "Persons",
+      "admin": "Administration"
     },
     "Catalog": {
       "header": "Watch Movies online "

@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react';
 import styles from './Slider.module.scss'
 
-interface SliderProps {
+export interface SliderProps {
     name: string
     max: number
     func?: any
@@ -10,7 +10,9 @@ const Slider: FC<SliderProps> = ({ name, max, func }) => {
 
     const [valueSlider, setValueSlider] = useState(0)
     useEffect(() => {
-        func(valueSlider)
+        if (func) {
+            func(valueSlider)
+        }
     }, [valueSlider])
 
     return (

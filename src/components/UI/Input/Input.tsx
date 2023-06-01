@@ -6,15 +6,15 @@ import cn from 'classnames'
 
 export interface InputProps {
     type: string;
-    placeholder: string;
-    //inpType?: 'text' | 'number' | 'radio',
-    //name_ru: string,
-    //name_en: string,
+    placeholder?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-    style?: 'light' | 'dark'
+    onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    value?: string | number;
+    style?: 'light' | 'dark';
+    isError?: boolean;
 }
 
-const Input: FC<InputProps> = ({type, placeholder, onChange, style = 'dark'}) => {
+const Input: FC<InputProps> = ({type, placeholder, onChange, onBlur, value, style = 'dark', isError}) => {
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -23,14 +23,21 @@ const Input: FC<InputProps> = ({type, placeholder, onChange, style = 'dark'}) =>
     }
     
   return (
-    <div className={cn(styles.Input, styles[style],)}>
+    <div className={cn(styles.Input, styles[style], isError ? styles.error : '')}>
         {type !== 'password' &&
-            // <input type={type} placeholder={placeholder} onChange={(e) => func(e.target.value)} data-testid='inputBox'/>
-            <input type={type} placeholder={placeholder} onChange={onChange} data-testid='inputBox'/>
+            <input
+                type={type} placeholder={placeholder} data-testid='inputBox'
+                value={value}
+                onChange={onChange} onBlur={onBlur}
+            />
         }
         {type === 'password' &&
             <>
-                <input type={showPassword ? "text" : "password"} placeholder={placeholder} onChange={onChange}/>
+                <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder={placeholder} onChange={onChange}
+                    onBlur={onBlur} value={value}
+                />
                 <div className={styles.passwordEye} onClick={eyeClickHandler}>
                     {showPassword ? <img src={eyeOff} alt="" /> : <img src={eyeOn} alt="" />}
                 </div>

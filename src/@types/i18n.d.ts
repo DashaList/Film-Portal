@@ -7,5 +7,6 @@ declare module "i18next" {
     resources: {
       ru: typeof ru;
     };
+    allowObjectInHTMLChildren: true
   }
 }

@@ -114,3 +114,7 @@ export interface IMain {
     comedy: IPersonsFilms[],
     rating: IPersonsFilms[]
 }
+export interface IAuth {
+    email: string,
+    password: string
+}

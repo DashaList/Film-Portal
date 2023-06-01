@@ -6,6 +6,11 @@ import Input, { InputProps } from './Input';
 const meta: Meta<InputProps> = {
   title: 'Input',
   component: Input,
+  argTypes: {
+    style: {
+      options: ['light', 'dark']
+    }
+  }
 };
 
 export default meta;

@@ -2,7 +2,7 @@ import cn from 'classnames';
 import { FC, ReactNode } from 'react'
 import styles from './Button.module.scss'
 
-interface ButtonProps {
+export interface ButtonProps {
     variant?: 'contained' | 'outlined' | "translucent";
     size?: 'small' | 'medium' | 'large';
     children: ReactNode;

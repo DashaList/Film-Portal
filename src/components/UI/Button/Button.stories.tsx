@@ -6,6 +6,14 @@ import Button from './Button';
 const meta: Meta<typeof Button> = {
   title: 'Button',
   component: Button,
+  argTypes: {
+    variant: {
+      options: ['contained', 'outlined', "translucent"]
+    },
+    size: {
+      options: ['small', 'medium', 'large']
+    }
+  }
 };
 
 export default meta;
