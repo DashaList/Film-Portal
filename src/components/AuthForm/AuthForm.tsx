@@ -8,6 +8,7 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { IAuth } from '../../types/types'
+import { useAppSelector } from '../../hooks/redux'
 
 interface AuthFormProps {
     type: 'signin' | 'signup'
@@ -24,6 +25,8 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
 
     const { t } = useTranslation()
 
+    const { isAuth, loading, error: userError } = useAppSelector(state => state.userReducer)
+
     const {
         control,
         handleSubmit,
@@ -35,6 +38,7 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
     const onSubmit: SubmitHandler<IAuth> = ({email, password}) => {
         submitHandler(email, password)
         reset()
+        console.log('usEr', userError)
     }
 
   return (
@@ -68,7 +72,7 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
                             onChange={onChange}
                             onBlur={onBlur}
                             value={value}
-                            isError={!!error}
+                            isError={!!error || !!userError}
                         />
                         {error && <div className={styles.error}>{error.message}</div>}
                     </>
@@ -111,9 +115,10 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
                             onChange={onChange}
                             onBlur={onBlur}
                             value={value}
-                            isError={!!error}
+                            isError={!!error  || !!userError}
                         />
                         {error && <div className={styles.error}>{error.message}</div>}
+                        {userError && <div className={styles.error}>{userError}</div>}
                     </>
                     )}
                 />

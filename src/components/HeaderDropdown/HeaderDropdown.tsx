@@ -5,6 +5,8 @@ import supportIcon from '../../assets/img/svg/support-new.svg'
 import cn from 'classnames'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
+import { logout } from '../../store/actions/userActions'
 
 interface HeaderDropdownProps {
     loginHandler: () => void;
@@ -15,6 +17,16 @@ interface HeaderDropdownProps {
 const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMouseLeave}) => {
 
     const { t } = useTranslation()
+
+    const { isAuth } = useAppSelector( state => state.userReducer)
+    const { isAdmin } = useAppSelector( state => state.userReducer.user)
+    const dispatch = useAppDispatch()
+
+    const logoutHandler = () => {
+        dispatch( logout() )
+    }
+
+    //const isAuth = true
 
   return (
     <div data-testid='HeaderDropdown'className={styles.Dropdown} ref={refProps} onMouseLeave={onMouseLeave}>
@@ -34,13 +46,25 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMous
                     <span>{t('Header.support_center')}</span>
             </a>
 
-            <div data-testid='Login'className={cn(styles.dropdownBlock, styles.authBlock)} onClick={loginHandler}>
-                <div className={styles.authText}>{t('have_an_account?')}</div>
-                <div className={styles.loginBtn}>
-                    {t('sign_in')}
-                    <img src={login} alt="" />
+            {!isAuth &&
+                <div data-testid='Login' className={cn(styles.dropdownBlock, styles.authBlock)} onClick={loginHandler}>
+                    <div className={styles.authText}>{t('have_an_account?')}</div>
+                    <div className={styles.loginBtn}>
+                        {t('sign_in')}
+                        <img src={login} alt="" />
+                    </div>
                 </div>
-            </div>
+            }
+
+            {isAuth &&
+                <div data-testid='Login' className={cn(styles.dropdownBlock, styles.authBlock)} onClick={logoutHandler}>
+                    <div className={styles.authText}></div>
+                    <div className={styles.loginBtn}>
+                        {t('sign_out')}
+                        <img src={login} alt="" />
+                    </div>
+                </div>
+            }
 
         </div>
     </div>

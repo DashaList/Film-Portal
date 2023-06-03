@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Button from "../UI/Button/Button";
 import styles from './CommentBox.module.scss'
-import { useAppSelector } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import TranscriptionData from '../../TranscriptionData.json'
+import { postComment } from "../../store/actions/commentActions";
+import { IComment } from "../../types/types";
 
 
 const CommentBox = () => {
@@ -81,6 +83,26 @@ const CommentBox = () => {
     useEffect(() => {
         RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
     }, [RusLanguage])
+
+
+
+
+
+    // const { comments } = useAppSelector(state => state.commentReducer)
+    // const dispatch = useAppDispatch()
+    // const com: IComment = {
+    //     personId: 45,
+    //     filmId: 145,
+    //     text: "bla bla",
+    //     subComments: []
+    // }
+  
+    // useEffect( () => {
+    //     console.log('first', comments)
+    //   dispatch(postComment( com ))
+    //   console.log('sec', comments)
+    // }, [])
+    
 
     return (
         <div className={styles.commentBox} data-testid='Comment'>

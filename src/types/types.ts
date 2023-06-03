@@ -1,4 +1,4 @@
-import { existsSync } from "fs"
+
 
 // export interface IFilm {
 //     id: number,
@@ -117,4 +117,21 @@ export interface IMain {
 export interface IAuth {
     email: string,
     password: string
+}
+
+export interface IUser {
+    id: number,
+    email: string;
+    isAdmin: boolean;
+}
+export interface UserResponse {
+    token: string,
+    user: IUser
+}
+
+export interface IComment {
+    personId: number,
+    filmId: number,
+    text: string,
+    subComments: IComment[]
 }

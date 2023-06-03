@@ -48,6 +48,9 @@ export const publicRoutes: BreadcrumbsRoute<string>[] = [
         Component: Catalog,
         breadcrumb: 'Фильмы'
     },
+]
+
+export const authRoutes: BreadcrumbsRoute<string>[] = [
     {
         path: '/signin',
         Component: SignIn,
