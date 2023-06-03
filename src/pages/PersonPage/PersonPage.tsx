@@ -67,8 +67,8 @@ const PersonPage = () => {
                 <div className={styles.right_wrapper}>
 
                     <h3 data-testid='fullName'>{RusLanguage ? person?.name_ru : person?.name_en}</h3>
-                    <p className={styles.description} data-testid='biography'>{language.PersonPage.birthday}{person?.birthday || "-"}</p>
-                    <p className={styles.description} data-testid='biography'>{language.PersonPage.place_of_birth}{person?.place_of_birth || "-"} </p>
+                    <p className={styles.description} data-testid='biography'>{t('PersonPage.birthday')}{person?.birthday || "-"}</p>
+                    <p className={styles.description} data-testid='biography'>{t('PersonPage.place_of_birth')}{person?.place_of_birth || "-"} </p>
 
                 </div>
             </div>

@@ -16,13 +16,16 @@ const PersonList: FC<PersonListProps> = ({ position, nameProfessions }) => {
     const { t } = useTranslation()
 
     const [PersonLenghtState, getPersonLenghtState] = useState(false)
+    useEffect(() => {
+        console.log(PersonLenghtState)
+    }, [PersonLenghtState])
     const showMore = () => {
         getPersonLenghtState(!PersonLenghtState)
         setNumVisible(position.length)
     }
     const showHide = () => {
         getPersonLenghtState(!PersonLenghtState)
-        setNumVisible(position.length)
+        setNumVisible(5)
     }
     const [numVisible, setNumVisible] = useState(5)
     return (
@@ -31,7 +34,7 @@ const PersonList: FC<PersonListProps> = ({ position, nameProfessions }) => {
             {position.slice(0, numVisible).map((person) => (
                 <PersonColumn person={person} />
             ))}
-            {numVisible < position.length &&
+            {numVisible <= position.length &&
                 <div>
                     <div className={styles.toggleLenght} style={PersonLenghtState ? { display: 'none' } : { display: 'flex' }} onClick={showMore}>
                         <div className={styles.more} data-testid='more'> {t('FilmPage.more')}</div>
