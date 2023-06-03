@@ -14,7 +14,6 @@ import Input from '../../components/UI/Input/Input';
 import { useTranslation } from 'react-i18next';
 
 
-
 const AdminPage = () => {
     const { genre } = useParams()
     const genres = genre?.split('+') || ['']
@@ -122,10 +121,10 @@ const AdminPage = () => {
     return (
         <div className={styles.page}>
             <Path>
-                <Link to="/"> {language.Path.main} </Link>
-                <Link to="/admin">{language.Path.admin}</Link>
+                <Link to="/"> {t('Path.main')} </Link>
+                <Link to="/admin">{t('Path.admin')}</Link>
             </Path>
-            <h1 className={styles.header}> {language.Path.admin} </h1>
+            <h1 className={styles.header}> {t('Path.admin')} </h1>
             <div className={styles.adminBox}>
                 <div className={styles.inputs} data-testid='addInfoFilmBox'>
                     <Input type='text' placeholder={t('AdminPage.image_URL')} onChange={(e) => setNewFilmImg(e.target.value)} />

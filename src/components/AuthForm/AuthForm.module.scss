@@ -165,4 +165,22 @@
             }
         }
     }
+
+    .error {
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 16px;
+        color: $color-red;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin-bottom: 8px;
+
+        @media (min-width: 1441px) {
+            margin-top: 0.2777vw;
+            font-size: .83333vw;
+            line-height: .83333vw;
+            margin-bottom: 0.5555555vw;
+        }
+    }
 }

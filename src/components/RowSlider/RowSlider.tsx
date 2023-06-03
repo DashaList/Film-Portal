@@ -37,7 +37,7 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
 
     const handleScroll = (e: UIEvent<HTMLDivElement>) => {
         setScroll(e.currentTarget.scrollLeft)
-
+        console.log(scroll, sliderWidth)
     }
 
     useEffect(() => {
@@ -50,8 +50,8 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
             setFadeWidth({ ...fadeWidth, right: (windowWidth - +sliderWrapperRef.current.style.paddingLeft) %
                 (slideWidth + +sliderWrapperRef.current.style.gap)
             })
-            console.log(windowWidth, +sliderWrapperRef.current.style.paddingLeft, slideWidth, +sliderWrapperRef.current.style.gap,
-                fadeWidth, sliderWrapperRef.current.style.paddingLeft)
+           // console.log(windowWidth, +sliderWrapperRef.current.style.paddingLeft, slideWidth, +sliderWrapperRef.current.style.gap,
+             //   fadeWidth, sliderWrapperRef.current.style.paddingLeft)
         }
     }, [slideRef, sliderWidth, windowWidth])
     

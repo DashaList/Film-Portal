@@ -1,6 +1,6 @@
 import { FC,  useState } from 'react';
 import styles from './Checkbox.module.scss'
-import { useAppSelector } from '../../../hooks/redux';
+import { useTranslation } from 'react-i18next';
 
 export interface CheckboxProps {
     position: any
@@ -9,7 +9,9 @@ export interface CheckboxProps {
 
 const Checkbox: FC<CheckboxProps> = ({ position, func }) => {
     const [checked, setChecked] = useState(false);
-    const { RusLanguage } = useAppSelector(state => state.languageReducer)
+
+    const { i18n } = useTranslation()
+    const  RusLanguage = i18n.resolvedLanguage === 'ru'
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setChecked(e.target.checked);
@@ -17,7 +19,7 @@ const Checkbox: FC<CheckboxProps> = ({ position, func }) => {
     };
     return (
         <label className={styles.checkboxPoint} key={position.name_en} >
-            <input type="checkbox" data-testid='checkbox' defaultChecked={false} checked={checked} className={styles.checkbox} onChange={handleCheckboxChange} value={position.name_en} name="genre" />
+            <input type="checkbox" data-testid='checkbox' checked={checked} className={styles.checkbox} onChange={handleCheckboxChange} value={position.name_en} name="genre" />
             {RusLanguage? position.name_ru : position.name_en}
         </label>
     );
