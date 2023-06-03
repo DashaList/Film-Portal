@@ -1,14 +1,23 @@
 import styles from './SignInPage.module.scss'
 import AuthForm from '../../components/AuthForm/AuthForm'
-import { useAppDispatch } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { login } from '../../store/actions/userActions'
 import { useTranslation } from 'react-i18next'
+import { useEffect } from 'react'
+import { redirect } from 'react-router-dom'
 
 const SignInPage = () => {
 
     const { t } = useTranslation()
 
+    const { isAuth } = useAppSelector(state => state.userReducer)
     const dispatch = useAppDispatch()
+
+    // useEffect(() => {
+    //   if (isAuth) {
+    //     redirect('/')
+    //   }
+    // }, [isAuth])
 
     const signinHandler = (email: string, password: string) => {
         console.log(email, password)

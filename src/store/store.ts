@@ -2,11 +2,15 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import filmReducer from './reducers/filmSlice'
 import personReducer from './reducers/personSlice'
 import languageReducer from './reducers/languageSlice'
+import userReducer from './reducers/userSlice'
+import commentReducer from './reducers/commentSlice'
 
 const rootReducer = combineReducers({
   filmReducer,
   personReducer,
-  languageReducer
+  languageReducer,
+  userReducer,
+  commentReducer
 })
 
 export const setupStore = () => {

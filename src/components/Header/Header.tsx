@@ -25,6 +25,10 @@ const Header = () => {
     //     RusLanguage ? setLanguage(TranscriptionData[0]) : setLanguage(TranscriptionData[1])
     // }, [RusLanguage])
 
+    const { isAuth } = useAppSelector( state => state.userReducer)
+
+    //const isAuth = true
+
     const windowWidth = useWindowWidth()
     const scrollY = useWindowScrollY()
 
@@ -72,7 +76,7 @@ const Header = () => {
                 </nav>}
             </div>
             <div className={styles.right}>
-                {windowWidth > 1024 && <Button size='small' onClick={signupHandler}>{t('Button.test_free')}</Button>}
+                {windowWidth > 1024 && !isAuth && <Button size='small' onClick={signupHandler}>{t('Button.test_free')}</Button>}
                 <div className={styles.icons}>
                     <div>
                         <img className={styles.icon} src={search} alt="search" />
@@ -88,7 +92,7 @@ const Header = () => {
 
                 </div>
                 {isDropdownOpen &&
-                    <HeaderDropdown loginHandler={signinHandler} refProps={dropdownRef} onMouseLeave={() => setIsDropdownOpen(false)}></HeaderDropdown>
+                    <HeaderDropdown loginHandler={signinHandler} refProps={dropdownRef} onMouseLeave={() => setIsDropdownOpen(false)} />
                 }
                 <LanguageFlag />
             </div>

@@ -1,13 +1,13 @@
 import axios from "axios";
 import { AppDispatch } from "../store";
 import { personSlice } from "../reducers/personSlice";
-import { IPeople } from "../../types/types";
+import { IPerson } from "../../types/types";
 
 
 export const fetchPersons = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(personSlice.actions.personsFetching())
-        const response = await axios.get<IPeople[]>('/PersonData.json')
+        const response = await axios.get<IPerson[]>('/PersonData.json')
         dispatch(personSlice.actions.personsFetchingSuccess(
             response.data
         ))

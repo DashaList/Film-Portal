@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPeople } from "../../types/types"
+import { IPerson } from "../../types/types"
 
 interface PersonState {
-    persons: IPeople[];  
+    persons: IPerson[];  
     loading: boolean;
     error: null | string;
 }
@@ -21,7 +21,7 @@ export const personSlice = createSlice({
             state.loading = true;
         },
 
-        personsFetchingSuccess(state, action: PayloadAction<IPeople[]>) {
+        personsFetchingSuccess(state, action: PayloadAction<IPerson[]>) {
             state.loading = false;
             state.error = '';
             state.persons = action.payload;

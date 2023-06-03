@@ -63,7 +63,9 @@
       "writers": "Writers"
     },
     "PersonPage": {
-      "films": "filmography"
+      "films": "filmography",
+      "birthday": "Birthday: ",
+      "place_of_birth": "Place of birth: "
     },
     "Path": {
       "main": "Home",
@@ -120,6 +122,7 @@
     "have_an_account?": "Already have an account?",
     "no_account?": "No account?",
     "sign_in": "Sign in",
+    "sign_out": "Sign out",
     "sign_up": "Sign up",
     "sign_in_account": "Sign in",
     "share": "Share",
