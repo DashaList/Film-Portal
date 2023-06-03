@@ -11,7 +11,7 @@ import GenresData from '../../GenresData.json'
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input/Input';
 import axios from 'axios';
-import { IFilmData } from '../../types/types';
+import { IFilm } from '../../types/types';
 import { useTranslation } from 'react-i18next';
 
 interface CatalogProps {
@@ -78,7 +78,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             data: body
         })
             .then(response => {
-                let film: IFilmData = response.data
+                let film: IFilm = response.data
                 return film
             })
             .catch(error => (console.log(error)))
