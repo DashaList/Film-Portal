@@ -100,7 +100,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             <div className={styles.filtersBox}>
                 <Selector name={t('genre')} array={GenresData} filter={'genre'} />
                 <Selector func={setYearFilter} name={t('year')} array={YearData} filter={'year'} />
-                <Selector func={setCountryFilter} name={t('countries')} array={CountyData} filter='none' />
+                <Selector func={setCountryFilter} name={t('countries')} array={CountyData} filter='country' />
                 <Slider func={setRatingFilter} max={10} name={t('rating_from')} />
                 <Slider func={setMarksFilter} max={1000000} name={t('number_of_ratings_from')} />
                 <Input type='text' placeholder={t('search_by_actors')} onChange={(e) => setActrosFilter(e.target.value)} style='dark' />

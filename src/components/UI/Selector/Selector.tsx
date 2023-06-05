@@ -3,15 +3,16 @@ import styles from './Selector.module.scss'
 import { genre } from '../../../types/types';
 import { useNavigate } from 'react-router-dom';
 import Checkbox from '../Checkbox/Checkbox';
+import { useTranslation } from 'react-i18next';
 
 export interface SelectorProps {
     name: string,
     array: any[],
-    filter: 'none' | 'genre' | 'year',
+    filter: 'none' | 'genre' | 'year' | 'country',
     func?: (...args: any[]) => void
 }
 
-const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func}) => {
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => {
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
@@ -68,6 +69,8 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func}) => {
             func(e.target.value)
         }
     }
+    const { i18n } = useTranslation()
+    const RusLanguage = i18n.resolvedLanguage === 'ru'
     switch (filter) {
         case 'genre': return (
             <div className={styles.filter}  >
@@ -83,6 +86,16 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func}) => {
                 </div>
             </div>
         );
+        case 'country': return (
+            <div className={styles.wraper}>
+                <select className={styles.selector} id={name} onChange={handleChange}>
+                    <option className={styles.option} value="none" disabled selected>{name}</option>
+                    {array.map(option => (
+                        <option className={styles.option} value={option} key={option}>{RusLanguage? option.name_ru : option.name_en}</option>
+                    ))}
+                </select>
+            </div>
+        )
         default: return (
             <div className={styles.wraper}>
                 <select className={styles.selector} id={name} onChange={handleChange}>
