@@ -49,7 +49,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
 
     useEffect(() => {
         dispatch(fetchFilteredFilms(filter, 'drama')) // запросы в filmActions находятся
-    }, [])
+    }, [filter])
 
 
     // const [Films, setFilms] = useState(FilmData);
