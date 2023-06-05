@@ -7,63 +7,53 @@ import StoriesCard from '../../components/StoriesCard/StoriesCard'
 import RowSlider from '../../components/RowSlider/RowSlider'
 import FilmCard from '../../components/FilmCard/FilmCard'
 import Top10Card from '../../components/Top10Card/Top10Card'
-import { useAppDispatch, useAppSelector } from '../../hooks/redux'
-import { useEffect } from 'react'
-import { fetchFilms, fetchFilteredFilms } from '../../store/actions/filmActions'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { fetchMainPageFilms } from '../../store/actions/filmActions'
+import { IPersonsFilms } from '../../types/types'
 
 const MainPage = () => {
 
-  const {films, loading, error} = useAppSelector(state => state.filmReducer)
-  const dispatch = useAppDispatch()
+  const [dramaFilms, setDramaFilms] = useState<IPersonsFilms[] | null>(null)
+  const [comedyFilms, setComedyFilms] = useState<IPersonsFilms[] | null>(null)
+  const [topFilms, setTopFilms] = useState<IPersonsFilms[]>([])
 
   useEffect( () => {
-    //dispatch(fetchFilteredFilms())
-
-    const url = "http://localhost:4998/movies/drama"
-    const filmPageAxios = (method = "GET", body = null) => {
-      axios({
-          method: method,
-          url: url,
-          data: body
-      })
-          .then(response => {
-              //const film: IFilm = response.data
-              console.log('resp main', response.data)
-              //return film
-          })
-          .catch(error => (console.log(error)))
-  }
-  //filmPageAxios()
+    fetchMainPageFilms( setDramaFilms, setComedyFilms, setTopFilms)
   }, [])
 
   return (
     <div className={styles.MainPage}>
 
-      <BannerSlider slides={films}></BannerSlider>
+      {dramaFilms &&
+        <BannerSlider slides={dramaFilms}></BannerSlider>
+      }
 
       <div className={styles.contentRow} data-testid='RowSlider'>
         <RowSlider title={'Истории'} slides={
-          StoriesData.concat(StoriesData).map(item => <StoriesCard imgSrc={item}></StoriesCard>)
+          StoriesData.concat(StoriesData).concat(StoriesData).map(item => <StoriesCard imgSrc={item}></StoriesCard>)
         }></RowSlider>
       </div>
       <div className={styles.contentRow} data-testid='RowSlider'>
-        <RowSlider title={'Топ-10 на START'} slides={
-          films.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.poster} filmLink={item.tagline} key={index}></Top10Card>)
-        }></RowSlider>
+      {topFilms &&
+          <RowSlider title={'Топ-10 на START'} slides={
+            topFilms.map((item, index) => <Top10Card topNumber={index + 1} imgLink={item.poster} filmLink={''} key={index} />)
+          } />
+      }
       </div>
-      <div className="">Ad Banner</div>
-      <div className="">Календарь премьер?</div>
-      <div className="">Новый сезон премьер?</div>
+
       <div className={styles.contentRow} data-testid='RowSlider'>
-        <RowSlider title='Драмы' slides={
-          films.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
-        }></RowSlider>
+        {dramaFilms &&
+          <RowSlider title='Драмы' slides={
+          dramaFilms.map(film => <FilmCard film={film} key={film.id} type={'forRow'} />)
+        } />
+        }
       </div>
       <div className={styles.contentRow} data-testid='RowSlider'>
-        <RowSlider title='Мелодрамы'  slides={
-          films.map(film => <FilmCard film={film} key={film.id} type={'forRow'}></FilmCard>)
-        }></RowSlider>
+        {comedyFilms &&
+          <RowSlider title='Мелодрамы'  slides={
+          comedyFilms.map(film => <FilmCard film={film} key={film.id} type={'forRow'} />)
+        } />
+        }
       </div>
 
     </div>

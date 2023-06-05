@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react"
 import BannerSlide from "./BannerSlide"
-import { IFilm } from "../../types/types"
+import { IFilm, IPersonsFilms } from "../../types/types"
 import SliderIndicators from "../UI/SliderIndicators/SliderIndicators"
 import styles from './BannerSlider.module.scss'
 import Spinner from "../UI/Spinner/Spinner"
@@ -8,7 +8,7 @@ import { useWindowWidth } from "../../hooks/hooks"
 
 
 interface BannerSliderProps {
-    slides: IFilm[]
+    slides: IPersonsFilms[]
 }
 
 const BannerSlider: FC<BannerSliderProps> = ({slides}) => {

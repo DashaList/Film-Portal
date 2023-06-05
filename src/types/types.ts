@@ -184,3 +184,9 @@ export interface IFilter {
     actors: string
     directors: string
 }
+
+export interface MainPageResponse {
+    drama: IPersonsFilms[]
+    comedy: IPersonsFilms[]
+    rating: IPersonsFilms[]
+}
