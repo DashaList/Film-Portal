@@ -173,3 +173,13 @@ export interface INewSubcomment {
     text: string;
     user: ICommentUser
 }
+
+export interface IFilter {
+    pageIndex: number
+    year: number
+    rating: number
+    marks: number
+    country: string
+    actors: string
+    directors: string
+}
