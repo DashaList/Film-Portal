@@ -24,6 +24,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
 
     const { films, loading, error } = useAppSelector(state => state.filmReducer)
     const dispatch = useAppDispatch()
+    const [sortState, setSort] = useState('none');
     const [yearFilter, setYearFilter] = useState<number>(0)
     const [ratingFilter, setRatingFilter] = useState<number>(0)
     const [marksFilter, setMarksFilter] = useState<number>(0)
@@ -32,6 +33,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [directorFilter, setDirectorFilter] = useState<string>("")
     const [pageIndex, setPageIndex] = useState<number>(0)
     const [filter, setFilter] = useState({} as IFilter)
+
     const clearFilter = () => {
         setYearFilter(0),
             setRatingFilter(0),
@@ -56,41 +58,39 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     }, [yearFilter, genres, ratingFilter, marksFilter, countryFilter, actrosFilter, directorFilter, pageIndex])
 
     useEffect(() => {
-        dispatch(fetchFilteredFilms(filter, 'drama')) // запросы в filmActions находятся
+        dispatch(fetchFilteredFilms(filter, 'drama'))
     }, [filter])
 
 
-    // const [Films, setFilms] = useState(FilmData);
-    const [Films, setFilms] = useState(Film);
-    const [sortState, setSort] = useState('none');
-
     const { t } = useTranslation()
-    const [film, setFilm] = useState<IFilm[] | null>(null)
+    const [film, setFilm] = useState<IFilm[]>([]);
 
     useEffect(() => {
         fetchFilms()
+        setFilm(film)
         console.log("film", film)
     }, [])
 
     useEffect(() => {
+        
         switch (sortState) {
             case 'По рейтингу' || 'By popularity':
-                setFilms(prev => [...prev].sort((a, b) => b.rating - a.rating));
+                setFilm(prev => [...prev].sort((a, b) => b.rating - a.rating));
                 break;
             case 'По дате выхода (сначала свежие)' || 'Newest':
-                setFilms(prev => [...prev].sort((a, b) => new Date(b.world_premier).getFullYear() - new Date(a.world_premier).getFullYear()));
+                setFilm(prev => [...prev].sort((a, b) => new Date(b.world_premier).getFullYear() - new Date(a.world_premier).getFullYear()));
                 break;
             case 'По дате выхода (сначала старые)' || 'Aldest':
-                setFilms(prev => [...prev].sort((a, b) => new Date(a.world_premier).getFullYear() - new Date(b.world_premier).getFullYear()));
+                setFilm(prev => [...prev].sort((a, b) => new Date(a.world_premier).getFullYear() - new Date(b.world_premier).getFullYear()));
                 break;
             case 'По алфавиту (А-Я)' || 'Alphabetically (A-Z)':
-                setFilms(prev => [...prev].sort((a, b) => a.name_ru.localeCompare(b.name_ru)));
+                setFilm(prev => [...prev].sort((a, b) => a.name_ru.localeCompare(b.name_ru)));
                 break;
             case 'По алфавиту (Я-А)' || 'Alphabetically (Z-A)':
-                setFilms(prev => [...prev].sort((a, b) => b.name_ru.localeCompare(a.name_ru)));
+                setFilm(prev => [...prev].sort((a, b) => b.name_ru.localeCompare(a.name_ru)));
                 break;
             default:
-                setFilms(Film);
+                setFilm(film);
                 break;
         }
     }, [sortState]);
