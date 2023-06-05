@@ -22,6 +22,10 @@ interface CatalogProps {
 
 const Catalog: FC<CatalogProps> = ({ genres }) => {
 
+    const { t } = useTranslation()
+    const [film, setFilm] = useState<IFilm[]>([]);
+    
+
     const { films, loading, error } = useAppSelector(state => state.filmReducer)
     const dispatch = useAppDispatch()
     const [sortState, setSort] = useState('none');
@@ -43,7 +47,10 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             setDirectorFilter(""),
             setPageIndex(0)
     }
-    
+    useEffect(() => {
+        dispatch(fetchFilteredFilms(filter, 'drama'))
+        setFilm(films)
+    })
     useEffect(() => {
         setFilter({
             pageIndex: pageIndex,
@@ -66,8 +73,6 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     }, [filter])
 
 
-    const { t } = useTranslation()
-    const [film, setFilm] = useState<IFilm[]>([]);
 
     useEffect(() => {
 
