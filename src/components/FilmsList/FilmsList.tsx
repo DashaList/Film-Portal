@@ -6,19 +6,19 @@ import { useTranslation } from 'react-i18next'
 
 
 interface FilmsListProps {
-  films: IFilm[]
+  films: IFilm[] | null
 }
 
 const FilmsList: FC<FilmsListProps> = ({ films }) => {
-  
+
   const { t } = useTranslation()
 
   return (
     <div className={styles.FilmsList}>
-      {films.length !== 0 ? films.map(film => (
-        <FilmCard key={film.id} film={film} type={'forGrid'} data-testid="FilmCard"/>
+      {films? films.map(film => (
+        <FilmCard key={film.id} film={film} type={'forGrid'} data-testid="FilmCard" />
       )) :
-        <div className={styles.empty}>{t('FilmsList.empty')}</div>
+      <div className={styles.empty}>{t('FilmsList.empty')}</div>
       }
     </div>
   )

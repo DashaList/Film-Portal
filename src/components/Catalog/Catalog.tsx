@@ -65,7 +65,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [sortState, setSort] = useState('none');
 
     const { t } = useTranslation()
-    const [film, setFilm] = useState<IFilm | null>(null)
+    const [film, setFilm] = useState<IFilm[] | null>(null)
 
     useEffect(() => {
         fetchFilms()
@@ -111,7 +111,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                     <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
             </div >
-            <FilmsList films={Films}></FilmsList>
+            <FilmsList films={film}></FilmsList>
             <div onClick={() => setPageIndex(prev => prev + 1)}>
                 <Button variant='outlined'>
                     {t('Button.more')}
