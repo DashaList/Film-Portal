@@ -13,12 +13,23 @@ import Input from '../UI/Input/Input';
 import axios from 'axios';
 import { IFilm } from '../../types/types';
 import { useTranslation } from 'react-i18next';
+import { fetchFilteredFilms } from '../../store/actions/filmActions';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
 interface CatalogProps {
     genres: string[]
 }
 
 const Catalog: FC<CatalogProps> = ({ genres }) => {
+
+    const {films, loading, error} = useAppSelector(state => state.filmReducer)
+    const dispatch = useAppDispatch()
+  
+    useEffect( () => {
+      dispatch(fetchFilteredFilms(filter, genre)) // запросы в filmActions находятся
+    }, [])
+
+
     // const [Films, setFilms] = useState(FilmData);
     const [Films, setFilms] = useState(Film);
 
