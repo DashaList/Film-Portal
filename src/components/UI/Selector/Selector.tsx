@@ -9,10 +9,11 @@ export interface SelectorProps {
     name: string,
     array: any[],
     filter: 'none' | 'genre' | 'year' | 'country',
-    func?: (...args: any[]) => void
+    func?: (...args: any[]) => void,
+    defValue?: any
 }
 
-const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => {
+const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func, defValue }) => {
 
     const [genreBoxState, setGenreBox] = useState(false);
     const toggleShowBox = () => setGenreBox(!genreBoxState);
@@ -68,9 +69,14 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => 
         if (func) {
             func(e.target.value)
         }
+        setValue(e.target.value)
     }
     const { i18n } = useTranslation()
     const RusLanguage = i18n.resolvedLanguage === 'ru'
+    const [value, setValue] = useState(defValue)
+    useEffect(() => {
+        setValue(defValue)
+    }, [defValue])
     switch (filter) {
         case 'genre': return (
             <div className={styles.filter}  >
@@ -88,18 +94,18 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => 
         );
         case 'country': return (
             <div className={styles.wraper}>
-                <select className={styles.selector} id={name} onChange={handleChange}>
-                    <option className={styles.option} value="none" disabled selected>{name}</option>
+                <select className={styles.selector} id={name} value={value} onChange={handleChange}>
+                    <option className={styles.option} value='' disabled defaultValue={value}>{name}</option>
                     {array.map(option => (
-                        <option className={styles.option} value={option} key={option.name_en}>{RusLanguage? option.name_ru : option.name_en}</option>
+                        <option className={styles.option} value={option} key={option.name_en}>{RusLanguage ? option.name_ru : option.name_en}</option>
                     ))}
                 </select>
             </div>
         )
         default: return (
             <div className={styles.wraper}>
-                <select className={styles.selector} id={name} onChange={handleChange}>
-                    <option className={styles.option} value="none" disabled selected>{name}</option>
+                <select className={styles.selector} id={name}  onChange={handleChange} value={value}>
+                    <option className={styles.option} disabled defaultValue={value} value={0}>{name}</option>
                     {array.map(option => (
                         <option className={styles.option} value={option} key={option}>{option}</option>
                     ))}
