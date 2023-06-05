@@ -103,14 +103,14 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 <Selector name={t('genre')} array={GenresData} filter={'genre'} />
                 <Selector func={setYearFilter} name={t('year')} array={YearData} filter={'year'} />
                 <Selector func={setCountryFilter} name={t('countries')} array={CountyData} filter='country' />
-                <Slider func={setRatingFilter} max={10} name={t('rating_from')} />
-                <Slider func={setMarksFilter} max={1000000} name={t('number_of_ratings_from')} />
+                <Slider value={ratingFilter} func={setRatingFilter} max={10} name={t('rating_from')} />
+                <Slider value={marksFilter} func={setMarksFilter} max={1000000} name={t('number_of_ratings_from')} />
                 <Input type='text' placeholder={t('search_by_actors')} onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
                 <Input type='text' placeholder={t('search_by_director')} onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
                 <Selector name={t('sort')} filter='none' func={setSort}
                     array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
                 <Link to='/movies/' onClick={clearFilter}>
-                    <Button variant='outlined' >{t('Button.clean')}</Button>
+                    <Button variant='translucent' >{t('Button.clean')}</Button>
                 </Link >
             </div >
             <FilmsList films={film}></FilmsList>
