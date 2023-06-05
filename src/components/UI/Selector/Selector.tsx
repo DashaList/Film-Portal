@@ -91,7 +91,7 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func }) => 
                 <select className={styles.selector} id={name} onChange={handleChange}>
                     <option className={styles.option} value="none" disabled selected>{name}</option>
                     {array.map(option => (
-                        <option className={styles.option} value={option} key={option}>{RusLanguage? option.name_ru : option.name_en}</option>
+                        <option className={styles.option} value={option} key={option.name_en}>{RusLanguage? option.name_ru : option.name_en}</option>
                     ))}
                 </select>
             </div>
