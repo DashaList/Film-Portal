@@ -59,6 +59,10 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
 
     useEffect(() => {
         dispatch(fetchFilteredFilms(filter, 'drama'))
+        setFilm(films)
+        console.log("film", films)
+
+        console.log("state", film)
     }, [filter])
 
 
@@ -66,13 +70,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [film, setFilm] = useState<IFilm[]>([]);
 
     useEffect(() => {
-        fetchFilms()
-        setFilm(film)
-        console.log("film", film)
-    }, [])
 
-    useEffect(() => {
-        
         switch (sortState) {
             case 'По рейтингу' || 'By popularity':
                 setFilm(prev => [...prev].sort((a, b) => b.rating - a.rating));
