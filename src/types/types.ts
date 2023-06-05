@@ -1,19 +1,18 @@
 
-
-// export interface IFilm {
-//     id: number,
-//     name_ru: string,
-//     name_en: string,
-//     img: string,
-//     rating: number,
-//     genre: genre[],
-//     year: number,
-//     age: string,
-//     time: string,
-//     description: string,
-//     actor: crossPoint[]
-//     country: string[]
-// }
+export interface IFilmData {
+    id: number,
+    name_ru: string,
+    name_en: string,
+    img: string,
+    rating: number,
+    genre: genre[],
+    year: number,
+    age: string,
+    time: string,
+    description: string,
+    actor: crossPoint[]
+    country: string[]
+}
 export interface IFilm {
     id: number,
     id_kinopoisk: number,
