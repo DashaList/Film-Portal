@@ -7,7 +7,7 @@ import { postComment } from "../../store/actions/commentActions";
 import { IComment } from "../../types/types";
 
 
-const CommentBox = () => {
+const CommentBoxOld = () => {
     const [addAuthor, setAuthor] = useState('')
     const [addTheme, setTheme] = useState('')
     const [addText, setText] = useState('')
@@ -159,4 +159,4 @@ const CommentBox = () => {
     );
 };
 
-export default CommentBox;
+export default CommentBoxOld;

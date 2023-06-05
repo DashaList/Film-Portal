@@ -1,34 +1,49 @@
 import axios from "axios";
-import { AppDispatch } from "../store";
-import { IComment } from "../../types/types";
-import { commentSlice } from "../reducers/commentSlice";
+import { IComment, ISubcomment } from "../../types/types";
 
-
-// export const fetchComments = () => async (dispatch: AppDispatch) => {
-//     try {
-//         //dispatch(commentSlice.actions.commentsFetching())
-//         const response = await axios.get<IComment[]>('http://localhost:4998/film/145')
-//         // dispatch(commentSlice.actions.commentsFetchingSuccess(
-//         //     response.data
-//         // ))
-//         console.log(response.data)
-//     } catch (e) {
-//         dispatch(commentSlice.actions.commentsFetchingError(e as Error))
-//     }
-// }
-
-export const postComment = (comment: IComment) => async (dispatch: AppDispatch) => {
+export const sendComment = async (
+        filmId: number,
+        userId: number, userLogin: string, text: string,
+        //setNewComment: ( newComment: IComment) => void
+    ) => {
     try {
-        const response = await axios.post<Response>('http://localhost:4998/film/145', {
-            userId: 5,
-            userLogin: 'kaka@',
-            text: 'bla bl bl'
+        const response = await axios.post<IComment>(`http://localhost:4998/film/${filmId}`, {
+            userId,
+            userLogin,
+            text
+        }, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
         })
 
-        // dispatch(userSlice.actions.setUser(
-        //     response.data.user
-        // ))
+        //setNewComment( response.data )
+        console.log('response Comment', response.data)
 
+    } catch (e) {
+        console.error
+    }
+}
+
+export const sendSubcomment = async (
+        filmId: number,
+        parentCommentId: number,
+        userId: number, userLogin: string, text: string,
+        //setNewSubcomment: ( newComment: ISubcomment) => void
+    ) => {
+    try {
+        const response = await axios.put<ISubcomment>(`http://localhost:4998/film/${filmId}`, {
+            commentId: parentCommentId,
+            userId,
+            userLogin,
+            text
+        }, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+
+        //setNewSubcomment( response.data )
         console.log('response Comment', response.data)
 
     } catch (e) {

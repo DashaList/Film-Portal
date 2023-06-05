@@ -4,14 +4,15 @@ import styles from './FilmPage.module.scss'
 import FilmData from '../../FilmData.json'
 import Button from '../../components/UI/Button/Button';
 import { useEffect, useState } from 'react';
-import CommentBox from '../../components/CommentBox/CommentBox';
-import { useAppSelector } from '../../hooks/redux';
-import TranscriptionData from '../../TranscriptionData.json'
+import CommentBox from '../../components/Comments/CommentBox';
 import axios from 'axios';
 import Film from '../../film.json'
 import PersonList from '../../components/PersonList/PersonList';
 import { useTranslation } from 'react-i18next';
 import { IFilm } from '../../types/types';
+import { fetchFilm } from '../../store/actions/filmActions';
+import CommentBoxOld from '../../components/Comments/CommentBoxOld';
+import { useAppSelector } from '../../hooks/redux';
 
 const FilmPage = () => {
 
@@ -19,10 +20,11 @@ const FilmPage = () => {
     const RusLanguage = i18n.resolvedLanguage === 'ru'
 
     const { id } = useParams()
+    const { user, isAuth } = useAppSelector(state => state.userReducer)
 
     //const film = FilmData.find((obj) => obj.id === Number(id))
     const films: IFilm[] = Film
-    const film:IFilm = Film.find((obj) => obj.id === Number(id))||Film[0]
+    //const film:IFilm = Film.find((obj) => obj.id === Number(id))||Film[0]
     ////////////
     const url = ""
     const filmPageAxios = (method: string = "GET", body: any = null) => {
@@ -37,8 +39,21 @@ const FilmPage = () => {
             })
             .catch(error => (console.log(error)))
     }
-    filmPageAxios()
+    //filmPageAxios()
     ///////////////
+
+
+    const [film, setFilm] = useState<IFilm | null>(null)
+
+    useEffect( () => {
+        if ( id ) {
+            fetchFilm( id, setFilm)
+        }
+
+        console.log("film", film, user)
+    }, [])
+
+
     const [DescriptionState, getDescriptionState] = useState(false)
     const toggleDiscription = () => {
         getDescriptionState(!DescriptionState)
@@ -68,9 +83,9 @@ const FilmPage = () => {
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
                             <span className={styles.link}>{new Date(film?.world_premier).getFullYear()},</span>
                             {film?.genres.map(genre => (
-                                <span className={styles.link}>{RusLanguage ? genre.name_ru : genre.name_en},</span>
+                                <span className={styles.link} key={genre.name_en}>{RusLanguage ? genre.name_ru : genre.name_en},</span>
                             ))}
-                            <span className={styles.link}>{film?.age}, {formatTime(film.duration_min)} </span>
+                            <span className={styles.link}>{film?.age}, {formatTime(film?.duration_min)} </span>
                         </div>
                         <div className={styles.description} data-testid='shortDescription'>
                             <p>{film?.tagline} </p>
@@ -138,7 +153,11 @@ const FilmPage = () => {
                     {film?.persons.writers && <PersonList position={film?.persons.writers} nameProfessions={t('FilmPage.writers')} />}
                 </div>
             </div>
-            <CommentBox />
+            {film?.comments &&
+                <CommentBox filmComments={film?.comments} />
+            }
+            
+            {/* <CommentBoxOld /> */}
         </div >
     );
 };

@@ -129,5 +129,7 @@
     "movie": "Movie",
     "watch_online": "watch online",
     "try_for_free": "Try for free",
-    "watch_start_7_days": "Sign up and watch START 7 days for free"
+    "watch_start_7_days": "Sign up and watch START 7 days for free",
+    "log_in_first": "Log in first",
+    "enter_comment_text": "Enter comment text..."
 }

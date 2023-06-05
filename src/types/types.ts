@@ -31,7 +31,8 @@ export interface IFilm {
     country: ICountry[],
     budget?: IBudget,
     description?: string,
-    persons: IFimsPersons
+    persons: IFimsPersons,
+    comments: IComment[]
 }
 export interface genre {
     id: number,
@@ -115,23 +116,61 @@ export interface IMain {
     rating: IPersonsFilms[]
 }
 export interface IAuth {
-    email: string,
-    password: string
+    email: string;
+    password: string;
 }
 
 export interface IUser {
-    id: number,
+    id: number;
     email: string;
     isAdmin: boolean;
 }
 export interface UserResponse {
-    token: string,
-    user: IUser
+    token: string;
+    id: number;
+    createdAt: string;
+    login: string;
+    role: string
+}
+interface ICommentUser {
+    id: number;
+    login: string;
 }
 
 export interface IComment {
-    personId: number,
-    filmId: number,
-    text: string,
-    subComments: IComment[]
+    // id: number;
+    // filmId: number;
+    // userId: number;
+    // userLogin: string;
+    // text: string;
+    // subcomments: ISubcomment[];
+
+    createdAt: string
+    id: number
+    text: string;
+    subcomments: ISubcomment[];
+    user: ICommentUser
+}
+export interface ISubcomment {
+    createdAt: string
+    id: number
+    text: string;
+    user: ICommentUser
+
+    // id: number;
+    // parentCommentId: number;
+    // filmId: number;
+    // userId: number;
+    // userLogin: string;
+    // text: string;
+    //subcomments: ISubcomment[];
+}
+export interface INewComment {
+    text: string;
+    subcomments: INewSubcomment[];
+    user: ICommentUser
+}
+export interface INewSubcomment {
+    text: string;
+    user: ICommentUser
 }
