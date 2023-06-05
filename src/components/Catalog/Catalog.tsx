@@ -10,7 +10,7 @@ import Slider from '../../components/UI/Slider/Slider';
 import GenresData from '../../GenresData.json'
 import { Link } from 'react-router-dom';
 import Input from '../UI/Input/Input';
-import axios from 'axios';
+import CountyData from '../CountryData.json'
 import { IFilm, IFilter } from '../../types/types';
 import { useTranslation } from 'react-i18next';
 import { fetchFilms, fetchFilteredFilms } from '../../store/actions/filmActions';
@@ -32,7 +32,15 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [directorFilter, setDirectorFilter] = useState<string>("")
     const [pageIndex, setPageIndex] = useState<number>(0)
     const [filter, setFilter] = useState({} as IFilter)
-
+    const clearFilter = () => {
+        setYearFilter(0),
+            setRatingFilter(0),
+            setMarksFilter(0),
+            setCountryFilter(""),
+            setActrosFilter(""),
+            setDirectorFilter(""),
+            setPageIndex(0)
+    }
 
     useEffect(() => {
         setFilter({
@@ -56,70 +64,13 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [Films, setFilms] = useState(Film);
     const [sortState, setSort] = useState('none');
 
-
     const { t } = useTranslation()
-
-    // useEffect(() => {
-    //     let filterFilms = Film;
-    //     if (yearFilter) {
-    //         filterFilms = filterFilms.filter(film => String(new Date(film.world_premier).getFullYear()) === yearFilter.toLowerCase());
-    //     }
-    //     if (!genres.includes('')) {
-
-    //         filterFilms = filterFilms.filter(film => {
-    //             return film.genres.some(genre => {
-    //                 return genres?.includes(genre.name_en);
-    //             });
-    //         });
-    //     }
-    //     if (ratingFilter) {
-    //         filterFilms = filterFilms.filter(film => film.rating >= ratingFilter);
-
-    //     }
-    //     // if (marksFilter) {
-    //     //     filterFilms = filterFilms.filter(film => film.marks === marksFilter);
-
-    //     // 
-    //     if (countryFilter) {
-    //         filterFilms = filterFilms.filter(film => film.country.map(e => e.name.toLowerCase()).includes(countryFilter.toLowerCase()));
-    //     }
-    //     if (actrosFilter) {
-    //         filterFilms = filterFilms.filter((film) =>
-    //             film.persons.actors.some((actor) => actor.name_ru.includes(actrosFilter)) || film.persons.actors.some((actor) => actor.name_en?.includes(actrosFilter))
-    //         );
-    //     }
-    //     // if (directorFilter) {
-    //     //     filterFilms = filterFilms.filter((film) =>
-    //     //         film.director.some((director) => director.name_ru.includes(actrosFilter)|| director.name_en.includes(actrosFilter))
-    //     //     );
-    //     // }
-    //     setFilms(filterFilms)
-    // }, [yearFilter, genres, ratingFilter, marksFilter, countryFilter, actrosFilter, directorFilter])
-    ////////////
-    // const url = ""
-    // const filmPageAxios = (method: string = "GET", body: any = null) => {
-    //     axios({
-    //         method: method,
-    //         url: url,
-    //         data: body
-    //     })
-    //         .then(response => {
-    //             let film: IFilm = response.data
-    //             return film
-    //         })
-    //         .catch(error => (console.log(error)))
-    // }
-    // filmPageAxios()
-
     const [film, setFilm] = useState<IFilm | null>(null)
 
     useEffect(() => {
         fetchFilms()
         console.log("film", film)
     }, [])
-
-
-    ///////////////
 
     useEffect(() => {
         switch (sortState) {
@@ -149,16 +100,16 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             <div className={styles.filtersBox}>
                 <Selector name={t('genre')} array={GenresData} filter={'genre'} />
                 <Selector func={setYearFilter} name={t('year')} array={YearData} filter={'year'} />
-                <Selector func={setCountryFilter} name={t('countries')} array={["США", "Росcия"]} filter='none' />
+                <Selector func={setCountryFilter} name={t('countries')} array={CountyData} filter='country' />
                 <Slider func={setRatingFilter} max={10} name={t('rating_from')} />
                 <Slider func={setMarksFilter} max={1000000} name={t('number_of_ratings_from')} />
                 <Input type='text' placeholder={t('search_by_actors')} onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
                 <Input type='text' placeholder={t('search_by_director')} onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
-                <Link to='/movies/'>
-                    <Button variant='outlined' >{t('Button.clean')}</Button>
-                </Link >
                 <Selector name={t('sort')} filter='none' func={setSort}
                     array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
+                <Link to='/movies/' onClick={clearFilter}>
+                    <Button variant='outlined' >{t('Button.clean')}</Button>
+                </Link >
             </div >
             <FilmsList films={Films}></FilmsList>
             <div onClick={() => setPageIndex(prev => prev + 1)}>
