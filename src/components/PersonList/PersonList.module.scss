@@ -1,9 +1,12 @@
 @import "../../App/App.scss";
 
 .columnHeader {
-    font-size: 1vw;
+    font-size: 16px;
     line-height: 22px;
     margin-bottom: 1vh;
+    @media (min-width: 1441px) {
+        font-size: 1vw;
+    }
 }
 .toggleLenght {
     display: flex;
@@ -19,8 +22,11 @@
 .more {
     display: inline;
     gap: 15px;
-    font-size: 1vw;
+    font-size: 16px;
     line-height: 1.25;
+    @media (min-width: 1441px) {
+        font-size: 1vw;
+    }
     cursor: pointer;
     overflow: visible;
     padding-bottom: 2px;

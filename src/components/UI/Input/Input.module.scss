@@ -1,7 +1,6 @@
-@import '../../../App/App.scss';
+@import "../../../App/App.scss";
 
 .Input {
-
     .passwordEye {
         position: absolute;
         right: 16px;
@@ -72,15 +71,15 @@
         border-radius: 4px;
         transition: all 0.3s ease-in-out;
         border: 1px solid $color-light-grey;
+        font-size: 14px;
         padding: 10px;
-        font-size: 0.8vw;
         text-transform: capitalize;
         &:hover {
             border: 1px solid #fff;
             transition: all 0.3s ease-in-out;
+            font-size: 0.8vw;
         }
     }
-
 }
 
 .error {

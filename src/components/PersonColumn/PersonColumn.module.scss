@@ -29,7 +29,7 @@
     }
 }
 .personName {
-    font-size: 1vw;
+    font-size: 20px;
     line-height: 1.5;
     cursor: pointer;
     overflow: visible;
@@ -39,6 +39,9 @@
     &:hover {
         border-bottom: 1px solid $color-white;
         transition: all 0.1s linear;
+    }
+    @media (min-width: 1441px) {
+        font-size: 1.4vw;
     }
 }
 .toggleLenght{

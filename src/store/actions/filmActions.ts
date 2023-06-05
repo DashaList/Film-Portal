@@ -33,10 +33,10 @@ export const fetchFilteredFilms = ( filter: IFilter, genre?: string ) => async (
     }
 }
 
-export const fetchFilm = async ( id: string, setFilm: (film: IFilm) => void)  => {
+export const fetchFilm = async (id: string, setFilm: (film: IFilm) => void) => {
     try {
         const response = await axios.get<IFilm>(`http://localhost:4998/film/${id}`)
-        setFilm( response.data )
+        setFilm(response.data)
         console.log(response.data)
     } catch (e) {
         console.error

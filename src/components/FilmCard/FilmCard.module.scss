@@ -68,7 +68,16 @@
     border-radius: 2px;
     font-style: normal;
     font-weight: 700;
-    font-size: 0.7vw;
+    font-size: 12px;
+    line-height: 1.4;
+    @media (min-width: 1441px) {
+        top: 0.42vw;
+        right: 0.42vw;
+        width: 2.08vw;
+        height: 1.39vw;
+        border-radius: 0.14vw;
+        font-size: 0.83vw;
+    }
     line-height: 1;
     color: $color-black;
 }
@@ -84,34 +93,39 @@
     flex-direction: column;
     align-items: flex-start;
     width: 100%;
-    height: 40px;
     white-space: nowrap;
     text-overflow: ellipsis;
     margin-top: 8px;
-    overflow: hidden;
+    @media (min-width: 1441px) {
+        gap: 1vw;
+    }
 }
 .textForRow {
     width: 146px;
-    
+
     @media (min-width: 1441px) {
         width: 10.132vw;
     }
 }
 .name {
     border-bottom: 1px solid rgba(242, 242, 242, 0.2);
-    font-size: 1vw;
+    font-size: 16px;
     line-height: 1.25;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     border-bottom: none;
     margin-top: -2px;
+    padding-bottom: 10px;
     max-width: 100%;
     transition: all 0.3s ease-in-out;
+    @media (min-width: 1441px) {
+        font-size: 1vw;
+    }
 }
 .genre {
     margin-top: 2px;
-    font-size: 0.5vw;
+    font-size: 14px;
     line-height: 16px;
     color: $color-light-grey;
     overflow: hidden;
@@ -121,6 +135,10 @@
     display: flex;
     flex-direction: row;
     gap: 5px;
+    height: 100%;
+    @media (min-width: 1441px) {
+        font-size: 0.75vw;
+    }
 }
 
 //styles to empty card

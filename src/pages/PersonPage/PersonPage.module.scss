@@ -26,16 +26,22 @@
         height: 100%;
     }
     .description {
-        font-size: 1.5vw;
+        font-size: 20px;
         font-weight: 400;
         line-height: 36px;
+        @media (min-width: 1441px) {
+            font-size: 1.5vw;
+        }
     }
 
     h1,
     h3 {
-        font-size: 3vw;
+        font-size: 36px;
         font-weight: 700;
         line-height: 1.17;
+        @media (min-width: 1441px) {
+            font-size: 3vw;
+        }
     }
 
     .left {
