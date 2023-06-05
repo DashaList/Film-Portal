@@ -47,6 +47,9 @@ export const userSlice = createSlice({
             state.loading = false;
             if (action.payload === 'Unauthorized') {
                 state.error = 'Пользователя не существует';
+            }
+            if (action.payload === 'Unauthorized') {
+                state.error = 'Пользователя не существует';
             } else state.error = action.payload;
             
             console.log(action.payload)

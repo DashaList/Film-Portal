@@ -89,6 +89,7 @@ export interface IPersonsFilms {
     rating: number;
     genres: genre[];
     country: ICountry[];
+    world_premier: string;
 }
 export interface IPerson {
     id: number,

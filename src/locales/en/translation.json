@@ -67,7 +67,18 @@
     "PersonPage": {
       "films": "filmography",
       "birthday": "Birthday: ",
-      "place_of_birth": "Place of birth: "
+      "place_of_birth": "Place of birth: ",
+      "actor": "Actor",
+      "composer": "Composer",
+      "designer": "Designer",
+      "director": "Director",
+      "editor": "Editor",
+      "operator": "Operator",
+      "producer": "Producer",
+      "translator": "Translator",
+      "voiceDirector": "Voice Director",
+      "voice": "Voice",
+      "writer": "Writer"
     },
     "Path": {
       "main": "Home",

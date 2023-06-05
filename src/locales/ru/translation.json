@@ -60,14 +60,25 @@
       "operators": "Операторы",
       "producer": "Продюсеры",
       "translators": "Переводчики",
-      "voiceDirectors": "Режиссеры озвучивания",
+      "voiceDirectors": "Режиссёры озвучивания",
       "voices": "Голоса",
       "writers": "Сценаристы"
     },
     "PersonPage": {
       "films": "фильмография",
       "birthday": "День рождения: ",
-      "place_of_birth": "Место рождения: "
+      "place_of_birth": "Место рождения: ",
+      "actor": "Актёр(са)",
+      "composer": "Композитор",
+      "designer": "Дизайнер",
+      "director": "Режиссер",
+      "editor": "Редактор",
+      "operator": "Оператор",
+      "producer": "Продюсер",
+      "translator": "Переводчик",
+      "voiceDirector": "Режиссёр озвучивания",
+      "voice": "Голос",
+      "writer": "Сценарист"
     },
     "Path": {
       "main": "Главная",
