@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { AppDispatch } from "../store";
 import { userSlice } from "../reducers/userSlice";
-import { UserResponse } from "../../types/types";
+import { IUser, UserResponse } from "../../types/types";
 
 
 export const register = (login: string, password: string) => async (dispatch: AppDispatch) => {
@@ -11,13 +11,18 @@ export const register = (login: string, password: string) => async (dispatch: Ap
             password
         })
 
+        const user: IUser = {
+            id: response.data.id,
+            email: response.data.login,
+            isAdmin: response.data.role === 'admin'
+        }
         dispatch(userSlice.actions.setUser(
-            response.data.user
+            user
         ))
 
         localStorage.setItem('token', response.data.token)
 
-        console.log(response)
+        console.log('reg', response)
 
     } catch (e) {
         if (axios.isAxiosError(e)) {
@@ -35,8 +40,13 @@ export const login = (login: string, password: string) => async (dispatch: AppDi
             password
         })
 
+        const user: IUser = {
+            id: response.data.id,
+            email: response.data.login,
+            isAdmin: response.data.role === 'admin'
+        }
         dispatch(userSlice.actions.setUser(
-            response.data.user
+            user
         ))
 
         localStorage.setItem('token', response.data.token)
@@ -65,8 +75,13 @@ export const auth = () => async (dispatch: AppDispatch) => {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
 
+        const user: IUser = {
+            id: response.data.id,
+            email: response.data.login,
+            isAdmin: response.data.role === 'admin'
+        }
         dispatch(userSlice.actions.setUser(
-            response.data.user
+            user
         ))
 
         localStorage.setItem('token', response.data.token)

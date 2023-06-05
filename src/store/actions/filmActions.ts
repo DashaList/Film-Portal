@@ -17,16 +17,12 @@ export const fetchFilms = () => async (dispatch: AppDispatch) => {
     }
 }
 
-export const fetchFilm = (id: number) => async (dispatch: AppDispatch) => {
+export const fetchFilm = async ( id: string, setFilm: (film: IFilm) => void)  => {
     try {
-        //dispatch(filmSlice.actions.filmsFetching())
-        const response = await axios.get<IFilm[]>(`http://localhost:4998/film/${id}`)
-        dispatch(filmSlice.actions.filmsFetchingSuccess(
-            response.data
-        ))
+        const response = await axios.get<IFilm>(`http://localhost:4998/film/${id}`)
+        setFilm( response.data )
         console.log(response.data)
     } catch (e) {
-        //dispatch(filmSlice.actions.filmsFetchingError(e as Error))
         console.error
     }
 }

@@ -30,6 +30,7 @@ export const userSlice = createSlice({
             
             state.isAuth = true
             state.error = null
+            console.log('state', state.user)
         },
         removeUser(state) {
             // state.user.id = 0,
