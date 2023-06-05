@@ -21,8 +21,9 @@ export const fetchFilteredFilms = ( filter: IFilter, genre?: string ) => async (
     try {
         dispatch(filmSlice.actions.filmsFetching())
         const url = genre? `http://localhost:4998/movies/${genre}` : 'http://localhost:4998/movies'
+        console.log('fil',  filter)
         const response = await axios.post<IFilm[]>(url, {
-            filter
+            ...filter
         })
         dispatch(filmSlice.actions.filmsFetchingSuccess(
             response.data
@@ -33,10 +34,10 @@ export const fetchFilteredFilms = ( filter: IFilter, genre?: string ) => async (
     }
 }
 
-export const fetchFilm = async (id: string, setFilm: (film: IFilm) => void) => {
+export const fetchFilm = async ( id: string, setFilm: (film: IFilm) => void)  => {
     try {
         const response = await axios.get<IFilm>(`http://localhost:4998/film/${id}`)
-        setFilm(response.data)
+        setFilm( response.data )
         console.log(response.data)
     } catch (e) {
         console.error
