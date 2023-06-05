@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import Button from "../UI/Button/Button";
 import styles from './CommentBox.module.scss'
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useAppSelector } from "../../hooks/redux";
 import TranscriptionData from '../../TranscriptionData.json'
-import { postComment } from "../../store/actions/commentActions";
-import { IComment } from "../../types/types";
 
 
 const CommentBoxOld = () => {

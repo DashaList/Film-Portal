@@ -18,7 +18,7 @@ const MainPage = () => {
   const dispatch = useAppDispatch()
 
   useEffect( () => {
-    dispatch(fetchFilteredFilms())
+    //dispatch(fetchFilteredFilms())
 
     const url = "http://localhost:4998/movies/drama"
     const filmPageAxios = (method = "GET", body = null) => {

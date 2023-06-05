@@ -23,22 +23,22 @@ const FilmPage = () => {
     const { user, isAuth } = useAppSelector(state => state.userReducer)
 
     //const film = FilmData.find((obj) => obj.id === Number(id))
-    const films: IFilm[] = Film
+    //const films: IFilm[] = Film
     //const film:IFilm = Film.find((obj) => obj.id === Number(id))||Film[0]
     ////////////
-    const url = ""
-    const filmPageAxios = (method: string = "GET", body: any = null) => {
-        axios({
-            method: method,
-            url: url,
-            data: body
-        })
-            .then(response => {
-                let film: IFilm = response.data
-                return film
-            })
-            .catch(error => (console.log(error)))
-    }
+    // const url = ""
+    // const filmPageAxios = (method: string = "GET", body: any = null) => {
+    //     axios({
+    //         method: method,
+    //         url: url,
+    //         data: body
+    //     })
+    //         .then(response => {
+    //             let film: IFilm = response.data
+    //             return film
+    //         })
+    //         .catch(error => (console.log(error)))
+    // }
     //filmPageAxios()
     ///////////////
 
@@ -81,11 +81,11 @@ const FilmPage = () => {
                         <h1 className={styles.filmName} data-testid='Name'>{RusLanguage ? film?.name_ru : film?.name_en}</h1>
                         <div className={styles.descriptionShort} data-testid='info'>
                             <span className={Number(film?.rating) >= 7 ? styles.ratingTop : styles.rating}> {Number(film?.rating).toFixed(1)},</span>
-                            <span className={styles.link}>{new Date(film?.world_premier).getFullYear()},</span>
+                            {/* <span className={styles.link}>{new Date(film?.world_premier).getFullYear()},</span> */}
                             {film?.genres.map(genre => (
                                 <span className={styles.link} key={genre.name_en}>{RusLanguage ? genre.name_ru : genre.name_en},</span>
                             ))}
-                            <span className={styles.link}>{film?.age}, {formatTime(film?.duration_min)} </span>
+                            {/* <span className={styles.link}>{film?.age}, {formatTime(film?.duration_min)} </span> */}
                         </div>
                         <div className={styles.description} data-testid='shortDescription'>
                             <p>{film?.tagline} </p>
