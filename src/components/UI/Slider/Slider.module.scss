@@ -1,7 +1,10 @@
 @import "../../../App/App.scss";
 
 .sliderBox {
-    width: 10vw;
+    width: 20vw;
+    @media (min-width: 1441px) {
+        width: 10vw;
+    }
 }
 .slider {
     -webkit-appearance: none;
@@ -38,6 +41,7 @@
     cursor: default;
     font-size: 14px;
     line-height: 1.9vw;
+    
     @media (min-width: 1441px) {
         font-size: 0.75vw;
     }
