@@ -34,12 +34,12 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [filter, setFilter] = useState({} as IFilter)
     const clearFilter = () => {
         setYearFilter(0),
-        setRatingFilter(0),
-        setMarksFilter(0),
-        setCountryFilter(""),
-        setActrosFilter(""),
-        setDirectorFilter(""),
-        setPageIndex(0)
+            setRatingFilter(0),
+            setMarksFilter(0),
+            setCountryFilter(""),
+            setActrosFilter(""),
+            setDirectorFilter(""),
+            setPageIndex(0)
     }
 
     useEffect(() => {
@@ -105,11 +105,11 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 <Slider func={setMarksFilter} max={1000000} name={t('number_of_ratings_from')} />
                 <Input type='text' placeholder={t('search_by_actors')} onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
                 <Input type='text' placeholder={t('search_by_director')} onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
+                <Selector name={t('sort')} filter='none' func={setSort}
+                    array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
                 <Link to='/movies/' onClick={clearFilter}>
                     <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
-                <Selector name={t('sort')} filter='none' func={setSort}
-                    array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <div onClick={() => setPageIndex(prev => prev + 1)}>
