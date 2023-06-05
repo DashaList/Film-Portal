@@ -13,6 +13,7 @@ import Input from '../UI/Input/Input';
 import axios from 'axios';
 import { IFilm } from '../../types/types';
 import { useTranslation } from 'react-i18next';
+import { fetchFilms } from '../../store/actions/filmActions';
 
 interface CatalogProps {
     genres: string[]
@@ -70,20 +71,27 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
         setFilms(filterFilms)
     }, [yearFilter, genres, ratingFilter, ratingValueFilter, countryFilter, actrosFilter, directorFilter])
     ////////////
-    const url = ""
-    const filmPageAxios = (method: string = "GET", body: any = null) => {
-        axios({
-            method: method,
-            url: url,
-            data: body
-        })
-            .then(response => {
-                let film: IFilm = response.data
-                return film
-            })
-            .catch(error => (console.log(error)))
-    }
-    filmPageAxios()
+    // const url = ""
+    // const filmPageAxios = (method: string = "GET", body: any = null) => {
+    //     axios({
+    //         method: method,
+    //         url: url,
+    //         data: body
+    //     })
+    //         .then(response => {
+    //             let film: IFilm = response.data
+    //             return film
+    //         })
+    //         .catch(error => (console.log(error)))
+    // }
+    // filmPageAxios()
+
+    const [film, setFilm] = useState<IFilm | null>(null)
+
+    useEffect(() => {
+        fetchFilms()
+        console.log("film", film)
+    }, [])
 
     useEffect(() => {
         const filterData = {
@@ -135,7 +143,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                     <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
                 <Selector name={t('sort')} filter='none' func={setSort}
-                array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
+                    array={[t('by_the_number_of_ratings'), t('by_popularity'), t('newest'), t('oldest'), t('alphabetically_(A-Z)'), t('alphabetically_(Z-A)')]} />
             </div >
             <FilmsList films={Films}></FilmsList>
             <Button variant='outlined'>
