@@ -7,7 +7,7 @@ import cn from 'classnames'
 import { useTranslation } from 'react-i18next';
 
 interface FilmCardProps {
-    film: IFilm,
+    film: IFilm | IPersonsFilms,
     type: 'forGrid' | 'forRow'
 }
 

@@ -1,17 +1,13 @@
 import axios from "axios";
-import { AppDispatch } from "../store";
-import { personSlice } from "../reducers/personSlice";
 import { IPerson } from "../../types/types";
 
 
-export const fetchPersons = () => async (dispatch: AppDispatch) => {
+export const fetchPerson = async (id: string, setPerson: (person: IPerson) => void ) => {
     try {
-        dispatch(personSlice.actions.personsFetching())
-        const response = await axios.get<IPerson[]>('/PersonData.json')
-        dispatch(personSlice.actions.personsFetchingSuccess(
-            response.data
-        ))
+        const response = await axios.get<IPerson>(`http://localhost:4998/persons/${id}`)
+        console.log('per', response.data)
+        setPerson( response.data )
     } catch (e) {
-        dispatch(personSlice.actions.personsFetchingError(e as Error))
+        console.error
     }
 }

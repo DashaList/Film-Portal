@@ -1,12 +1,12 @@
 import { FC, useEffect, useState } from 'react'
 import styles from './FilmsList.module.scss'
-import { IFilm } from '../../types/types'
+import { IFilm, IPersonsFilms } from '../../types/types'
 import FilmCard from '../FilmCard/FilmCard'
 import { useTranslation } from 'react-i18next'
 
 
 interface FilmsListProps {
-  films: IFilm[]
+  films: IFilm[] | IPersonsFilms[]
 }
 
 const FilmsList: FC<FilmsListProps> = ({ films }) => {

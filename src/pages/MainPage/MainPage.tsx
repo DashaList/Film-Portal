@@ -9,7 +9,8 @@ import FilmCard from '../../components/FilmCard/FilmCard'
 import Top10Card from '../../components/Top10Card/Top10Card'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { useEffect } from 'react'
-import { fetchFilms } from '../../store/actions/filmActions'
+import { fetchFilms, fetchFilteredFilms } from '../../store/actions/filmActions'
+import axios from 'axios'
 
 const MainPage = () => {
 
@@ -17,7 +18,23 @@ const MainPage = () => {
   const dispatch = useAppDispatch()
 
   useEffect( () => {
-    dispatch(fetchFilms())
+    dispatch(fetchFilteredFilms())
+
+    const url = "http://localhost:4998/movies/drama"
+    const filmPageAxios = (method = "GET", body = null) => {
+      axios({
+          method: method,
+          url: url,
+          data: body
+      })
+          .then(response => {
+              //const film: IFilm = response.data
+              console.log('resp main', response.data)
+              //return film
+          })
+          .catch(error => (console.log(error)))
+  }
+  //filmPageAxios()
   }, [])
 
   return (

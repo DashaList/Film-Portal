@@ -111,7 +111,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                     <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
             </div >
-            <FilmsList films={Films}></FilmsList>
+            <FilmsList films={Films.concat(Films).concat(Films).concat(Films).concat(Films).concat(Films)}></FilmsList>
             <div onClick={() => setPageIndex(prev => prev + 1)}>
                 <Button variant='outlined'>
                     {t('Button.more')}
