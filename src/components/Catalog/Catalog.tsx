@@ -43,7 +43,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             setDirectorFilter(""),
             setPageIndex(0)
     }
-
+    
     useEffect(() => {
         setFilter({
             pageIndex: pageIndex,
@@ -110,12 +110,19 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 </Link >
             </div >
             <FilmsList films={film}></FilmsList>
-            <div onClick={() => setPageIndex(prev => prev + 1)}>
-                <Button variant='outlined'>
-                    {t('Button.more')}
-                    <img src="https://start.ru/static/images/product/arrow-down.svg" alt="" />
-                </Button>
+            <div className={styles.pagination}>
+                <div onClick={() => setPageIndex(prev => prev === 0 ? 0 : prev - 1)}>
+                    <Button variant='outlined'>
+                        {t('Button.back')}
+                    </Button>
+                </div>
+                <div onClick={() => setPageIndex(prev => prev + 1)}>
+                    <Button variant='outlined'>
+                        {t('Button.next')}
+                    </Button>
+                </div>
             </div>
+
 
         </>
 

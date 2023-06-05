@@ -31,7 +31,7 @@ const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
                 <Link to={`/film/${film.id}`}>
                     <div className={styles.FilmCard}>
                         <div className={styles.baner}>
-                            {type == 'forGrid' && <img className={styles.imgBaner} src={film.poster} alt="" />}
+                            {type == 'forGrid' && <img className={styles.imgBanner} src={'"' + film.poster + '"'} alt="" />}
                             {type == 'forRow' && <div className={styles.imgBannerDiv} style={{ backgroundImage: `url(${'"' + film.poster + '"'})` }}></div>}
                             <div className={film.rating >= 7 ? styles.ratingTop : styles.rating}> {film.rating.toFixed(1)}</div>
                             <HoverBaner />
