@@ -32,7 +32,15 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [directorFilter, setDirectorFilter] = useState<string>("")
     const [pageIndex, setPageIndex] = useState<number>(0)
     const [filter, setFilter] = useState({} as IFilter)
-
+    const clearFilter = () => {
+        setYearFilter(0),
+        setRatingFilter(0),
+        setMarksFilter(0),
+        setCountryFilter(""),
+        setActrosFilter(""),
+        setDirectorFilter(""),
+        setPageIndex(0)
+    }
 
     useEffect(() => {
         setFilter({
@@ -56,70 +64,13 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [Films, setFilms] = useState(Film);
     const [sortState, setSort] = useState('none');
 
-
     const { t } = useTranslation()
-
-    // useEffect(() => {
-    //     let filterFilms = Film;
-    //     if (yearFilter) {
-    //         filterFilms = filterFilms.filter(film => String(new Date(film.world_premier).getFullYear()) === yearFilter.toLowerCase());
-    //     }
-    //     if (!genres.includes('')) {
-
-    //         filterFilms = filterFilms.filter(film => {
-    //             return film.genres.some(genre => {
-    //                 return genres?.includes(genre.name_en);
-    //             });
-    //         });
-    //     }
-    //     if (ratingFilter) {
-    //         filterFilms = filterFilms.filter(film => film.rating >= ratingFilter);
-
-    //     }
-    //     // if (marksFilter) {
-    //     //     filterFilms = filterFilms.filter(film => film.marks === marksFilter);
-
-    //     // 
-    //     if (countryFilter) {
-    //         filterFilms = filterFilms.filter(film => film.country.map(e => e.name.toLowerCase()).includes(countryFilter.toLowerCase()));
-    //     }
-    //     if (actrosFilter) {
-    //         filterFilms = filterFilms.filter((film) =>
-    //             film.persons.actors.some((actor) => actor.name_ru.includes(actrosFilter)) || film.persons.actors.some((actor) => actor.name_en?.includes(actrosFilter))
-    //         );
-    //     }
-    //     // if (directorFilter) {
-    //     //     filterFilms = filterFilms.filter((film) =>
-    //     //         film.director.some((director) => director.name_ru.includes(actrosFilter)|| director.name_en.includes(actrosFilter))
-    //     //     );
-    //     // }
-    //     setFilms(filterFilms)
-    // }, [yearFilter, genres, ratingFilter, marksFilter, countryFilter, actrosFilter, directorFilter])
-    ////////////
-    // const url = ""
-    // const filmPageAxios = (method: string = "GET", body: any = null) => {
-    //     axios({
-    //         method: method,
-    //         url: url,
-    //         data: body
-    //     })
-    //         .then(response => {
-    //             let film: IFilm = response.data
-    //             return film
-    //         })
-    //         .catch(error => (console.log(error)))
-    // }
-    // filmPageAxios()
-
     const [film, setFilm] = useState<IFilm | null>(null)
 
     useEffect(() => {
         fetchFilms()
         console.log("film", film)
     }, [])
-
-
-    ///////////////
 
     useEffect(() => {
         switch (sortState) {
@@ -154,7 +105,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
                 <Slider func={setMarksFilter} max={1000000} name={t('number_of_ratings_from')} />
                 <Input type='text' placeholder={t('search_by_actors')} onChange={(e) => setActrosFilter(e.target.value)} style='dark' />
                 <Input type='text' placeholder={t('search_by_director')} onChange={(e) => setDirectorFilter(e.target.value)} style='dark' />
-                <Link to='/movies/'>
+                <Link to='/movies/' onClick={clearFilter}>
                     <Button variant='outlined' >{t('Button.clean')}</Button>
                 </Link >
                 <Selector name={t('sort')} filter='none' func={setSort}
