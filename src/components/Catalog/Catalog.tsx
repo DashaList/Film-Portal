@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useLayoutEffect, useState } from 'react';
 import styles from './Catalog.module.scss';
 import FilmData from '../../FilmData.json';
 import Film from '../../film.json';
@@ -20,14 +20,17 @@ interface CatalogProps {
     genres: string[]
 }
 
+
 const Catalog: FC<CatalogProps> = ({ genres }) => {
 
     const { t } = useTranslation()
-    const [film, setFilm] = useState<IFilm[]>([]);
-    
 
-    const { films, loading, error } = useAppSelector(state => state.filmReducer)
+
+
     const dispatch = useAppDispatch()
+    const [filter, setFilter] = useState({} as IFilter)
+    const { films, loading, error } = useAppSelector(state => state.filmReducer)
+    const [film, setFilm] = useState<IFilm[]>(films);
     const [sortState, setSort] = useState('none');
     const [yearFilter, setYearFilter] = useState<number>(0)
     const [ratingFilter, setRatingFilter] = useState<number>(0)
@@ -36,7 +39,6 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     const [actrosFilter, setActrosFilter] = useState<string>("")
     const [directorFilter, setDirectorFilter] = useState<string>("")
     const [pageIndex, setPageIndex] = useState<number>(0)
-    const [filter, setFilter] = useState({} as IFilter)
 
     const clearFilter = () => {
         setYearFilter(0),
@@ -47,10 +49,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             setDirectorFilter(""),
             setPageIndex(0)
     }
-    useEffect(() => {
-        dispatch(fetchFilteredFilms(filter, 'drama'))
-        setFilm(films)
-    })
+
     useEffect(() => {
         setFilter({
             pageIndex: pageIndex,
@@ -65,7 +64,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     }, [yearFilter, genres, ratingFilter, marksFilter, countryFilter, actrosFilter, directorFilter, pageIndex])
 
     useEffect(() => {
-        dispatch(fetchFilteredFilms(filter, 'drama'))
+        dispatch(fetchFilteredFilms(filter))
         setFilm(films)
         console.log("film", films)
 
