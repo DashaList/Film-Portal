@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     height: 40px;
-    font-size: 1vw;
+    font-size: 17px;
     font-weight: 700;
     text-align: center;
     //line-height: 24px;
@@ -13,12 +13,14 @@
     border-radius: 4px;
     gap: 12px;
     padding: 15px;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
 
     @media (min-width: 1441px) {
         height: 2.9vw;
         border-radius: 0.28vw;
         padding: 0.69vw 1.39vw;
+        font-size: 1vw;
+
         //line-height: 2.78vw;
     }
 }
@@ -43,10 +45,10 @@
 }
 
 .translucent {
-    background-color: hsla(0,0%,95%,.2);
+    background-color: hsla(0, 0%, 95%, 0.2);
 
     &:hover {
-        background-color: hsla(0,0%,95%,.34);
+        background-color: hsla(0, 0%, 95%, 0.34);
     }
 }
 

@@ -52,9 +52,13 @@
     max-height: 85%;
 }
 .filmName {
-    font-size: 3vw;
+    font-size: 36px;
     line-height: 1.5;
     text-shadow: $color-red 0 0 1vw;
+    @media (min-width: 1441px) {
+        font-size: 3vw;
+    }
+
 }
 .descriptionShort {
     color: #757d8a;
@@ -70,9 +74,12 @@
 }
 .link {
     border-bottom: 1px solid hsla(217, 8%, 50%, 0.32);
-    font-size: 1vw;
+    font-size: 16px;
     &:last-child {
         border-bottom: none;
+    }
+    @media (min-width: 1441px) {
+        font-size: 1vw;
     }
 }
 .description {
@@ -81,8 +88,11 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     p {
-        font-size: 1.666666vw;
+        font-size: 20px;
         line-height: 1.5;
+        @media (min-width: 1441px) {
+            font-size: 1.6666vw;
+        }
     }
 }
 .btnBox {
@@ -97,8 +107,11 @@
     padding: 0 55px;
 }
 .header {
-    font-size: 3vw;
+    font-size: 36px;
     line-height: 52px;
+    @media (min-width: 1441px) {
+        font-size: 3vw;
+    }
 }
 .trailerBox {
     width: 50vw;
@@ -133,8 +146,11 @@
     transition: all 0.3s ease-in;
 
     p {
-        font-size: 1vw;
+        font-size: 16px;
         line-height: 1.4;
+        @media (min-width: 1441px) {
+            font-size: 1vw;
+        }
     }
 }
 .descriptionFullSlash {
@@ -145,8 +161,11 @@
     overflow: hidden;
     transition: all 0.3s ease-in;
     p {
-        font-size: 1vw;
+        font-size: 16px;
         line-height: 1.4;
+        @media (min-width: 1441px) {
+            font-size: 1vw;
+        }
     }
 }
 .toggleDescription {
@@ -164,7 +183,7 @@
 .more {
     display: inline;
     gap: 15px;
-    font-size: 1vw;
+    font-size: 16px;
     line-height: 1.25;
     cursor: pointer;
     overflow: visible;
@@ -175,6 +194,9 @@
         border-bottom: 1px solid $color-white;
         transition: all 0.1s linear;
     }
+    @media (min-width: 1441px) {
+        font-size: 1vw;
+    }
 }
 
 .socialBox {
@@ -182,6 +204,9 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
+    &>img{
+        max-width: 30%;
+    }
 }
 .box {
     display: flex;
@@ -189,11 +214,17 @@
     justify-content: start;
     align-items: center;
     gap: 10px;
-    font-size: 0.8vw;
+    font-size: 14px;
+    @media (min-width: 1441px) {
+        font-size: 0.8vw;
+    }
 }
 .subheader {
-    font-size: 2vw;
+    font-size: 24px;
     line-height: 40px;
+    @media (min-width: 1441px) {
+        font-size: 2vw;
+    }
 }
 
 .persons {

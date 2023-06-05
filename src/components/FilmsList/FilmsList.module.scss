@@ -13,9 +13,12 @@
     }
 }
 .empty {
-    font-size: 3vw;
+    font-size: 20px;
     outline: none;
     font-weight: 300;
     padding: 55px;
     margin: 0;
+    @media (min-width: 1441px) {
+        font-size: 3vw;
+    }
 }
