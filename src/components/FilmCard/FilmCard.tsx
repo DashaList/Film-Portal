@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 import HoverBaner from '../HoverBaner/HoverBaner';
 import cn from 'classnames'
 import { useTranslation } from 'react-i18next';
+import { useAppSelector } from '../../hooks/redux';
 
 interface FilmCardProps {
     film: IFilm | IPersonsFilms,
     type: 'forGrid' | 'forRow'
 }
 
-const FilmCard: FC<FilmCardProps> = ({ film, type }) => {
-    
+const FilmCard: FC<FilmCardProps> = ({ film, type }) => {    
     const { i18n } = useTranslation()
     const  RusLanguage = ( i18n.resolvedLanguage === 'ru' )
    
-    switch (film.id) {
-        case 0:
+    switch (film) {
+        case undefined:
             return (
                 <div className={styles.emptyFilm}>
                     <div className={styles.emptyBaner} />
