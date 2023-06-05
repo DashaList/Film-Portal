@@ -34,6 +34,8 @@ const PersonPage = () => {
         }
     }, [])
 
+    const dateOfBirth = `${person?.birthday?.slice(8, 10)}.${person?.birthday?.slice(5, 7)}.${person?.birthday?.slice(0, 4)}`
+
     ////////////
     // const url = ""
     // const filmPageAxios = (method: string = "GET", body: any = null) => {
@@ -73,7 +75,7 @@ const PersonPage = () => {
                 <div className={styles.right_wrapper}>
 
                     <h3 data-testid='fullName'>{RusLanguage ? person?.name_ru : person?.name_en}</h3>
-                    <p className={styles.description} data-testid='biography'>{t('PersonPage.birthday')}{person?.birthday || "-"}</p>
+                    <p className={styles.description} data-testid='biography'>{t('PersonPage.birthday')}{dateOfBirth || "-"}</p>
                     <p className={styles.description} data-testid='biography'>{t('PersonPage.place_of_birth')}{person?.place_of_birth || "-"} </p>
 
                 </div>
@@ -122,30 +124,24 @@ const PersonPage = () => {
                         <FilmsList films={person?.producer} ></FilmsList>
                     </>
                 }
-                {/* {person?.translator && person?.translator.length > 0 &&
-                    <>
-                        <p className={styles.description}>{t('PersonPage.translator')}</p>
-                        <FilmsList films={person?.translator} ></FilmsList>
-                    </>
-                }
                 {person?.voice && person?.voice.length > 0 &&
                     <>
-                        <p className={styles.description}>{t('Person.')}</p>
-                        <FilmsList films={person?.actor} ></FilmsList>
+                        <p className={styles.description}>{t('PersonPage.voice')}</p>
+                        <FilmsList films={person?.voice} ></FilmsList>
                     </>
                 }
                 {person?.voiceDirector && person?.voiceDirector.length > 0 &&
                     <>
-                        <p className={styles.description}>{t('Person.')}</p>
-                        <FilmsList films={person?.actor} ></FilmsList>
+                        <p className={styles.description}>{t('PersonPage.voiceDirector')}</p>
+                        <FilmsList films={person?.voiceDirector} ></FilmsList>
                     </>
                 }
                 {person?.writer && person?.writer.length > 0 &&
                     <>
-                        <p className={styles.description}>{t('Person.')}</p>
-                        <FilmsList films={person?.actor} ></FilmsList>
+                        <p className={styles.description}>{t('PersonPage.writer')}</p>
+                        <FilmsList films={person?.writer} ></FilmsList>
                     </>
-                } */}
+                }
             </div>
         </div>
     )
