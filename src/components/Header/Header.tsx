@@ -86,15 +86,15 @@ const Header = () => {
                         <img className={styles.icon} src={avatar} alt="avatar" />
                     </div>}
                     {windowWidth <= 1024 &&
-                    <div>
+                    <div onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
                         <img className={cn(styles.icon, styles.burger)} src={burger} alt="burger" />
                     </div>}
 
                 </div>
                 {isDropdownOpen &&
-                    <HeaderDropdown loginHandler={signinHandler} refProps={dropdownRef} onMouseLeave={() => setIsDropdownOpen(false)} />
+                    <HeaderDropdown loginHandler={signinHandler} onMouseLeave={() => setIsDropdownOpen(false)} />
                 }
-                <LanguageFlag />
+                {windowWidth > 1024 && <LanguageFlag />}
             </div>
         </header>
     )

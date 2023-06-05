@@ -7,9 +7,16 @@ import { IFilm } from "../../types/types";
 export const fetchFilms = () => async (dispatch: AppDispatch) => {
     try {
         dispatch(filmSlice.actions.filmsFetching())
-        const response = await axios.get<IFilm[]>('http://localhost:4998/movies')
+        const response = await axios.post('http://localhost:4998/movies/drama', {
+            year: 2019,
+            rating: 7.2,
+            marks: 100,
+            country: 'США',
+            actors: 'Ива',
+            directors: 'Ива',
+        })
         dispatch(filmSlice.actions.filmsFetchingSuccess(
-            response.data
+            response.data.movies
         ))
         console.log(response.data)
     } catch (e) {

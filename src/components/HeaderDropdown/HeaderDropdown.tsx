@@ -2,21 +2,27 @@ import styles from './HeaderDropdown.module.scss'
 import login from '../../assets/img/svg/login-new.svg'
 import languageIcon from '../../assets/img/svg/language-new.svg'
 import supportIcon from '../../assets/img/svg/support-new.svg'
+import avatar from '../../assets/img/svg/avatar.svg'
 import cn from 'classnames'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { logout } from '../../store/actions/userActions'
+import { useWindowWidth } from '../../hooks/hooks'
+import Button from '../UI/Button/Button'
+import { useNavigate } from 'react-router-dom'
+import LanguageFlag from '../LanguageFlag/LanguageFlag'
 
 interface HeaderDropdownProps {
     loginHandler: () => void;
-    refProps: React.RefObject<HTMLDivElement>;
     onMouseLeave: () => void
 }
 
-const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMouseLeave}) => {
+const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, onMouseLeave}) => {
 
     const { t } = useTranslation()
+
+    const windowWidth = useWindowWidth()
 
     const { isAuth } = useAppSelector( state => state.userReducer)
     const { isAdmin } = useAppSelector( state => state.userReducer.user)
@@ -26,15 +32,29 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMous
         dispatch( logout() )
     }
 
+    const navigate = useNavigate()
+    const signupHandler = () => navigate("/signup")
+
     //const isAuth = true
 
   return (
-    <div data-testid='HeaderDropdown'className={styles.Dropdown} ref={refProps} onMouseLeave={onMouseLeave}>
+    <div data-testid='HeaderDropdown'className={styles.Dropdown}  onMouseLeave={onMouseLeave}>
         <div className={styles.triangle}></div>
         <div className={styles.dropdownWrapper}>
+
+            {windowWidth <= 1024 &&
+                <div className={styles.dropdownBlock}>
+                    <div>
+                        <img src={avatar} alt="" />
+                    </div>
+                    <span>{t('Header.Movies')}</span>
+                </div>
+            }
+
             <div className={styles.dropdownBlock}>
-                <div>
-                    <img src={languageIcon} alt="" />
+                <div className={styles.languageFlag}>
+                    {/* <img src={languageIcon} alt="" /> */}
+                    <LanguageFlag />
                 </div>
                 <span>{t('Header.change_language')}</span>
             </div>
@@ -45,6 +65,11 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, refProps, onMous
                     </div>
                     <span>{t('Header.support_center')}</span>
             </a>
+
+            {windowWidth <= 1024 && !isAuth &&
+            <div className={styles.testFreeBtn}>
+                <Button size='small' onClick={signupHandler}>{t('Button.test_free')}</Button>
+            </div>}
 
             {!isAuth &&
                 <div data-testid='Login' className={cn(styles.dropdownBlock, styles.authBlock)} onClick={loginHandler}>

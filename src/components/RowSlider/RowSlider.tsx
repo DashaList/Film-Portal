@@ -37,7 +37,7 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
 
     const handleScroll = (e: UIEvent<HTMLDivElement>) => {
         setScroll(e.currentTarget.scrollLeft)
-        console.log(scroll, sliderWidth)
+        //console.log(scroll, sliderWidth)
     }
 
     useEffect(() => {
@@ -73,27 +73,33 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
                 <div className={styles.paginator}>
                     <Paginator sliderWidth={sliderWidth} scroll={scroll} />
                 </div>
+                {scroll < sliderWidth - windowWidth &&
                 <div className={cn(
                     styles.arrow,
                     styles.rightArrow
                 )} onClick={goToNext} data-testid='right-arrow'>
                     <img src={arrow} alt=">" />
-                </div>
+                </div>}
+                
+                {scroll > 10 &&
                 <div className={cn(
                     styles.arrow,
                     styles.leftArrow
                 )} onClick={goToPrev}>
                     <img src={arrow} alt="<" data-testid='left-arrow' />
-                </div>
+                </div>}
 
-                <div className={cn(
+                {scroll > 10 &&
+                    <div className={cn(
                     styles.fade,
                     styles.fadeLeft
-                )} style={{ width: fadeWidth.left}}></div>
-                <div className={cn(
+                )}></div>}
+
+                {scroll < sliderWidth - windowWidth &&
+                    <div className={cn(
                     styles.fade,
                     styles.fadeRight
-                )}></div>
+                )}></div>}
             </div>
         </div>
     )

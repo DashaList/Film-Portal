@@ -2,6 +2,11 @@
 
 .RowSlider {
 
+    &:hover .arrow,
+    &:hover .fade {
+        visibility: visible;
+    }
+
     .header {
         display: flex;
         align-items: center;
@@ -78,6 +83,7 @@
         //opacity: 0;
         opacity: .34;
         cursor: pointer;
+        visibility: hidden;
 
         @media (min-width: 1441px) {
             width: 3.89vw;
@@ -118,6 +124,7 @@
         background-color: $color-dark-grey;
         opacity: 0.8;
         animation: Slider_visible__jdA_J .7s;
+        visibility: hidden;
 
         @media (min-width: 1441px) {
             width: 3.89vw;
@@ -130,7 +137,7 @@
         width: 56px;
 
         @media (min-width: 1441px) {
-            padding: 0 3.89vw;
+            width: 3.89vw;
         }
     }
     .fadeRight {
@@ -138,7 +145,7 @@
         width: 56px;
 
         @media (min-width: 1441px) {
-            padding: 0 3.89vw;
+            width: 3.89vw;
         }
     }
 }
