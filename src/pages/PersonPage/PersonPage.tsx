@@ -52,8 +52,12 @@ const PersonPage = () => {
                 <div className={styles.right_wrapper}>
 
                     <h3 data-testid='fullName'>{RusLanguage ? person?.name_ru : person?.name_en}</h3>
-                    <p className={styles.description} data-testid='biography'>{t('PersonPage.birthday')}{dateOfBirth || "-"}</p>
-                    <p className={styles.description} data-testid='biography'>{t('PersonPage.place_of_birth')}{person?.place_of_birth || "-"} </p>
+                    {person?.birthday &&
+                        <p className={styles.description} data-testid='biography'>{t('PersonPage.birthday')}{dateOfBirth || "-"}</p>
+                    }
+                    {person?.place_of_birth &&
+                        <p className={styles.description} data-testid='biography'>{t('PersonPage.place_of_birth')}{person?.place_of_birth || "-"} </p>
+                    }
 
                 </div>
             </div>
