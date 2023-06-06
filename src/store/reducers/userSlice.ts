@@ -36,23 +36,18 @@ export const userSlice = createSlice({
             // state.user.id = 0,
             // state.user.email = '',
             // state.user.isAdmin = false,
-            state = initialState,
+            state = initialState
 
-            state.isAuth = false
-            state.error = null
+            // state.isAuth = false
+            // state.error = null
 
             console.log('pip', state)
         },
         setError(state,  action: PayloadAction<string>) {
             state.loading = false;
-            if (action.payload === 'Unauthorized') {
-                state.error = 'Пользователя не существует';
-            }
-            if (action.payload === 'Unauthorized') {
-                state.error = 'Пользователя не существует';
-            } else state.error = action.payload;
+            state.error = action.payload;
             
-            console.log(action.payload)
+            console.log('errr', action.payload)
         }
     }
 })

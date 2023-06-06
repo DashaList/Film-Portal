@@ -54,7 +54,7 @@ export const fetchMainPageFilms = async (
         setDramaFilms( response.data.drama )
         setComedyFilms( response.data.comedy )
         setTopFilms( response.data.rating )
-        console.log(response.data)
+        console.log('smth', response.data)
     } catch (e) {
         console.error
     }

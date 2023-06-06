@@ -113,6 +113,12 @@
       "person_name": "Last name and First name of the person",
       "photo_URL": "Photo`s URL"
     },
+    "MainPage": {
+      "Stories": "Stories",
+      "Drama": "Drama",
+      "Comedy": "Comedy",
+      "Top": "Top-10 on START"
+    },
     "FilmsList": {
       "empty": "Unfortunately, we didn't find anything!"
     },
@@ -144,5 +150,8 @@
     "try_for_free": "Try for free",
     "watch_start_7_days": "Sign up and watch START 7 days for free",
     "log_in_first": "Log in first",
-    "enter_comment_text": "Enter comment text..."
+    "enter_comment_text": "Enter comment text...",
+    "User with this login does not exist": "User with this login does not exist",
+    "User with this login already exists": "User with this login already exists",
+    "error": "An error has occured"
 }

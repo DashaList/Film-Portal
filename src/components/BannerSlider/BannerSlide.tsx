@@ -5,6 +5,7 @@ import Button from '../UI/Button/Button'
 import favorite from '../../assets/img/svg/favorite.svg'
 import { useWindowWidth } from '../../hooks/hooks'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 
 interface BannerSlideProps {
     film: IPersonsFilms
@@ -39,10 +40,12 @@ const BannerSlide: FC<BannerSlideProps> = ({film}) => {
           {/* <p>{film?.description} </p> */}
         </div>
         <div className={styles.buttons}>
-          <Button >
-            <img src="https://start.ru/static/images/movie/play.svg" />
-              {t("watch_for_free")}
-          </Button>
+          <Link to={`/film/${film.id}`}>
+            <Button >
+              <img src="https://start.ru/static/images/movie/play.svg" />
+                {t("watch_for_free")}
+            </Button>
+          </Link>
           <Button variant="translucent">
             <img src="https://start.ru/static/images/product/kino.svg" />
               {t('trailer')}

@@ -1,5 +1,13 @@
 .MainPage {
     overflow: hidden;
+
+    .mainContent {
+        margin-top: -82px;
+
+        @media (min-width: 1441px) {
+            margin-top: -5.69vw;
+        }
+    }
     
     .contentRow {
         margin-bottom: 34px;
@@ -7,6 +15,12 @@
         @media (min-width: 1441px) {
             margin-bottom: 2.36vw;
         }
+    }
+    .contentRow {
+        margin-top: 30px;
+    }
+    .contentRow ~ .contentRow {
+        margin-top: 0;
     }
 
     h2 {

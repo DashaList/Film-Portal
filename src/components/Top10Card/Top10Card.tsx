@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import PlayButton from '../UI/PlayButton/PlayButton'
 import styles from './Top10Card.module.scss'
+import { Link } from 'react-router-dom'
 
 interface Top10CardProps {
     topNumber: number
@@ -11,16 +12,20 @@ interface Top10CardProps {
 const Top10Card: FC<Top10CardProps> = ({topNumber, imgLink, filmLink}) => {
   return (
     <div className={styles.Top10Card}>
-        <a href={filmLink} className={styles.link} target="_blank">
-            <div className={styles.number}>
-                <img src={`https://start.ru/static/images/newVideoUnit/topTen/${topNumber}.svg`} alt={topNumber.toString()} />
-            </div>
-            <div className={styles.content} style={{backgroundImage: `url(${'"' + imgLink +'"'})`}}>
+        <Link to={filmLink}>
+
+            <div className={styles.content} style={{backgroundImage: `url(${'"http://localhost:4998/' + imgLink +'"'})`}}>
                 <div className={styles.playBtn}>
                     <PlayButton />
                 </div>
             </div>
-        </a>
+
+            <div className={styles.numberWrap}>
+                <div className={styles.number}>
+                    <img src={`https://start.ru/static/images/newVideoUnit/topTen/${topNumber}.svg`} alt={topNumber.toString()} />
+                </div>
+            </div>
+        </Link>
     </div>
   )
 }

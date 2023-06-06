@@ -113,6 +113,12 @@
         "person_name": "Фамилия и имя человека",
         "photo_URL": "Ссылка на фото"
     },
+    "MainPage": {
+      "Stories": "Истории",
+      "Drama": "Драмы",
+      "Comedy": "Комедии",
+      "Top": "Топ-10 на START"
+    },
     "FilmsList": {
       "empty": "К сожалению, мы ничего не нашли!"
     },
@@ -144,5 +150,8 @@
     "try_for_free": "Попробуйте бесплатно",
     "watch_start_7_days": "Зарегистрируйтесь и смотрите START 7 дней бесплатно",
     "log_in_first": "Сначала авторизуйтесь",
-    "enter_comment_text": "Введите текст комментария..."
+    "enter_comment_text": "Введите текст комментария...",
+    "User with this login does not exist": "Такого пользователя не существует",
+    "User with this login already exists": "Пользователь с таким логином уже существует",
+    "error":"Произошла ошибка"
 }

@@ -4,11 +4,12 @@ import styles from './AuthForm.module.scss'
 import google from '../../assets/img/svg/google_sign.svg'
 import vk from '../../assets/img/svg/vk-1.svg'
 import { Link } from 'react-router-dom'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { IAuth } from '../../types/types'
 import { useAppSelector } from '../../hooks/redux'
+import { logout } from '../../store/actions/userActions'
 
 interface AuthFormProps {
     type: 'signin' | 'signup'
@@ -25,7 +26,8 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
 
     const { t } = useTranslation()
 
-    const { isAuth, loading, error: userError } = useAppSelector(state => state.userReducer)
+    const { isAuth, loading, error } = useAppSelector(state => state.userReducer)
+    const [userError, setUserError] = useState<string | null>(null)
 
     const {
         control,
@@ -38,8 +40,27 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
     const onSubmit: SubmitHandler<IAuth> = ({email, password}) => {
         submitHandler(email, password)
         reset()
+        //setUserError(null)
         console.log('usEr', userError)
+        // if (error) {
+        //     logout()
+        // }
     }
+
+    useEffect(() => {
+        if (error) {
+            setUserError(
+                error === 'User with this login does not exist' ? t('User with this login does not exist') :
+                            error === 'User with this login already exists' ? t('User with this login already exists') :
+                            t('error')
+            )            
+        } else {
+            setUserError(null)
+        }
+
+      console.log(error, userError)
+    }, [error])
+    
 
   return (
     <div className={styles.AuthForm}>
@@ -118,7 +139,7 @@ const AuthForm: FC<AuthFormProps> = ({type, title, btnName, bottomText, submitHa
                             isError={!!error  || !!userError}
                         />
                         {error && <div className={styles.error}>{error.message}</div>}
-                        {userError && <div className={styles.error}>{userError}</div>}
+                        {userError && !error && <div className={styles.error}>{userError}</div>}
                     </>
                     )}
                 />
