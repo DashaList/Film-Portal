@@ -68,7 +68,7 @@ const FilmPage = () => {
         <div className={styles.page}>
             <div className={styles.baner}>
                 <div className={styles.banerBox}>
-                    <img className={styles.imgBaner} src={film?.poster} alt="" data-testid='Baner' />
+                    <img className={styles.imgBaner} src={`http://localhost:4998/${film?.poster}`} alt="" data-testid='Baner' />
                 </div>
                 <div className={styles.topBlock}>
                     <Path>
@@ -140,17 +140,17 @@ const FilmPage = () => {
 
                 <h2 className={styles.subheader}>{t('FilmPage.persons')}</h2>
                 <div className={styles.persons}>
-                    {film?.persons.actors && <PersonList position={film?.persons.actors} nameProfessions={t('FilmPage.actor')} />}
-                    {film?.persons.composers && <PersonList position={film?.persons.composers} nameProfessions={t('FilmPage.composers')} />}
-                    {film?.persons.designers && <PersonList position={film?.persons.designers} nameProfessions={t('FilmPage.designers')} />}
-                    {film?.persons.directors && <PersonList position={film?.persons.directors} nameProfessions={t('FilmPage.directors')} />}
-                    {film?.persons.editors && <PersonList position={film?.persons.editors} nameProfessions={t('FilmPage.editors')} />}
-                    {film?.persons.operators && <PersonList position={film?.persons.operators} nameProfessions={t('FilmPage.operators')} />}
-                    {film?.persons.producer && <PersonList position={film?.persons.producer} nameProfessions={t('FilmPage.producer')} />}
-                    {film?.persons.translators && <PersonList position={film?.persons.translators} nameProfessions={t('FilmPage.translators')} />}
-                    {film?.persons.voiceDirectors && <PersonList position={film?.persons.voiceDirectors} nameProfessions={t('FilmPage.voiceDirectors')} />}
-                    {film?.persons.voices && <PersonList position={film?.persons.voices} nameProfessions={t('FilmPage.voices')} />}
-                    {film?.persons.writers && <PersonList position={film?.persons.writers} nameProfessions={t('FilmPage.writers')} />}
+                    {film?.persons.actors && film?.persons.actors.length > 0 && <PersonList position={film?.persons.actors} nameProfessions={t('FilmPage.actor')} />}
+                    {film?.persons.composers && film?.persons.composers.length > 0 && <PersonList position={film?.persons.composers} nameProfessions={t('FilmPage.composers')} />}
+                    {film?.persons.designers && film?.persons.designers.length > 0 && <PersonList position={film?.persons.designers} nameProfessions={t('FilmPage.designers')} />}
+                    {film?.persons.directors && film?.persons.directors.length > 0 && <PersonList position={film?.persons.directors} nameProfessions={t('FilmPage.directors')} />}
+                    {film?.persons.editors && film?.persons.editors.length > 0 && <PersonList position={film?.persons.editors} nameProfessions={t('FilmPage.editors')} />}
+                    {film?.persons.operators && film?.persons.operators.length > 0 && <PersonList position={film?.persons.operators} nameProfessions={t('FilmPage.operators')} />}
+                    {film?.persons.producer && film?.persons.producer.length > 0 && <PersonList position={film?.persons.producer} nameProfessions={t('FilmPage.producer')} />}
+                    {film?.persons.translators && film?.persons.translators.length > 0 && <PersonList position={film?.persons.translators} nameProfessions={t('FilmPage.translators')} />}
+                    {film?.persons.voiceDirectors && film?.persons.voiceDirectors.length > 0 && <PersonList position={film?.persons.voiceDirectors} nameProfessions={t('FilmPage.voiceDirectors')} />}
+                    {film?.persons.voices && film?.persons.voices.length > 0 && <PersonList position={film?.persons.voices} nameProfessions={t('FilmPage.voices')} />}
+                    {film?.persons.writers && film?.persons.writers.length > 0 && <PersonList position={film?.persons.writers} nameProfessions={t('FilmPage.writers')} />}
                 </div>
             </div>
             {film?.comments &&

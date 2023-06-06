@@ -8,7 +8,7 @@ import Button from '../../components/UI/Button/Button';
 import YearData from '../../YearData.json'
 import Slider from '../../components/UI/Slider/Slider';
 import GenresData from '../../GenresData.json'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../UI/Input/Input';
 import CountyData from '../CountryData.json'
 import { IFilm, IFilter } from '../../types/types';
@@ -48,14 +48,15 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             setActrosFilter(""),
             setDirectorFilter(""),
             setPageIndex(0)
+            setFilterArray('')
     }
 
     useEffect(() => {
         setFilter({
-            pageIndex: pageIndex,
-            year: yearFilter,
-            rating: ratingFilter,
-            marks: marksFilter,
+            pageIndex: +pageIndex,
+            year: +yearFilter,
+            rating: +ratingFilter,
+            marks: +marksFilter,
             country: countryFilter,
             actors: actrosFilter,
             directors: directorFilter,
@@ -63,13 +64,50 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
         console.log('Filter Obj', filter)
     }, [yearFilter, genres, ratingFilter, marksFilter, countryFilter, actrosFilter, directorFilter, pageIndex])
 
+
+    const [genreFilterArray, setFilterArray] = useState<string>('');
+    // const addFilterPosition = (filter: genre, isChecked: boolean) => {
+    //     const updatedFilter = isChecked ? [...genreFilterArray, filter.name_en] : genreFilterArray.filter((item) => item !== filter.name_en);
+    //     setFilterArray(updatedFilter);
+    // }
+
+
+    const navigate = useNavigate()
+    const createURL = (genre: string[] = []) => {
+        let url = ''
+        genre.forEach(function (elem: string, idx: number) {
+            if (idx === genre.length - 1) {
+                url = url + elem
+            } else {
+                url = url + elem + '+'
+            }
+        })
+        return url
+    }
+    const goFilterUrl = (URL: string) => {
+        let link = ''
+        if (window.location.pathname.includes('/movies')) {
+            link = '/movies/'
+        }
+        else {
+            link = '/admin/'
+        }
+        link += URL
+        navigate(link, { replace: true })
+    }
+
     useEffect(() => {
-        dispatch(fetchFilteredFilms(filter))
-        setFilm(films)
+        goFilterUrl(genreFilterArray)
+    }, [genreFilterArray])
+    
+
+    useEffect(() => {
+        dispatch(fetchFilteredFilms(filter, setFilm, genreFilterArray))
+        //setFilm(films)
         console.log("film", films)
 
         console.log("state", film)
-    }, [filter])
+    }, [filter, genreFilterArray])
 
 
 
@@ -82,7 +120,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
             case 'По дате выхода (сначала свежие)' || 'Newest':
                 setFilm(prev => [...prev].sort((a, b) => new Date(b.world_premier).getFullYear() - new Date(a.world_premier).getFullYear()));
                 break;
-            case 'По дате выхода (сначала старые)' || 'Aldest':
+            case 'По дате выхода (сначала старые)' || 'Oldest':
                 setFilm(prev => [...prev].sort((a, b) => new Date(a.world_premier).getFullYear() - new Date(b.world_premier).getFullYear()));
                 break;
             case 'По алфавиту (А-Я)' || 'Alphabetically (A-Z)':
@@ -100,7 +138,7 @@ const Catalog: FC<CatalogProps> = ({ genres }) => {
     return (
         <>
             <div className={styles.filtersBox}>
-                <Selector  name={t('genre')} array={GenresData} filter={'genre'} />
+                <Selector defValue={''} func={setFilterArray} name={t('genre')}  array={GenresData} filter={'genre'} />
                 <Selector defValue={yearFilter} func={setYearFilter} name={t('year')} array={YearData} filter={'year'} />
                 <Selector defValue={countryFilter}  func={setCountryFilter} name={t('countries')} array={CountyData} filter='country' />
                 <Slider value={ratingFilter} func={setRatingFilter} max={10} name={t('rating_from')} />

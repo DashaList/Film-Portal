@@ -39,6 +39,10 @@ const Header = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
     const dropdownRef = useOutsideClick(() => setIsDropdownOpen(false))    
 
+    useEffect(() => {
+        console.log('auth',isAuth)
+    }, [isAuth])
+
     return (
         <header className={cn(styles.Header, scrollY > 10 && styles.Header_small)}>
             <div className={styles.left}>

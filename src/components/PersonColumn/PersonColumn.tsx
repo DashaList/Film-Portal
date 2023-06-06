@@ -19,7 +19,9 @@ const PersonColumn: FC<PersonColumnProps> = ({ person }) => {
     return (
         <div className={styles.PersonColumn}>
             <Link to={`/persons/${currentPerson?.id}`} className={styles.personRow}>
-                <img src={currentPerson?.poster} alt="" className={styles.avatar} />
+                <div  className={styles.avatar}>
+                    <img src={`http://localhost:4998/${currentPerson?.poster}`} alt="" />
+                </div>
                 <span className={styles.personName}>{RusLanguage ? currentPerson?.name_ru : currentPerson?.name_en}</span>
             </Link>
         </div>
