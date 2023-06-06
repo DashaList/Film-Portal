@@ -3,7 +3,8 @@
 .RowSlider {
 
     &:hover .arrow,
-    &:hover .fade {
+    &:hover .fade,
+    &:hover .paginator {
         visibility: visible;
     }
 
@@ -98,6 +99,7 @@
         position: absolute;
         top: -22px;
         right: 50px;
+        visibility: hidden;
 
         @media (min-width: 1441px) {
             top: -1.53vw;

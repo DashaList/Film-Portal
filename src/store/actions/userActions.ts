@@ -21,15 +21,19 @@ export const register = (login: string, password: string) => async (dispatch: Ap
         ))
 
         localStorage.setItem('token', response.data.token)
+        localStorage.setItem('login', response.data.login)
+        localStorage.setItem('id', response.data.id.toString())
 
         console.log('reg', response)
 
     } catch (e) {
         if (axios.isAxiosError(e)) {
-            dispatch(userSlice.actions.setError(e.response?.data.error))
+            dispatch(userSlice.actions.setError(e.response?.data.message))
+            
         } else {
             dispatch(userSlice.actions.setError('Произошла ошибка'))
         }
+        
     }
 }
 
@@ -50,13 +54,16 @@ export const login = (login: string, password: string) => async (dispatch: AppDi
         ))
 
         localStorage.setItem('token', response.data.token)
+        localStorage.setItem('login', response.data.login)
+        localStorage.setItem('id', response.data.id.toString())
 
         console.log(login, password)
         console.log(response.data)
 
     } catch (e) {
         if (axios.isAxiosError(e)) {
-            dispatch(userSlice.actions.setError(e.response?.data.error))
+            dispatch(userSlice.actions.setError(e.response?.data.message))
+            console.log('rer', e)
         } else {
             dispatch(userSlice.actions.setError('Произошла ошибка'))
         }
@@ -67,6 +74,8 @@ export const logout = () => async (dispatch: AppDispatch) => {
     
     dispatch(userSlice.actions.removeUser())
     localStorage.removeItem('token')
+    localStorage.removeItem('login')
+    localStorage.removeItem('id')
 }
 
 export const auth = () => async (dispatch: AppDispatch) => {

@@ -37,11 +37,11 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
 
     const handleScroll = (e: UIEvent<HTMLDivElement>) => {
         setScroll(e.currentTarget.scrollLeft)
-        //console.log(scroll, sliderWidth)
+        //console.log(scroll, sliderWidth - windowWidth - 15)
     }
 
     useEffect(() => {
-        //setSliderWidth(sliderWrapperRef.current ? sliderWrapperRef.current.scrollWidth : 0)
+        setSliderWidth(sliderWrapperRef.current ? sliderWrapperRef.current.scrollWidth : 0)
 
         if (sliderWrapperRef.current && slideRef.current) {
             setSliderWidth(sliderWrapperRef.current.scrollWidth)
@@ -52,6 +52,7 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
             })
            // console.log(windowWidth, +sliderWrapperRef.current.style.paddingLeft, slideWidth, +sliderWrapperRef.current.style.gap,
              //   fadeWidth, sliderWrapperRef.current.style.paddingLeft)
+             
         }
     }, [slideRef, sliderWidth, windowWidth])
     
@@ -67,13 +68,12 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
 
                 <div className={styles.sliderWrapper} data-testid='slider-wrapper' ref={sliderWrapperRef} onScroll={handleScroll}>
                     {slides.map((slide, index) => <div className={styles.slideItem} key={index}>{slide}</div>)}
-                    <div ref={slideRef}>{slides[0]}</div>
                 </div>
 
                 <div className={styles.paginator}>
                     <Paginator sliderWidth={sliderWidth} scroll={scroll} />
                 </div>
-                {scroll < sliderWidth - windowWidth &&
+                {scroll < sliderWidth - windowWidth - 15 &&
                 <div className={cn(
                     styles.arrow,
                     styles.rightArrow
@@ -95,7 +95,7 @@ const RowSlider: FC<RowSliderProps> = ({ slides, title }) => {
                     styles.fadeLeft
                 )}></div>}
 
-                {scroll < sliderWidth - windowWidth &&
+                {scroll < sliderWidth - windowWidth - 15 &&
                     <div className={cn(
                     styles.fade,
                     styles.fadeRight

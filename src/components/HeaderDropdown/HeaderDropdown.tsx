@@ -10,7 +10,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { logout } from '../../store/actions/userActions'
 import { useWindowWidth } from '../../hooks/hooks'
 import Button from '../UI/Button/Button'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LanguageFlag from '../LanguageFlag/LanguageFlag'
 
 interface HeaderDropdownProps {
@@ -43,12 +43,12 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, onMouseLeave}) =
         <div className={styles.dropdownWrapper}>
 
             {windowWidth <= 1024 &&
-                <div className={styles.dropdownBlock}>
+                <Link to="/movies" className={styles.dropdownBlock}>
                     <div>
                         <img src={avatar} alt="" />
                     </div>
                     <span>{t('Header.Movies')}</span>
-                </div>
+                </Link>
             }
 
             <div className={styles.dropdownBlock}>
