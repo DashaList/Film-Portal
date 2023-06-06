@@ -11,9 +11,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <Suspense>
     <React.StrictMode>
       <Provider store={store}>
-        <HashRouter>
+        <BrowserRouter>
           <App />
-        </HashRouter>
+        </BrowserRouter>
       </Provider>
     </React.StrictMode>
   </Suspense>,

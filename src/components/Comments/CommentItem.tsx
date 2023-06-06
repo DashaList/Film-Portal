@@ -26,7 +26,9 @@ const CommentItem: FC<CommentItemProps> = ({ comment }) => {
     const [showCommentForm, setShowCommentForm] = useState(false)
 
     const addNewSubcomment = (newSubcomment: ISubcomment) => {
+        console.log('new', newSubcomment)
         setNewSubcomments([...newSubcomments, newSubcomment])
+        console.log('com', newSubcomments)
     }
 
   return (
@@ -62,12 +64,12 @@ const CommentItem: FC<CommentItemProps> = ({ comment }) => {
             <p>{t('log_in_first')}</p>
         }
 
-        {newSubcomments.map((subcomment) => (
-            <SubcommentItem subcomment={subcomment} key={`${comment.id} ${subcomment.id}`} />
+        {newSubcomments.map((subcomment, index) => (
+            <SubcommentItem subcomment={subcomment} key={`${comment.id} ${subcomment.id} ${index}`} />
         ))}
 
-        {comment.subcomments.map((subcomment) => (
-            <SubcommentItem subcomment={subcomment} key={`${comment.id} ${subcomment.id}`}/>
+        {comment.subcomments.map((subcomment, index) => (
+            <SubcommentItem subcomment={subcomment} key={`${comment.id} ${index} ${subcomment.id}`}/>
         ))}
     </div>
   )
