@@ -21,6 +21,7 @@
             margin-top: -0.6944vw;
         }
     }
+    
 }
 
 .light {
@@ -90,4 +91,13 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+input::placeholder{
+    font-size: 12px;
+    @media (min-width: 1441px) {
+        font-size: 1vw;
+
+    }
+
 }
