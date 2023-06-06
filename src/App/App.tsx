@@ -9,9 +9,9 @@ function App() {
 
   const dispatch = useAppDispatch()
 
-  // useEffect( () => {
-  //   dispatch( auth() )
-  // }, [dispatch])
+  useEffect( () => {
+    dispatch( auth() )
+  }, [dispatch])
   
   return (
     <>

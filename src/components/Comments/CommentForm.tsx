@@ -26,7 +26,6 @@ const CommentForm: FC<CommentFormProps> = ({ type, parentCommentId, addNewCommen
 
     const addComment = () => {
 
-        console.log('adding', id)
         if (type === 'comment' && addNewComment && id) {
             sendComment( +id, user.id, user.email, text )
             
@@ -42,18 +41,19 @@ const CommentForm: FC<CommentFormProps> = ({ type, parentCommentId, addNewCommen
             }
             addNewComment(newComment)
         }
-        if (type === 'subcomment' && parentCommentId && addNewSubcomment && id) {
-            sendSubcomment( +id, parentCommentId, user.id, user.email, text )
+        if (type === 'subcomment' && addNewSubcomment && id) {
+            sendSubcomment( +id, parentCommentId || 0, user.id, user.email, text )
 
             const newSubcomment: ISubcomment = {
                 createdAt: '',
-                id: 0,
+                id: 1,
                 text: text,
                 user: {
                     id: user.id,
                     login: user.email
                 }
             }
+            
             addNewSubcomment(newSubcomment)
         }
 

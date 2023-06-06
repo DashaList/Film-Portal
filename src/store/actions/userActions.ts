@@ -80,22 +80,22 @@ export const logout = () => async (dispatch: AppDispatch) => {
 
 export const auth = () => async (dispatch: AppDispatch) => {
     try {
-        const response = await axios.get<UserResponse>('http://localhost:4998/auth/auth', {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-        })
+        // const response = await axios.get<UserResponse>('http://localhost:4998/auth/auth', {
+        //     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        // })
 
         const user: IUser = {
-            id: response.data.id,
-            email: response.data.login,
-            isAdmin: response.data.role === 'admin'
+            id: +(localStorage.getItem('id') || 0),
+            email: localStorage.getItem('login') || '',
+            isAdmin: false
         }
         dispatch(userSlice.actions.setUser(
             user
         ))
 
-        localStorage.setItem('token', response.data.token)
+        //localStorage.setItem('token', response.data.token)
 
-        console.log(response)
+        //console.log(response)
 
     } catch (e) {
         console.error
