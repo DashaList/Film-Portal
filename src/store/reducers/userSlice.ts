@@ -38,7 +38,7 @@ export const userSlice = createSlice({
             // state.user.isAdmin = false,
             state = initialState
 
-            // state.isAuth = false
+            //state.isAuth = false
             // state.error = null
 
             console.log('pip', state)

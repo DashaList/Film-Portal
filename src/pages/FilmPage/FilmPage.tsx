@@ -68,7 +68,7 @@ const FilmPage = () => {
         <div className={styles.page}>
             <div className={styles.baner}>
                 <div className={styles.banerBox}>
-                    <img className={styles.imgBaner} src={film?.poster} alt="" data-testid='Baner' />
+                    <img className={styles.imgBaner} src={`http://localhost:4998/${film?.poster}`} alt="" data-testid='Baner' />
                 </div>
                 <div className={styles.topBlock}>
                     <Path>

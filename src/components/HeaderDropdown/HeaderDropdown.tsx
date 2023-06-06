@@ -30,6 +30,7 @@ const HeaderDropdown: FC<HeaderDropdownProps> = ({loginHandler, onMouseLeave}) =
 
     const logoutHandler = () => {
         dispatch( logout() )
+        console.log('logout', isAuth)
     }
 
     const navigate = useNavigate()

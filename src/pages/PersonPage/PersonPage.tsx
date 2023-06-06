@@ -36,29 +36,6 @@ const PersonPage = () => {
 
     const dateOfBirth = `${person?.birthday?.slice(8, 10)}.${person?.birthday?.slice(5, 7)}.${person?.birthday?.slice(0, 4)}`
 
-    ////////////
-    // const url = ""
-    // const filmPageAxios = (method: string = "GET", body: any = null) => {
-    //     axios({
-    //         method: method,
-    //         url: url,
-    //         data: body
-    //     })
-    //         .then(response => {
-    //             let person: IPerson = response.data
-    //             return person
-    //         })
-    //         //.catch(error => (console.log(error)))
-    //         .catch()
-    // }
-    // filmPageAxios()
-    ///////////////
-    // const person = persons.find((person) => person.id === Number(id))
-    // const films = FilmData.filter(film => person?.films.find(personFilm => personFilm.id == film.id))
-
-    //const person: IPerson = Person
-    //const films: IPersonsFilms[] = person.operator
-
 
     return (
         <div className={styles.PersonPage}>
@@ -69,7 +46,7 @@ const PersonPage = () => {
             <div className={styles.top}>
                 <div className={styles.left}>
                     <div className={styles.personPhoto}>
-                        <img src={person?.poster} alt="" data-testid='avatarPerson' />
+                        <img src={`http://localhost:4998/${person?.poster}`} alt="" data-testid='avatarPerson' />
                     </div>
                 </div>
                 <div className={styles.right_wrapper}>
