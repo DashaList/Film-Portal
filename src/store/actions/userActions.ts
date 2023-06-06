@@ -83,15 +83,17 @@ export const auth = () => async (dispatch: AppDispatch) => {
         // const response = await axios.get<UserResponse>('http://localhost:4998/auth/auth', {
         //     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         // })
-
-        const user: IUser = {
-            id: +(localStorage.getItem('id') || 0),
-            email: localStorage.getItem('login') || '',
-            isAdmin: false
+        if (localStorage.getItem('token')) {
+            console.log('aaaaaaa', localStorage.getItem('token'))
+            const user: IUser = {
+                id: +(localStorage.getItem('id') || 0),
+                email: localStorage.getItem('login') || '',
+                isAdmin: false
+            }
+            dispatch(userSlice.actions.setUser(
+                user
+            ))
         }
-        dispatch(userSlice.actions.setUser(
-            user
-        ))
 
         //localStorage.setItem('token', response.data.token)
 
@@ -100,6 +102,8 @@ export const auth = () => async (dispatch: AppDispatch) => {
     } catch (e) {
         console.error
         localStorage.removeItem('token')
+        localStorage.removeItem('login')
+        localStorage.removeItem('id')
         if (axios.isAxiosError(e)) {
             dispatch(userSlice.actions.setError(e.response?.data.error))
         } else {

@@ -32,11 +32,18 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func, defVa
         }
     }, []);
 
-    const [genreFilterArray, setFilterArray] = useState<string[]>([]);
-    const addFilterPosition = (filter: genre, isChecked: boolean) => {
-        const updatedFilter = isChecked ? [...genreFilterArray, filter.name_en] : genreFilterArray.filter((item) => item !== filter.name_en);
-        setFilterArray(updatedFilter);
+    const [genreFilterArray, setFilterArray] = useState<string>('');
+    // const addFilterPosition = (filter: genre, isChecked: boolean) => {
+    //     const updatedFilter = isChecked ? [...genreFilterArray, filter.name_en] : genreFilterArray.filter((item) => item !== filter.name_en);
+    //     setFilterArray(updatedFilter);
+    // }
+
+    const handleGenreChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        console.log(e.target.value)
+        setFilterArray(e.target.value)
+        setValue(e.target.value)
     }
+
     const navigate = useNavigate()
     const createURL = (genre: string[] = []) => {
         let url = ''
@@ -62,13 +69,14 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func, defVa
     }
 
     useEffect(() => {
-        goFilterUrl(createURL(genreFilterArray))
+        goFilterUrl(genreFilterArray)
     }, [genreFilterArray])
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         if (func) {
             func(e.target.value)
         }
+        console.log('han', e.target.value)
         setValue(e.target.value)
     }
     const { i18n } = useTranslation()
@@ -78,26 +86,36 @@ const Selector: FC<SelectorProps> = ({ name, array, filter = 'none', func, defVa
         setValue(defValue)
     }, [defValue])
     switch (filter) {
+        // case 'genres': return (
+        //     <div className={styles.filter}  >
+        //         <div className={styles.wraper}>
+        //             <div className={styles.selector} data-testid='genre' onClick={toggleShowBox} id={name}> {name}</div>
+        //             {genreBoxState && (
+        //                 <div className={styles.filterBox} data-testid="genresBox" ref={blockRef}>
+        //                     {array.map(filter => (
+        //                         <Checkbox position={filter} func={addFilterPosition} key={filter} data-testid='checkbox' />
+        //                     ))
+        //                     }
+        //                 </div >)}
+        //         </div>
+        //     </div>
+        // );
         case 'genre': return (
-            <div className={styles.filter}  >
-                <div className={styles.wraper}>
-                    <div className={styles.selector} data-testid='genre' onClick={toggleShowBox} id={name}> {name}</div>
-                    {genreBoxState && (
-                        <div className={styles.filterBox} data-testid="genresBox" ref={blockRef}>
-                            {array.map(filter => (
-                                <Checkbox position={filter} func={addFilterPosition} key={filter} data-testid='checkbox' />
-                            ))
-                            }
-                        </div >)}
-                </div>
+            <div className={styles.wraper}>
+                <select className={styles.selector} id={name} value={value} onChange={handleChange}>
+                    <option className={styles.option} value='' disabled defaultValue={value}>{name}</option>
+                    {array.map(option => (
+                        <option className={styles.option} value={option.name_en} key={option.name_en}>{RusLanguage ? option.name_ru : option.name_en}</option>
+                    ))}
+                </select>
             </div>
-        );
+        )        
         case 'country': return (
             <div className={styles.wraper}>
                 <select className={styles.selector} id={name} value={value} onChange={handleChange}>
                     <option className={styles.option} value='' disabled defaultValue={value}>{name}</option>
                     {array.map(option => (
-                        <option className={styles.option} value={option} key={option.name_en}>{RusLanguage ? option.name_ru : option.name_en}</option>
+                        <option className={styles.option} value={option.name_ru} key={option.name_en}>{RusLanguage ? option.name_ru : option.name_en}</option>
                     ))}
                 </select>
             </div>

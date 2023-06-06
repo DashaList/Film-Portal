@@ -18,10 +18,11 @@
 .avatar {
     cursor: pointer;
     width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    height: auto;
+    border-radius: 20%;
     scale: 1;
     transition: all 0.1s linear;
+    overflow: hidden;
 
     &:hover {
         scale: 1.1;
